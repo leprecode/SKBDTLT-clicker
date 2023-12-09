@@ -8,20 +8,22 @@ namespace Assets.Scripts.Infrastructure
     public class SerializableQueue<T>
     {
         [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
-        public List<T> elements = new List<T>();
+        private List<T> _elements = new List<T>();
+        public int Count => _elements.Count;
 
         public void Enqueue(T item)
         {
-            elements.Add(item);
+            _elements.Add(item);
         }
+
 
         public T Dequeue()
         {
-            if (elements.Count == 0)
+            if (_elements.Count == 0)
                 throw new InvalidOperationException("Queue is empty");
 
-            T item = elements[0];
-            elements.RemoveAt(0);
+            T item = _elements[0];
+            _elements.RemoveAt(0);
             return item;
         }
     }
