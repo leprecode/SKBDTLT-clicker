@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.BankLogic;
+using Assets.Scripts.EnemiesManagment;
+using Assets.Scripts.EnemyLogic;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +16,7 @@ namespace Assets.Scripts.Infrastructure
         [SerializeField] private EnemiesManager _enemiesManager;
         [SerializeField] private BankView _bankView;
         [SerializeField] private BankPresenter _bankPresenter;
-
+        [SerializeField] private EnemiesManagerView _enemiesManagerView;
 
         private void Awake()
         {
@@ -56,7 +58,7 @@ namespace Assets.Scripts.Infrastructure
         {
             _enemiesPool = new EnemiesPool();
             _enemiesPool.Initialize(_enemies);
-            _enemiesManager = new EnemiesManager(_enemiesPool);
+            _enemiesManager = new EnemiesManager(_enemiesPool, _enemiesManagerView);
         }
     }
 

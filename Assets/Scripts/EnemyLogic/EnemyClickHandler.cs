@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Assets.Scripts.EnemiesManagment;
+using Assets.Scripts.Infrastructure;
 using UnityEngine;
 
-namespace Assets.Scripts.Infrastructure
+namespace Assets.Scripts.EnemyLogic
 {
     public class EnemyClickHandler : MonoBehaviour
     {
