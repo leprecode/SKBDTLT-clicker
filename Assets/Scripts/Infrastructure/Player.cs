@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.BankLogic;
+using Assets.Scripts.Store;
 using System;
 using UnityEngine;
 
@@ -7,16 +8,16 @@ namespace Assets.Scripts.Infrastructure
     [Serializable]
     public class Player
     {
+        private readonly WeaponPresenter _weaponPresenter;
         private readonly BankPresenter _bank;
-        [SerializeField] private Melee _actualWeapon;
 
-        public Player(Melee startWeapon, BankPresenter bank)
+        public Player(WeaponPresenter weaponPresenter, BankPresenter bank)
         {
-            ActualWeapon = startWeapon;
+            _weaponPresenter = weaponPresenter;
             _bank = bank;
         }
 
-        public Melee ActualWeapon { get => _actualWeapon; private set => _actualWeapon = value; }
+        public Weapon ActualWeapon { get => _weaponPresenter.ActualWeapon; }
 
         public void AddMoney(int moneys)
         {

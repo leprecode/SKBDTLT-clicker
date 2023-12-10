@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.EnemiesManagment;
 using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.Store;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,7 @@ namespace Assets.Scripts.Infrastructure
 
         private void PreparePlayer(Melee startWeapon)
         {
-            _player = new Player(startWeapon, _bankPresenter);
+           // _player = new Player(startWeapon, _bankPresenter);
         }
 
         private static Melee PrepareStartWeapon()
@@ -64,7 +65,7 @@ namespace Assets.Scripts.Infrastructure
 
     public abstract class Weapon
     {
-
+        [field: SerializeField] public WeaponData WeaponData { get; private set; }
     }
 
     public class Firearm : Weapon
