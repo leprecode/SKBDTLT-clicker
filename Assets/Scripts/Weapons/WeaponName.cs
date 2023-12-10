@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Store
+﻿namespace Assets.Scripts.Weapons
 {
     public enum WeaponName
     { 

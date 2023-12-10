@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Assets.Scripts.Weapons;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts.Store

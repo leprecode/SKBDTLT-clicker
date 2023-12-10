@@ -1,8 +1,9 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Assets.Scripts.Store
+namespace Assets.Scripts.Weapons
 {
+    [CreateAssetMenu (fileName ="WeaponData", menuName ="WeaponData")]
     public class WeaponData : SerializedScriptableObject
     {
         [field: SerializeField] public WeaponName WeaponName{ get; }

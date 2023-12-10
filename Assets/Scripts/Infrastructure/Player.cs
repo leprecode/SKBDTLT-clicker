@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.BankLogic;
-using Assets.Scripts.Store;
+using Assets.Scripts.Weapons;
 using System;
-using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure
 {
