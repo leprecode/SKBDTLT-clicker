@@ -3,8 +3,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Weapons
 {
-    public class Weapon : MonoBehaviour
+    public abstract class Weapon : MonoBehaviour
     {
-        [field: SerializeField] public WeaponData WeaponData { get; private set; }
+        [SerializeField] private WeaponData _weaponData;
+        public WeaponName WeaponName { get => _weaponData.WeaponName; }
+
+        public abstract int Attack(Vector3 position);
     }
 }

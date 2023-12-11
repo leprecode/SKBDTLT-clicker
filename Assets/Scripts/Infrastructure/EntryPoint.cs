@@ -12,7 +12,6 @@ namespace Assets.Scripts.Infrastructure
 	{
 		[SerializeField] private Dictionary<Weapon, int> _weaponsPrefabs = new Dictionary<Weapon, int>();
 		[SerializeField] private Dictionary<Enemy, int> _enemies = new Dictionary<Enemy, int>();
-		[SerializeField] private Weapon[] _weapons;
 		[SerializeField] private EnemiesPool _enemiesPool;
 		[SerializeField] private Player _player;
 		[SerializeField] private EnemiesManager _enemiesManager;
