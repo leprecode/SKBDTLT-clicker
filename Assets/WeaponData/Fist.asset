@@ -36,3 +36,6 @@ MonoBehaviour:
     - Name: <HitVFX>k__BackingField
       Entry: 6
       Data: 
+    - Name: <MovementDuration>k__BackingField
+      Entry: 4
+      Data: 3

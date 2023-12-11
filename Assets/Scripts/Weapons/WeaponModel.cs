@@ -1,42 +1,49 @@
-﻿using Assets.Scripts.EnemyLogic;
-using Assets.Scripts.Infrastructure;
-using Sirenix.Serialization;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons
 {
     public class WeaponModel
     {
+        [SerializeField] private Vector3[] _attackPoints;
         [SerializeField] private Dictionary<WeaponName, bool> _boughtWeapons;
         [SerializeField] private List<Queue<Weapon>> _weaponsPool;
         [SerializeField] private Dictionary<WeaponName, Queue<GameObject>> _impacts;
+        [SerializeField] public WeaponName ActualWeapon { get; set; }
 
-        public WeaponModel(Dictionary<Weapon, int> weaponsPrefab, WeaponName startWeapon)
+        public WeaponModel(Dictionary<Weapon, int> weaponsPrefab, WeaponName startWeapon,
+            Transform[] attackPoints)
         {
-            //_weaponPrefabs = weaponsPrefab; make pool
-            // ActualWeapon = startWeapon;
-
+            ActualWeapon = startWeapon;
             InitializeWeaponsPool(weaponsPrefab);
-
-           /* _boughtWeapons = new Dictionary<WeaponName, bool>
-            {
-                { ActualWeapon.WeaponData.WeaponName, true }
-            };*/
-
-
-            //TODO: initialize weapons pool
+            FillAttackPoints(attackPoints);
         }
 
-        public Weapon GetWeaponFromPool(WeaponName weaponName)
+        private void FillAttackPoints(Transform[] attackPoints)
         {
-            var queueIndex = GetIndexOfQueue(weaponName);
+            _attackPoints = new Vector3[attackPoints.Length];
+
+            for (int i = 0; i < attackPoints.Length; i++)
+            {
+                _attackPoints[i] = attackPoints[i].position;
+            }
+        }
+
+        public Weapon GetActualWeaponObjectFromPool()
+        {
+            var queueIndex = GetIndexOfQueue(ActualWeapon);
+
+            //TODO: Add expandable
 
             if (queueIndex != null)
                 return _weaponsPool[(int)queueIndex].Dequeue();
             else
                 return null;
+        }
+
+        public Vector3 GetRandomAttackPoint()
+        {
+            return _attackPoints[Random.Range(0, _attackPoints.Length)];        
         }
 
         private int? GetIndexOfQueue(WeaponName weaponName)
@@ -74,7 +81,6 @@ namespace Assets.Scripts.Weapons
 
 
 
-        [SerializeField] public Weapon ActualWeapon { get; set; }
 
 
 

@@ -97,4 +97,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0ec9278c38cef438b68f399029499f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WeaponData>k__BackingField: {fileID: 11400000, guid: 4c03d96fb735c3745832948d9b2c89ef, type: 2}
+  _weaponData: {fileID: 11400000, guid: 4c03d96fb735c3745832948d9b2c89ef, type: 2}

@@ -10,6 +10,7 @@ namespace Assets.Scripts.Infrastructure
 {
 	public class EntryPoint : SerializedMonoBehaviour
 	{
+		[SerializeField] private Transform[] _attackPoints;
 		[SerializeField] private Dictionary<Weapon, int> _weaponsPrefabs = new Dictionary<Weapon, int>();
 		[SerializeField] private Dictionary<Enemy, int> _enemies = new Dictionary<Enemy, int>();
 		[SerializeField] private EnemiesPool _enemiesPool;
@@ -24,15 +25,13 @@ namespace Assets.Scripts.Infrastructure
 		{
 			PrepareEnemies();
 
-			//Melee startWeapon = PrepareStartWeapon();
 			PrepareBankSystem();
 
-			WeaponModel weaponModel = new WeaponModel(_weaponsPrefabs,WeaponName.Fist);
+			WeaponModel weaponModel = new WeaponModel(_weaponsPrefabs,WeaponName.Fist, _attackPoints);
 			WeaponPresenter weaponPresenter = new WeaponPresenter(weaponModel, _weaponView);
 
 
-	 /*       PreparePlayer(startWeapon);*/
-
+			PreparePlayer(weaponPresenter, _bankPresenter);
 			RegisterService();
 		}
 
@@ -48,10 +47,10 @@ namespace Assets.Scripts.Infrastructure
 			ServiceLocator.RegisterService(_enemiesManager);
 		}
 
-/*        private void PreparePlayer(Melee startWeapon)
+		private void PreparePlayer(WeaponPresenter weaponPresenter, BankPresenter bank)
 		{
-		   _player = new Player(startWeapon, _bankPresenter);
-		}*/
+			_player = new Player(weaponPresenter, bank);
+		}
 
 		private void PrepareEnemies()
 		{

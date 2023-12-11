@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Assets.Scripts.Weapons
 {
@@ -8,10 +9,9 @@ namespace Assets.Scripts.Weapons
     {
         public override int Attack(Vector3 position)
         {
-
-
-
-            return 0;
+            transform.DOMove(position, MovementDuration);
+            //transform.DOMove()
+            return Damage;
         }
     }
 }

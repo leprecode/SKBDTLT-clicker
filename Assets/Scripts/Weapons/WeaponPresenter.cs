@@ -15,22 +15,12 @@ namespace Assets.Scripts.Weapons
             _view = view;
         }
 
-        public Weapon ActualWeapon => _model.ActualWeapon;
-
-        public void ChangeWeapon(Weapon weapon)
-        { 
-            _model.ActualWeapon = weapon;
-        }
-
-        public int AttackByActualWeapon(Vector3 position)
+        public void AttackByActualWeapon(Vector3 position)
         {
-            var name = _model.ActualWeapon.WeaponName;
-            var weapon = _model.GetWeaponFromPool(name);
-
-           
-
-
-            return 0;
+            var weapon = _model.GetActualWeaponObjectFromPool();
+            weapon.gameObject.SetActive(true);
+            weapon.transform.position = _model.GetRandomAttackPoint();
+            weapon.Attack(position);
         }
     }
 }

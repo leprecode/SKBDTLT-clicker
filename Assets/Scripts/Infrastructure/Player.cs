@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.Weapons;
 using System;
-using System.Numerics;
+using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure
 {
@@ -22,12 +22,9 @@ namespace Assets.Scripts.Infrastructure
             _bank.AddMoney(moneys);
         }
 
-        public int Attack(Vector3 position)
+        public void Attack(Vector3 position)
         {
-            //_weaponPresenter.AttackByActualWeapon();
-
-
-            return 0;
+            _weaponPresenter.AttackByActualWeapon(position);
         }
     }
 }
