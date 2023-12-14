@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure;
+﻿using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.Infrastructure;
 using System;
 using UnityEngine;
 
@@ -15,12 +16,12 @@ namespace Assets.Scripts.Weapons
             _view = view;
         }
 
-        public void AttackByActualWeapon(Vector3 position)
+        public void AttackByActualWeapon(Vector3 position, Enemy enemy)
         {
             var weapon = _model.GetActualWeaponObjectFromPool();
             weapon.gameObject.SetActive(true);
             weapon.transform.position = _model.GetRandomAttackPoint();
-            weapon.Attack(position);
+            weapon.Attack(position, enemy);
         }
     }
 }

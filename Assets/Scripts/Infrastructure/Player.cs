@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.BankLogic;
+using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Weapons;
 using System;
 using UnityEngine;
@@ -22,9 +23,9 @@ namespace Assets.Scripts.Infrastructure
             _bank.AddMoney(moneys);
         }
 
-        public void Attack(Vector3 position)
+        public void Attack(Vector3 position, Enemy enemy )
         {
-            _weaponPresenter.AttackByActualWeapon(position);
+            _weaponPresenter.AttackByActualWeapon(position, enemy);
         }
     }
 }

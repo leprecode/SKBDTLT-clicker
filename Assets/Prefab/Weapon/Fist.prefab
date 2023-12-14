@@ -98,3 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponData: {fileID: 11400000, guid: 4c03d96fb735c3745832948d9b2c89ef, type: 2}
+  _spriteRenderer: {fileID: 7088670350052032895}
+  _fadeDuration: 2

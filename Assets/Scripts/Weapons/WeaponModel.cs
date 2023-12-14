@@ -19,14 +19,10 @@ namespace Assets.Scripts.Weapons
             FillAttackPoints(attackPoints);
         }
 
-        private void FillAttackPoints(Transform[] attackPoints)
+        public void ReturnPooledObject(Weapon weapon)
         {
-            _attackPoints = new Vector3[attackPoints.Length];
-
-            for (int i = 0; i < attackPoints.Length; i++)
-            {
-                _attackPoints[i] = attackPoints[i].position;
-            }
+            var queueIndex = GetIndexOfQueue(weapon.WeaponName);
+            _weaponsPool[(int)queueIndex].Enqueue(weapon);
         }
 
         public Weapon GetActualWeaponObjectFromPool()
@@ -40,10 +36,18 @@ namespace Assets.Scripts.Weapons
             else
                 return null;
         }
-
         public Vector3 GetRandomAttackPoint()
         {
             return _attackPoints[Random.Range(0, _attackPoints.Length)];        
+        }
+        private void FillAttackPoints(Transform[] attackPoints)
+        {
+            _attackPoints = new Vector3[attackPoints.Length];
+
+            for (int i = 0; i < attackPoints.Length; i++)
+            {
+                _attackPoints[i] = attackPoints[i].position;
+            }
         }
 
         private int? GetIndexOfQueue(WeaponName weaponName)
@@ -71,6 +75,7 @@ namespace Assets.Scripts.Weapons
                 for (int i = 0; i < weapon.Value; i++)
                 {
                     var newWeapon = GameObject.Instantiate(weapon.Key);
+                    newWeapon.Construct(this);
                     newWeapon.gameObject.SetActive(false);
                     _weaponsPool[queueIndex].Enqueue(newWeapon);
                 }
@@ -78,11 +83,5 @@ namespace Assets.Scripts.Weapons
                 queueIndex++;
             }
         }
-
-
-
-
-
-
     }
 }

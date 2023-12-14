@@ -5,17 +5,13 @@ namespace Assets.Scripts.EnemyLogic
 {
     public class EnemyClickHandler : MonoBehaviour
     {
+        [SerializeField] private Enemy _enemy;
         private void OnMouseDown()
         {
-            /*var damage = ServiceLocator.GetService<Player>().ActualWeapon.Damage;*/
-          // ServiceLocator.GetService<EnemiesManager>().ActualEnemy.TakeDamage(damage);
-
-            //ServiceLocator.GetService<Player>().AddMoney(damage);
-
             var clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             clickPos.z = 0;
 
-            ServiceLocator.GetService<Player>().Attack(clickPos);
+            ServiceLocator.GetService<Player>().Attack(clickPos, _enemy);
         }
 
     }

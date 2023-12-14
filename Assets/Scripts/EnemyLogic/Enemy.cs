@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Infrastructure;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.EnemyLogic
@@ -20,6 +21,7 @@ namespace Assets.Scripts.EnemyLogic
         {
             ActualHp -= damage;
             OnDamageTake?.Invoke(ActualHp, MaxHp);
+            ServiceLocator.GetService<Player>().AddMoney(damage);
             CheckHP();
         }
 
