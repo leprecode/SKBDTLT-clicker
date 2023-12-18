@@ -2,16 +2,18 @@
 using UnityEngine;
 using DG.Tweening;
 using Assets.Scripts.EnemyLogic;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.Weapons
 {
     [Serializable]
     public class Fist : Weapon
     {
+        private readonly Color32 RESET_COLOR = new Color32(255, 255, 255, 255);
+
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private float _fadeDuration;
         private WeaponModel _pool;
-
         public override void Construct(WeaponModel pool)
         {
             _pool = pool;
@@ -21,6 +23,13 @@ namespace Assets.Scripts.Weapons
         {
             float dist = Vector3.Distance(transform.position, position);
             float time = dist / Speed;
+            
+            
+            Vector3 direction = enemy.transform.position - transform.position;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             transform.DOMove(position, time).OnComplete(() => OnEndAttack(enemy)); ;
         }
@@ -33,13 +42,14 @@ namespace Assets.Scripts.Weapons
 
         private void BackToPool()
         {
+            ResetWeapon();
             gameObject.SetActive(false);
             _pool.ReturnPooledObject(this);
         }
 
         public override void ResetWeapon()
         {
-            _spriteRenderer.color = Color.white;
+            _spriteRenderer.color = RESET_COLOR;
         }
     }
 }

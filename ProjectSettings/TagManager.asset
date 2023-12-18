@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - MuseTextureLayer
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemies
+    uniqueID: 659455419
+    locked: 0
+  - name: Weapon
+    uniqueID: 555633653
     locked: 0
