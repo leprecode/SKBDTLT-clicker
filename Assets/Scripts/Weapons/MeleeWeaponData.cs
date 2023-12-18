@@ -12,5 +12,6 @@ namespace Assets.Scripts.Weapons
         [field: SerializeField] public AudioClip HitSound { get; }
         [field: SerializeField] public GameObject HitVFX { get; }
         [field: SerializeField] public float Speed { get; }
+        [field: SerializeField] public float FadeDuration { get; }
     }
 }

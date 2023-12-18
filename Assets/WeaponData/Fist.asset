@@ -38,4 +38,7 @@ MonoBehaviour:
       Data: 
     - Name: <Speed>k__BackingField
       Entry: 4
-      Data: 5
+      Data: 12
+    - Name: <FadeDuration>k__BackingField
+      Entry: 4
+      Data: 0.5

@@ -11,6 +11,7 @@ namespace Assets.Scripts.Weapons
         public WeaponName WeaponName { get => _weaponData.WeaponName; }
         public int Damage { get => _weaponData.Damage; }
         public float Speed { get => _weaponData.Speed; }
+        public float FadeDuration { get => _weaponData.FadeDuration; }
 
         public abstract void Attack(Vector3 position, Enemy enemy);
 
