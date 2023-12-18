@@ -15,9 +15,8 @@ MonoBehaviour:
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
-  m_RendererFeatures:
-  - {fileID: 547926715492357356}
-  m_RendererFeatureMap: ec54ded771a09a07
+  m_RendererFeatures: []
+  m_RendererFeatureMap: 
   m_UseNativeRenderPass: 0
   m_TransparencySortMode: 0
   m_TransparencySortAxis: {x: 0, y: 1, z: 0}
@@ -82,3 +81,7 @@ MonoBehaviour:
   downsample: 1
   scale: 3.85
   iterations: 1
+  _requirements: 4
+  disableInSceneView: 1
+  _requiresColor: 1
+  _injectedBeforeTransparents: 0
