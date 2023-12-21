@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http.Headers;
 
 namespace Assets.Scripts.BankLogic
 {
@@ -19,6 +20,18 @@ namespace Assets.Scripts.BankLogic
         {
             _bank.money += money;
             _view.UpdateUIOnAddingMoney(_bank.money);
+        }
+
+        public bool TryBuy(int cost)
+        {
+            if (cost <= _bank.money)
+            {
+                _bank.money -= cost;
+                _view.UpdateUIOnSpendMoney(_bank.money);
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -1,23 +1,29 @@
-﻿using Assets.Scripts.Weapons;
+﻿using Assets.Scripts.WeaponsLogic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Store
 {
-    public class StoreCell : MonoBehaviour
+    public class StoreCellUI : MonoBehaviour
     {
         [SerializeField] private WeaponName _name;
         [SerializeField] private TextMeshProUGUI _debugtext;
 
+        public delegate void OnClick(WeaponName name);
+        public event OnClick OnClicked;
+
         public void OnCellClick()
         {
-            //TODO: запрашиваем, есть ли это оружие уже. если нет, то пытаемся купить. если есть - используем
+            Debug.Log(name + " CKICKED");
+            OnClicked?.Invoke(_name);
         }
 
-        //TODO^ remove
+        //TODO: remove
         private void OnDrawGizmos()
         {
             _debugtext.SetText(_name.ToString());
         }
     }
+
 }

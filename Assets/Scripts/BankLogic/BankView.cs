@@ -12,5 +12,10 @@ namespace Assets.Scripts.BankLogic
         {
             _moneyScore.SetText(money.ToString());    
         }
+
+        public void UpdateUIOnSpendMoney(int money)
+        {
+            _moneyScore.SetText(money.ToString());
+        }
     }
 }

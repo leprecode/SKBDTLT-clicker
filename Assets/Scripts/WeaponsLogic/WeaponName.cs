@@ -1,7 +1,7 @@
-﻿namespace Assets.Scripts.Weapons
+﻿namespace Assets.Scripts.WeaponsLogic
 {
     public enum WeaponName
-    { 
+    {
         Fist,
         Foot,
         Chainik,
@@ -10,11 +10,9 @@
         Knife,
         Tube,
         Molotok,
-        PacansCrowd,
         Pistol,
         Shotgun,
         Auto,
         Bazooka,
-        Atom
     }
 }

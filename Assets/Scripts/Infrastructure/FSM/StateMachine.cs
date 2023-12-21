@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.EnemiesManagment;
 using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
+using Assets.Scripts.WeaponsLogic;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,13 +13,15 @@ namespace Assets.Scripts.Infrastructure
     {
         private Dictionary<GameState, IState> _states;
         private IState _currentState;
-        private readonly Gameplay _gameplay;
+
         public StateMachine(Dictionary<Weapon, int> WeaponsPrefabs,
             Transform[] AttackPoints,
             BankView BankView,
             Dictionary<Enemy, int> Enemies,
-            WeaponView WeaponView,
             EnemiesManagerView EnemiesManagerView,
+            StoreCellUI[] cellUIs,
+            WeaponsCost weaponsCost,
+            StoreView storeView,
             out WeaponPresenter weaponPresenter,
             out BankPresenter bankPresenter,
             out WeaponModel weaponModel,
@@ -29,8 +33,22 @@ namespace Assets.Scripts.Infrastructure
 
             _states = new Dictionary<GameState, IState>
             {
-                [GameState.Initial] = new InitialState(WeaponsPrefabs, AttackPoints, BankView, Enemies, WeaponView, EnemiesManagerView, out weaponPresenter, 
-                out bankPresenter, out weaponModel, out enemiesPool, out enemiesManager, out player),
+                [GameState.Initial] =
+                new InitialState(WeaponsPrefabs, 
+                AttackPoints, 
+                BankView, 
+                Enemies, 
+                EnemiesManagerView, 
+                cellUIs,
+                weaponsCost,
+                storeView, 
+                out weaponPresenter,
+                out bankPresenter, 
+                out weaponModel, 
+                out enemiesPool, 
+                out enemiesManager, 
+                out player),
+
                 [GameState.Gameplay] = new GameplayState(),
                 [GameState.Pause] = new PauseState(),
                 [GameState.AD] = new AdState()

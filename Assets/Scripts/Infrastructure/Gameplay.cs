@@ -1,14 +1,16 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.EnemiesManagment;
 using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
+using Assets.Scripts.WeaponsLogic;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure
 {
-	public class Gameplay : SerializedMonoBehaviour
+    public class Gameplay : SerializedMonoBehaviour
 	{
 		[SerializeField] private Transform[] _attackPoints;
 		[SerializeField] private Dictionary<Weapon, int> _weaponsPrefabs = new Dictionary<Weapon, int>();
@@ -18,21 +20,36 @@ namespace Assets.Scripts.Infrastructure
 		[SerializeField] private BankView _bankView;
 		[SerializeField] private BankPresenter _bankPresenter;
 		[SerializeField] private EnemiesManagerView _enemiesManagerView;
-		[SerializeField] private WeaponView _weaponView;
 
 		[SerializeField] private StateMachine _stateMachine;
 
 		[SerializeField] private Player _player;
 		[SerializeField] private EnemiesManager _enemiesManager;
 
+		[SerializeField] private StoreCellUI[] _cellUIs;
+		[SerializeField] private WeaponsCost _weaponsCost;
+		[SerializeField] private StoreView _storeView;
+
+
         private WeaponModel _weaponModel;
         private WeaponPresenter _weaponPresenter;
 
         private void Awake()
 		{
-			_stateMachine = new StateMachine(_weaponsPrefabs, _attackPoints, _bankView, _enemies, _weaponView, _enemiesManagerView, 
+			_stateMachine = new StateMachine(_weaponsPrefabs, 
+				_attackPoints, 
+				_bankView, 
+				_enemies, 
+				_enemiesManagerView, 
+				_cellUIs,
+				_weaponsCost,
+				_storeView,
 				out _weaponPresenter,
-                out _bankPresenter, out _weaponModel, out _enemiesPool, out _enemiesManager, out _player);
+                out _bankPresenter, 
+				out _weaponModel, 
+				out _enemiesPool, 
+				out _enemiesManager, 
+				out _player);
 		}
 	}
 }

@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Weapons;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Weapons
+namespace Assets.Scripts.WeaponsLogic
 {
     public class WeaponModel
     {
         [SerializeField] private Vector3[] _attackPoints;
-        [SerializeField] private Dictionary<WeaponName, bool> _boughtWeapons;
+        [SerializeField] private List<WeaponName> _boughtWeapons;
         [SerializeField] private List<Queue<Weapon>> _weaponsPool;
         [SerializeField] private Dictionary<WeaponName, Queue<GameObject>> _impacts;
         [SerializeField] public WeaponName ActualWeapon { get; set; }
@@ -15,8 +16,22 @@ namespace Assets.Scripts.Weapons
             Transform[] attackPoints)
         {
             ActualWeapon = startWeapon;
+
+            _boughtWeapons = new List<WeaponName>();
+            _boughtWeapons.Add(ActualWeapon);
+
             InitializeWeaponsPool(weaponsPrefab);
             FillAttackPoints(attackPoints);
+        }
+
+        public void AddNewWeapon(WeaponName name)
+        {
+            _boughtWeapons.Add(name);
+        }
+
+        public bool IsThisWeaponIsBought(WeaponName name)
+        {
+            return _boughtWeapons.Contains(name);
         }
 
         public void ReturnPooledObject(Weapon weapon)
@@ -38,7 +53,7 @@ namespace Assets.Scripts.Weapons
         }
         public Vector3 GetRandomAttackPoint()
         {
-            return _attackPoints[Random.Range(0, _attackPoints.Length)];        
+            return _attackPoints[Random.Range(0, _attackPoints.Length)];
         }
         private void FillAttackPoints(Transform[] attackPoints)
         {
@@ -74,7 +89,7 @@ namespace Assets.Scripts.Weapons
 
                 for (int i = 0; i < weapon.Value; i++)
                 {
-                    var newWeapon = GameObject.Instantiate(weapon.Key);
+                    var newWeapon = Object.Instantiate(weapon.Key);
                     newWeapon.Construct(this);
                     newWeapon.gameObject.SetActive(false);
                     _weaponsPool[queueIndex].Enqueue(newWeapon);

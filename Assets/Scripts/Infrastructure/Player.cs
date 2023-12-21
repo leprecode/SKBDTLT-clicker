@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.EnemyLogic;
-using Assets.Scripts.Weapons;
+using Assets.Scripts.WeaponsLogic;
 using System;
 using UnityEngine;
 

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Store;
+using Assets.Scripts.WeaponsLogic;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons

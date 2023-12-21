@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.EnemiesManagment;
 using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
+using Assets.Scripts.WeaponsLogic;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,8 +16,10 @@ namespace Assets.Scripts.Infrastructure
             Transform[] AttackPoints,
             BankView BankView,
             Dictionary<Enemy, int> Enemies,
-            WeaponView WeaponView,
             EnemiesManagerView EnemiesManagerView,
+            StoreCellUI[] cellUIs,
+            WeaponsCost weaponsCost,
+            StoreView storeView,
             out WeaponPresenter weaponPresenter,
             out BankPresenter bankPresenter,
             out WeaponModel weaponModel,
@@ -23,8 +27,11 @@ namespace Assets.Scripts.Infrastructure
             out EnemiesManager enemiesManager,
             out Player player)
         {
-            PrepareWeapons(WeaponsPrefabs, AttackPoints, WeaponView, out weaponModel, out weaponPresenter);
+            PrepareWeapons(WeaponsPrefabs, AttackPoints, out weaponModel, out weaponPresenter);
             PrepareBankSystem(BankView, out bankPresenter);
+
+            StorePresenter StorePresenter = 
+                new StorePresenter(cellUIs, weaponPresenter, weaponsCost,bankPresenter, storeView);
 
             PrepareEnemies(Enemies, EnemiesManagerView, out enemiesPool, out enemiesManager);
             PreparePlayer(weaponPresenter, bankPresenter, out player);
@@ -54,11 +61,11 @@ namespace Assets.Scripts.Infrastructure
             enemiesManager = new EnemiesManager(enemiesPool, EnemiesManagerView);
         }
 
-        private void PrepareWeapons(Dictionary<Weapon, int> WeaponsPrefabs, Transform[] AttackPoints, WeaponView WeaponView,
+        private void PrepareWeapons(Dictionary<Weapon, int> WeaponsPrefabs, Transform[] AttackPoints,
             out WeaponModel weaponModel, out WeaponPresenter weaponPresenter)
         {
             weaponModel = new WeaponModel(WeaponsPrefabs, WeaponName.Fist, AttackPoints);
-            weaponPresenter = new WeaponPresenter(weaponModel, WeaponView);
+            weaponPresenter = new WeaponPresenter(weaponModel);
         }
 
         private void PrepareBankSystem(BankView BankView, out BankPresenter bankPresenter)

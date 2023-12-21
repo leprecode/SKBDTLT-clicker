@@ -3,6 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using Assets.Scripts.EnemyLogic;
 using static UnityEngine.GraphicsBuffer;
+using Assets.Scripts.WeaponsLogic;
 
 namespace Assets.Scripts.Weapons
 {
