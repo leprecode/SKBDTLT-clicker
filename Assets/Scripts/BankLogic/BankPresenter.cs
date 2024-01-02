@@ -6,6 +6,8 @@ namespace Assets.Scripts.BankLogic
     [Serializable]
     public class BankPresenter
     {
+        public event Action<int> OnMoneyEarned;
+
         private readonly Bank _bank;
         private readonly BankView _view;
 
@@ -20,6 +22,7 @@ namespace Assets.Scripts.BankLogic
         {
             _bank.money += money;
             _view.UpdateUIOnAddingMoney(_bank.money);
+            OnMoneyEarned?.Invoke(_bank.money);
         }
 
         public bool TryBuy(int cost)

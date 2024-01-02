@@ -4,15 +4,17 @@ using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure
 {
+    [Serializable]
     public class StateMachine
     {
         private Dictionary<GameState, IState> _states;
-        private IState _currentState;
+        [SerializeField] private IState _currentState;
 
         public StateMachine(Dictionary<Weapon, int> WeaponsPrefabs,
             Transform[] AttackPoints,

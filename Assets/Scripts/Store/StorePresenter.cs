@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.WeaponsLogic;
+using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Store
 {
@@ -20,8 +22,28 @@ namespace Assets.Scripts.Store
             _weaponsCost = weaponsCost;
             _bankPresenter = bankPresenter;
             _storeView = storeView;
-            
+
+            _storeView.LastAvctiveCell = _cells[0];
+
             Subscribe();
+            _storeView.Construct(cells);
+            _storeView.SetCellsPrices(_weaponsCost);
+
+            ActivateStartWeapon();
+        }
+
+        private void ActivateStartWeapon()
+        {
+            var actualWeapon = _weaponPresenter.GetActualWeapon;
+
+            for (int i = 0; i < _cells.Length; i++)
+            {
+                if (_cells[i].Name == actualWeapon)
+                {
+                    _cells[i].SetActiveState();
+                    break;
+                }
+            }
         }
 
         ~StorePresenter()
@@ -29,8 +51,35 @@ namespace Assets.Scripts.Store
             Unsubscribe();
         }
 
-        private void CheckIsBuyed(WeaponName name)
+        private void OnMoneyEarning(int totalMoney)
         {
+            Debug.Log("OnMoneyEarning");
+
+            var allUnbuyedWeapons = _weaponPresenter.GetAllUnbyedWeapons();
+
+            for (int i = 0; i < allUnbuyedWeapons.Count; i++)
+            {
+                if (totalMoney >= _weaponsCost.Prices[allUnbuyedWeapons[i]])
+                {
+                    for (int j = 0; j < _cells.Length; j++)
+                    {
+                        if (_cells[j].Name == allUnbuyedWeapons[i])
+                        {
+                            _cells[j].SetAllowToBuy();
+                            Debug.Log("SetAllowToBuy");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void OnCellClick(StoreCellUI cell,WeaponName name)
+        {
+            if (_storeView.LastAvctiveCell.Name == name)
+                return;
+
             if (!_weaponPresenter.IsThisWeaponIsBought(name))
             {
                 var cost = _weaponsCost.Prices[name];
@@ -38,6 +87,7 @@ namespace Assets.Scripts.Store
                 if (_bankPresenter.TryBuy(cost))
                 {
                     _weaponPresenter.EquipNewWeapon(name);
+                    _storeView.UpdateActualCellUI(cell);
                 }
                 else
                 {
@@ -46,6 +96,7 @@ namespace Assets.Scripts.Store
             }
             else
             {
+                _storeView.UpdateActualCellUI(cell);
                 _weaponPresenter.EquipWeapon(name);
             }
         }
@@ -54,16 +105,20 @@ namespace Assets.Scripts.Store
         {
             for (int i = 0; i < _cells.Length; i++)
             {
-                _cells[i].OnClicked += CheckIsBuyed;
+                _cells[i].OnClicked += OnCellClick;
             }
+
+            _bankPresenter.OnMoneyEarned += OnMoneyEarning;
         }
 
         private void Unsubscribe()
         {
             for (int i = 0; i < _cells.Length; i++)
             {
-                _cells[i].OnClicked -= CheckIsBuyed;
+                _cells[i].OnClicked -= OnCellClick;
             }
+
+            _bankPresenter.OnMoneyEarned -= OnMoneyEarning;
         }
     }
 }

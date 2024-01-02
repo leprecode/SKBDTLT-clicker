@@ -8,29 +8,38 @@ namespace Assets.Scripts.WeaponsLogic
     [Serializable]
     public class WeaponModel
     {
+        [SerializeField] public WeaponName ActualWeapon { get; set; }
+
         [SerializeField] private Vector3[] _attackPoints;
         [SerializeField] private List<WeaponName> _boughtWeapons;
         [SerializeField] private List<Queue<Weapon>> _weaponsPool;
         [SerializeField] private Dictionary<WeaponName, Queue<GameObject>> _impacts;
-        [SerializeField] public WeaponName ActualWeapon { get; set; }
+        [SerializeField] private List<WeaponName> _allUnbuyedWeapons;
+
 
         public WeaponModel(Dictionary<Weapon, int> weaponsPrefab, WeaponName startWeapon,
             Transform[] attackPoints)
         {
             ActualWeapon = startWeapon;
 
+            InitializeAllUnbuyedWeapon(weaponsPrefab);
+            
             _boughtWeapons = new List<WeaponName>
             {
                 ActualWeapon
             };
+            _allUnbuyedWeapons.Remove(ActualWeapon);
 
             InitializeWeaponsPool(weaponsPrefab);
             FillAttackPoints(attackPoints);
         }
 
+        public IReadOnlyList<WeaponName> GetAllUnbyedWeapons() => _allUnbuyedWeapons.AsReadOnly();
+
         public void AddNewWeapon(WeaponName name)
         {
             _boughtWeapons.Add(name);
+            _allUnbuyedWeapons.Remove(name);
         }
 
         public bool IsThisWeaponIsBought(WeaponName name)
@@ -58,6 +67,18 @@ namespace Assets.Scripts.WeaponsLogic
         public Vector3 GetRandomAttackPoint()
         {
             return _attackPoints[UnityEngine.Random.Range(0, _attackPoints.Length)];
+        }
+        private void InitializeAllUnbuyedWeapon(Dictionary<Weapon, int> weaponsPrefab)
+        {
+            _allUnbuyedWeapons = new List<WeaponName>();
+
+            foreach (var item in weaponsPrefab)
+            {
+                _allUnbuyedWeapons.Add(item.Key.WeaponName);
+
+                Debug.Log("Added To Unbuyed" + item.Key.WeaponName);
+            }
+
         }
         private void FillAttackPoints(Transform[] attackPoints)
         {

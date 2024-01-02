@@ -1,18 +1,24 @@
 ﻿using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Infrastructure;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.WeaponsLogic
 {
+    [Serializable]
     public class WeaponPresenter
     {
-        private readonly WeaponModel _model;
+        [SerializeField] private readonly WeaponModel _model;
 
         public WeaponPresenter(WeaponModel weaponModel)
         {
             _model = weaponModel;
         }
+
+        public IReadOnlyList<WeaponName> GetAllUnbyedWeapons() => _model.GetAllUnbyedWeapons();
+
+        public WeaponName GetActualWeapon => _model.ActualWeapon;
 
         public void AttackByActualWeapon(Vector3 position, Enemy enemy)
         {

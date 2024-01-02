@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.WeaponsLogic;
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,22 +8,39 @@ namespace Assets.Scripts.Store
 {
     public class StoreCellUI : MonoBehaviour
     {
-        [SerializeField] private WeaponName _name;
-        [SerializeField] private TextMeshProUGUI _debugtext;
+        private readonly int ACTIVE_HASH_ID = Animator.StringToHash("Active");
+        private readonly int ALLOW_TO_BUY_HASH_ID = Animator.StringToHash("AllowToBuy");
 
-        public delegate void OnClick(WeaponName name);
-        public event OnClick OnClicked;
+        public event Action<StoreCellUI,WeaponName> OnClicked;
+        [field: SerializeField] public WeaponName Name { get; private set; }
+
+        [SerializeField] private TextMeshProUGUI _priceText;
+        [SerializeField] private Animator _animator;
+        
+        public void SetPrice(int price)
+        {
+            _priceText.SetText(price.ToString());    
+        }    
 
         public void OnCellClick()
         {
             Debug.Log(name + " CKICKED");
-            OnClicked?.Invoke(_name);
+            OnClicked?.Invoke(this, Name);
         }
 
-        //TODO: remove
-        private void OnDrawGizmos()
+        public void SetInactiveState()
+        { 
+            _animator.SetBool(ACTIVE_HASH_ID, false);
+        }
+
+        public void SetAllowToBuy()
         {
-            _debugtext?.SetText(_name.ToString());
+            _animator.SetBool(ALLOW_TO_BUY_HASH_ID, true);
+        }
+
+        public void SetActiveState()
+        {
+            _animator.SetBool(ACTIVE_HASH_ID, true);
         }
     }
 
