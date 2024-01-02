@@ -8,6 +8,8 @@ namespace Assets.Scripts.EnemiesManagment
     [Serializable]
     public class EnemiesManager
     {
+        public event Action OnEnemyEnded;
+        
         private Enemy _actualEnemy;
         private readonly EnemiesPool _pool;
         private readonly EnemiesManagerView _view;
@@ -33,9 +35,18 @@ namespace Assets.Scripts.EnemiesManagment
         {
             Unsubscribe();
             PrepareDeadEnemy();
-            _actualEnemy = _pool.GetEnemy(); //TODO: handle null to End Game
-            Subscribe();
-            PrepareActualEnemy();
+            _actualEnemy = _pool.GetEnemy();
+
+            if (_actualEnemy is null)
+            {
+                OnEnemyEnded?.Invoke();
+                _view.OnEndGame();
+            }
+            else
+            {
+                Subscribe();
+                PrepareActualEnemy();
+            }
         }
 
         private void PrepareDeadEnemy()

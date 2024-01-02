@@ -27,12 +27,15 @@ MonoBehaviour:
     - Name: <Damage>k__BackingField
       Entry: 3
       Data: 3
-    - Name: <Cost>k__BackingField
-      Entry: 3
-      Data: 0
     - Name: <HitSound>k__BackingField
       Entry: 6
       Data: 
     - Name: <HitVFX>k__BackingField
       Entry: 6
       Data: 
+    - Name: <Speed>k__BackingField
+      Entry: 4
+      Data: 12
+    - Name: <FadeDuration>k__BackingField
+      Entry: 4
+      Data: 0.5

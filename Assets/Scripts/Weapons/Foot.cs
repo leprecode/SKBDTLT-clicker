@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.WeaponsLogic;
 using DG.Tweening;
+using System;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons
@@ -19,8 +21,18 @@ namespace Assets.Scripts.Weapons
 
         public override void Attack(Vector3 position, Enemy enemy)
         {
+            FlipY(position);
+
             RotateToTarget(enemy);
             MoveToTarget(position, enemy);
+        }
+
+        private void FlipY(Vector3 target)
+        {
+            if (transform.position.x < target.x)
+                _spriteRenderer.flipY = false;
+            else
+                _spriteRenderer.flipY = true;
         }
 
         private void MoveToTarget(Vector3 position, Enemy enemy)

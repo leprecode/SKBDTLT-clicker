@@ -29,10 +29,13 @@ namespace Assets.Scripts.Infrastructure
 		[SerializeField] private StoreCellUI[] _cellUIs;
 		[SerializeField] private WeaponsCost _weaponsCost;
 		[SerializeField] private StoreView _storeView;
-
+		[SerializeField] private GameObject _endGamePopup;
 
         private WeaponModel _weaponModel;
         private WeaponPresenter _weaponPresenter;
+
+
+
 
         private void Awake()
 		{
@@ -50,6 +53,30 @@ namespace Assets.Scripts.Infrastructure
 				out _enemiesPool, 
 				out _enemiesManager, 
 				out _player);
+
+
+			Subscribe();
 		}
-	}
+
+		private void Subscribe()
+		{
+			_enemiesManager.OnEnemyEnded += EndGame;
+		}
+
+        private void Unsubscribe()
+        {
+			_enemiesManager.OnEnemyEnded -= EndGame;
+        }
+
+        private void OnDestroy()
+        {
+			Unsubscribe();
+        }
+
+        private void EndGame()
+		{
+			Debug.Log("Game is Ended!");
+			_endGamePopup.SetActive(true);
+        }
+    }
 }

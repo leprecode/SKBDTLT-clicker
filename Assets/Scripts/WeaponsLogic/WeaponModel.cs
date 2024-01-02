@@ -1,9 +1,11 @@
 ﻿using Assets.Scripts.Weapons;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.WeaponsLogic
 {
+    [Serializable]
     public class WeaponModel
     {
         [SerializeField] private Vector3[] _attackPoints;
@@ -17,8 +19,10 @@ namespace Assets.Scripts.WeaponsLogic
         {
             ActualWeapon = startWeapon;
 
-            _boughtWeapons = new List<WeaponName>();
-            _boughtWeapons.Add(ActualWeapon);
+            _boughtWeapons = new List<WeaponName>
+            {
+                ActualWeapon
+            };
 
             InitializeWeaponsPool(weaponsPrefab);
             FillAttackPoints(attackPoints);
@@ -53,7 +57,7 @@ namespace Assets.Scripts.WeaponsLogic
         }
         public Vector3 GetRandomAttackPoint()
         {
-            return _attackPoints[Random.Range(0, _attackPoints.Length)];
+            return _attackPoints[UnityEngine.Random.Range(0, _attackPoints.Length)];
         }
         private void FillAttackPoints(Transform[] attackPoints)
         {
@@ -89,7 +93,7 @@ namespace Assets.Scripts.WeaponsLogic
 
                 for (int i = 0; i < weapon.Value; i++)
                 {
-                    var newWeapon = Object.Instantiate(weapon.Key);
+                    var newWeapon = UnityEngine.Object.Instantiate(weapon.Key);
                     newWeapon.Construct(this);
                     newWeapon.gameObject.SetActive(false);
                     _weaponsPool[queueIndex].Enqueue(newWeapon);

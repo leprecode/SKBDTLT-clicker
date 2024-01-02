@@ -3,10 +3,17 @@ using UnityEngine;
 
 namespace Assets.Scripts.DebugCode
 {
-    internal class DrawDistanceFromTo : MonoBehaviour
+#if UNITY_EDITOR
+
+    public class DrawDistanceFromTo : MonoBehaviour
     {
-        [SerializeField] private GameObject[] _objectsToMeasure;
+       /* [SerializeField] private GameObject[] _objectsToMeasure;
         [SerializeField] private GameObject _targetObject;
+
+        private void Start()
+        {
+            Debug.Log("UNiTY_WEBGL");
+        }
 
         private void OnDrawGizmos()
         {
@@ -31,6 +38,8 @@ namespace Assets.Scripts.DebugCode
                     Gizmos.DrawWireSphere(obj.transform.position, 0.5f);
                 }
             }
-        }
+        }*/
     }
+
+#endif
 }
