@@ -22,7 +22,7 @@ namespace Assets.Scripts.Store
         //TODO: remove
         private void OnDrawGizmos()
         {
-            _debugtext.SetText(_name.ToString());
+            _debugtext?.SetText(_name.ToString());
         }
     }
 

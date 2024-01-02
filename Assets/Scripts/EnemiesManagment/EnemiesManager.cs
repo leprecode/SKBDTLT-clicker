@@ -46,6 +46,7 @@ namespace Assets.Scripts.EnemiesManagment
             {
                 Subscribe();
                 PrepareActualEnemy();
+                _view.UpdateBarOnNewEnemy(_actualEnemy.ActualHp, _actualEnemy.MaxHp);
             }
         }
 
