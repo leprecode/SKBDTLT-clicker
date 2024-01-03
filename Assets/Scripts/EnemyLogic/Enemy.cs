@@ -8,9 +8,12 @@ namespace Assets.Scripts.EnemyLogic
     {
         public Action OnDie;
         public Action<int, int> OnDamageTake;
-
-        [field: SerializeField] public int MaxHp { get; private set; }
+        public int MaxHp => _enemyData.MaxHp; 
+        public string Name => _enemyData.Name;
+        public Sprite Background => _enemyData.Background;
         public int ActualHp { get; private set; }
+
+        [SerializeField] private EnemyData _enemyData;
 
         private void Awake()
         {

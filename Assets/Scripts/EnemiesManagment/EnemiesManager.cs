@@ -2,6 +2,7 @@
 using Assets.Scripts.Infrastructure;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.EnemiesManagment
 {
@@ -9,17 +10,19 @@ namespace Assets.Scripts.EnemiesManagment
     public class EnemiesManager
     {
         public event Action OnEnemyEnded;
-        
-        private Enemy _actualEnemy;
+
+
         private readonly EnemiesPool _pool;
         private readonly EnemiesManagerView _view;
+        private Enemy _actualEnemy;
+
 
         public EnemiesManager(EnemiesPool pool, EnemiesManagerView view)
         {
             _pool = pool;
             _view = view;
 
-            GetNewEnemy();
+            GetFirstEnemy();
         }
 
         [field: SerializeField] public Enemy ActualEnemy { get => _actualEnemy; private set => _actualEnemy = value; }
@@ -29,6 +32,16 @@ namespace Assets.Scripts.EnemiesManagment
         {
             _actualEnemy.gameObject.SetActive(true);
             _view.UpdateLifeText(_actualEnemy.ActualHp, _actualEnemy.MaxHp);
+        }
+
+        private void GetFirstEnemy()
+        {
+            _actualEnemy = _pool.GetEnemy();
+
+            Subscribe();
+            PrepareActualEnemy();
+            _view.UpdateBarOnNewEnemy(_actualEnemy.ActualHp, _actualEnemy.MaxHp);
+            _view.UpdateBackgroundOnFirstEnemy(_actualEnemy.Background);
         }
 
         private void GetNewEnemy()
@@ -47,6 +60,7 @@ namespace Assets.Scripts.EnemiesManagment
                 Subscribe();
                 PrepareActualEnemy();
                 _view.UpdateBarOnNewEnemy(_actualEnemy.ActualHp, _actualEnemy.MaxHp);
+                _view.UpdateBackgroundOnNewEnemy(_actualEnemy.Background);
             }
         }
 
