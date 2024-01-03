@@ -13,6 +13,8 @@ namespace Assets.Scripts.EnemyLogic
         public Sprite Background => _enemyData.Background;
         public int ActualHp { get; private set; }
 
+        public bool AllowToAttack { get; set; } = false;
+
         [SerializeField] private EnemyData _enemyData;
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
 

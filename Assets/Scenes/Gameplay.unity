@@ -4191,11 +4191,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bgFadeOutDuration: 1
-  _bgFadeInDuration: 2
+  _bgFadeInDuration: 3
   _blackColorFadeOutDuration: 2
-  _movementYAmplitude: 0.5
-  _movementYSpeed: 0.5
-  _movementXSpeed: 1
+  _movementYAmplitude: 2
+  _movementYDuration: 0.5
+  _movementXDuration: 6
+  _startPosYOffset: 3
   _enemiesBar: {fileID: 2538928182217260887}
   _lifeText: {fileID: 4172118936008335913}
   _barPlayer: {fileID: 2189192476204308567}

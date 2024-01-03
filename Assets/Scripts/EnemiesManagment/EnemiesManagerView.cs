@@ -90,12 +90,13 @@ namespace Assets.Scripts.EnemiesManagment
             showing.Append(enemy.transform.DOMoveX(0, _movementXDuration));
             showing.InsertCallback(_movementXDuration, () => movementY.Kill());
             showing.Append(enemy.SpriteRenderer.DOColor(Color.white, _blackColorFadeOutDuration)).SetEase(Ease.Linear);
-            showing.OnComplete(OnComplete);
+            showing.OnComplete(() => OnComplete(enemy));
         }
 
-        private void OnComplete()
+        private void OnComplete(Enemy enemy)
         {
             Debug.Log("OnComplete");
+            enemy.AllowToAttack = true;
         }
 
         private void UpdateNameOnNewEnemy(string name) => _characterNameText.SetText(name);
