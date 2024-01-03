@@ -21,20 +21,6 @@ namespace Assets.Scripts.EnemiesManagment
         [FoldoutGroup("TweensSettings/EnemyShowing")]
         [SerializeField] private float  _blackColorFadeOutDuration;
          
-        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
-        [SerializeField] private float _movementYAmplitude;
-        
-        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
-        [SerializeField] private float _movementYDuration;
-
-        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
-        [SerializeField] private float _intervalBeforMoveXCharacter = 0.5f;
-
-        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
-        [SerializeField] private float  _movementXDuration;
-        
-        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
-        [SerializeField] private float _startPosYOffset = 1.0f;        
         
         [FoldoutGroup("TweensSettings/EnemyShowing")]
         [SerializeField] private float _nameShoweingDuration;
@@ -44,6 +30,27 @@ namespace Assets.Scripts.EnemiesManagment
 
         [FoldoutGroup("TweensSettings/EnemyShowing")]
         [SerializeField] private float _lifeTextInitialDuration;
+
+        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
+        [SerializeField] private float _movementYAmplitude;
+        
+        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
+        [SerializeField] private float _showingMovementYDuration;
+
+        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
+        [SerializeField] private float _intervalBeforMoveXCharacter = 0.5f;
+
+        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
+        [SerializeField] private float _movementXDuration;
+
+        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
+        [SerializeField] private float _startPosYOffset = 1.0f;
+
+        [FoldoutGroup("TweensSettings/EnemyIdle")]
+        [SerializeField] private float _idleMovementYDuration;
+
+        [FoldoutGroup("TweensSettings/EnemyIdle")]
+        [SerializeField] private float _idleMovementYAmplitude;
 
         [SerializeField] private GameObject _enemiesBar;
         [SerializeField] private TextMeshProUGUI _lifeText;
@@ -56,12 +63,13 @@ namespace Assets.Scripts.EnemiesManagment
         [SerializeField] private TextMeshProUGUI _characterNameText;
 
         private int _lastLife;
+        private Tween _lifeUpdateTween;
 
         public void UpdateLifeText(int life, int maxLife)
         {
             var lifeClamped = Mathf.Max(life, 0);
 
-            _lifeText.DOCounter(_lastLife, lifeClamped, _lifeTextUpdatingDuration);
+            _lifeUpdateTween = _lifeText.DOCounter(_lastLife, lifeClamped, _lifeTextUpdatingDuration);
 
             _barPlayer.PlayFeedbacks();
             _progressBar.UpdateBar(life, 0, maxLife);
@@ -85,7 +93,7 @@ namespace Assets.Scripts.EnemiesManagment
                 UpdateBackgroundOnFirstEnemy(enemy.Background);
 
             Tween movementY = enemy.transform
-                .DOMoveY(enemy.transform.position.y + _movementYAmplitude, _movementYDuration)
+                .DOMoveY(enemy.transform.position.y + _movementYAmplitude, _showingMovementYDuration)
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.Linear);
 
@@ -97,6 +105,13 @@ namespace Assets.Scripts.EnemiesManagment
             showing.OnComplete(() => OnCompleteShowing(enemy));
         }
 
+        public void OnEnemyDie()
+        {
+            _lifeUpdateTween.OnComplete(() => _lifeText.SetText(""));
+            _maxLifeText.SetText("");
+            _characterNameText.SetText("");
+        }
+
         private void OnCompleteShowing(Enemy enemy)
         {
             enemy.AllowToAttack = true;
@@ -106,7 +121,9 @@ namespace Assets.Scripts.EnemiesManagment
 
             UpdateNameOnNewEnemy(enemy.Name);
 
-            enemy.transform.DOMoveY(enemy.transform.position.y + _movementYAmplitude, 2).SetLoops(-1, LoopType.Yoyo).SetLink(enemy.gameObject);
+            enemy.transform.DOMoveY(enemy.transform.position.y + _idleMovementYAmplitude, _idleMovementYDuration)
+                .SetEase(Ease.Linear)
+                .SetLoops(-1, LoopType.Yoyo).SetLink(enemy.gameObject);
         }
 
         private void InitialLifeText(int life, int maxLife)

@@ -25,9 +25,14 @@ namespace Assets.Scripts.EnemyLogic
 
         public void TakeDamage(int damage)
         {
+            var prevLife = ActualHp;
+            
             ActualHp -= damage;
+
+            var earnedMoneys = Mathf.Abs(prevLife - Mathf.Max(ActualHp,0));
+
             OnDamageTake?.Invoke(ActualHp, MaxHp);
-            ServiceLocator.GetService<Player>().AddMoney(damage);
+            ServiceLocator.GetService<Player>().AddMoney(earnedMoneys);
             CheckHP();
         }
 
@@ -36,6 +41,7 @@ namespace Assets.Scripts.EnemyLogic
             if (ActualHp <= 0)
             {
                 OnDie?.Invoke();
+                AllowToAttack = false;
             }
         }
     }

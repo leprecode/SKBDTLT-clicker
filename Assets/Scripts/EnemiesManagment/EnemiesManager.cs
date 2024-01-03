@@ -35,10 +35,12 @@ namespace Assets.Scripts.EnemiesManagment
             _view.ShowNewEnemyOnScene(_actualEnemy, true);
         }
 
-        private void GetNewEnemy()
+        private void OnEnemyDie()
         {
             Unsubscribe();
             PrepareDeadEnemy();
+            _view.OnEnemyDie();
+
             _actualEnemy = _pool.GetEnemy();
 
             if (_actualEnemy is null)
@@ -61,7 +63,7 @@ namespace Assets.Scripts.EnemiesManagment
 
         private void Subscribe()
         {
-            _actualEnemy.OnDie += GetNewEnemy;
+            _actualEnemy.OnDie += OnEnemyDie;
             _actualEnemy.OnDamageTake += _view.UpdateLifeText;
         }
 
@@ -69,7 +71,7 @@ namespace Assets.Scripts.EnemiesManagment
         {
             if (_actualEnemy != null)
             {
-                _actualEnemy.OnDie -= GetNewEnemy;
+                _actualEnemy.OnDie -= OnEnemyDie;
                 _actualEnemy.OnDamageTake -= _view.UpdateLifeText;
             }
         }
