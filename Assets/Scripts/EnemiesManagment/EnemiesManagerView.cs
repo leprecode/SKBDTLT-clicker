@@ -3,7 +3,6 @@ using DG.Tweening;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using Sirenix.OdinInspector;
-using System.Diagnostics.CodeAnalysis;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,16 +25,29 @@ namespace Assets.Scripts.EnemiesManagment
         [SerializeField] private float _movementYAmplitude;
         
         [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
-        [SerializeField] private float  _movementYDuration;
+        [SerializeField] private float _movementYDuration;
+
+        [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
+        [SerializeField] private float _intervalBeforMoveXCharacter = 0.5f;
 
         [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
         [SerializeField] private float  _movementXDuration;
         
         [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
-        [SerializeField] private float _startPosYOffset = 1.0f;
+        [SerializeField] private float _startPosYOffset = 1.0f;        
+        
+        [FoldoutGroup("TweensSettings/EnemyShowing")]
+        [SerializeField] private float _nameShoweingDuration;
+
+        [FoldoutGroup("TweensSettings/EnemyShowing")]
+        [SerializeField] private float _lifeTextUpdatingDuration;
+
+        [FoldoutGroup("TweensSettings/EnemyShowing")]
+        [SerializeField] private float _lifeTextInitialDuration;
 
         [SerializeField] private GameObject _enemiesBar;
         [SerializeField] private TextMeshProUGUI _lifeText;
+        [SerializeField] private TextMeshProUGUI _maxLifeText;
         [SerializeField] private MMF_Player _barPlayer;
         [SerializeField] private MMProgressBar _progressBar;
 
@@ -43,22 +55,20 @@ namespace Assets.Scripts.EnemiesManagment
         [SerializeField] private CanvasGroup _backgroundCanvasGroup;
         [SerializeField] private TextMeshProUGUI _characterNameText;
 
-        #region Test
-        private Enemy testEnemy = null;
-
-        [Button("Move")]
-        private void TestShow()
-        {
-            ShowNewEnemyOnScene(testEnemy);
-        }
-        #endregion
+        private int _lastLife;
 
         public void UpdateLifeText(int life, int maxLife)
         {
-            _lifeText.SetText(life + "/" + maxLife);
+            var lifeClamped = Mathf.Max(life, 0);
+
+            _lifeText.DOCounter(_lastLife, lifeClamped, _lifeTextUpdatingDuration);
+
             _barPlayer.PlayFeedbacks();
             _progressBar.UpdateBar(life, 0, maxLife);
+
+            _lastLife = lifeClamped;
         }
+
 
         public void OnEndGame()
         {
@@ -67,8 +77,6 @@ namespace Assets.Scripts.EnemiesManagment
 
         public void ShowNewEnemyOnScene(Enemy enemy, bool isFirstEnemy = false)
         {
-            testEnemy = enemy;
-
             PrepareEnemy(enemy);
 
             if (!isFirstEnemy)
@@ -76,30 +84,40 @@ namespace Assets.Scripts.EnemiesManagment
             else
                 UpdateBackgroundOnFirstEnemy(enemy.Background);
 
-
-            UpdateLifeText(enemy.ActualHp, enemy.MaxHp);
-            UpdateBarOnNewEnemy(enemy.ActualHp, enemy.MaxHp);
-
             Tween movementY = enemy.transform
                 .DOMoveY(enemy.transform.position.y + _movementYAmplitude, _movementYDuration)
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.Linear);
 
             Sequence showing = DOTween.Sequence();
-
+            showing.AppendInterval(_intervalBeforMoveXCharacter);
             showing.Append(enemy.transform.DOMoveX(0, _movementXDuration));
             showing.InsertCallback(_movementXDuration, () => movementY.Kill());
             showing.Append(enemy.SpriteRenderer.DOColor(Color.white, _blackColorFadeOutDuration)).SetEase(Ease.Linear);
-            showing.OnComplete(() => OnComplete(enemy));
+            showing.OnComplete(() => OnCompleteShowing(enemy));
         }
 
-        private void OnComplete(Enemy enemy)
+        private void OnCompleteShowing(Enemy enemy)
         {
-            Debug.Log("OnComplete");
             enemy.AllowToAttack = true;
+
+            InitialLifeText(enemy.ActualHp, enemy.MaxHp);
+            UpdateBarOnNewEnemy(enemy.ActualHp, enemy.MaxHp);
+
+            UpdateNameOnNewEnemy(enemy.Name);
+
+            enemy.transform.DOMoveY(enemy.transform.position.y + _movementYAmplitude, 2).SetLoops(-1, LoopType.Yoyo).SetLink(enemy.gameObject);
         }
 
-        private void UpdateNameOnNewEnemy(string name) => _characterNameText.SetText(name);
+        private void InitialLifeText(int life, int maxLife)
+        {
+            _lifeText.DOCounter(0, life, _lifeTextInitialDuration);
+            _maxLifeText.DOCounter(0, maxLife, _lifeTextInitialDuration);
+
+            _lastLife = life;
+        }
+
+        private void UpdateNameOnNewEnemy(string name) => _characterNameText.DOText(name, _nameShoweingDuration);
 
         private void UpdateBackgroundOnNewEnemy(Sprite newBackground)
         {
