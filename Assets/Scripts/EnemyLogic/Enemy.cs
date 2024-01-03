@@ -14,6 +14,7 @@ namespace Assets.Scripts.EnemyLogic
         public int ActualHp { get; private set; }
 
         [SerializeField] private EnemyData _enemyData;
+        [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
 
         private void Awake()
         {

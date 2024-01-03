@@ -22,5 +22,5 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   <MaxHp>k__BackingField: 50
-  <Name>k__BackingField: "\u041E\u0431\u043E\u0440\u0432\u044B\u0448"
-  <Background>k__BackingField: {fileID: 21300000, guid: d0130c1478a00504a8cc6e617d1be515, type: 3}
+  <Name>k__BackingField: "\u0423\u043D\u0438\u0432\u0435\u0440\u043C\u0430\u0433\u043E\u0432\u0441\u043A\u0438\u0439"
+  <Background>k__BackingField: {fileID: 21300000, guid: 984148189ebb9044082dfd424940a4f4, type: 3}

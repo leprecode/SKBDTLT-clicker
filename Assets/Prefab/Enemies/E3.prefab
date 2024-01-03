@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: b771fd41f1096a041933098bc00da4c9, type: 2}
+  <SpriteRenderer>k__BackingField: {fileID: 2416523057066739048}
 --- !u!114 &699704345255431311
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4190,6 +4190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0306ac047def8b348a4f260e818d4e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bgFadeOutDuration: 1
+  _bgFadeInDuration: 2
+  _blackColorFadeOutDuration: 2
+  _movementYAmplitude: 0.5
+  _movementYSpeed: 0.5
+  _movementXSpeed: 1
   _enemiesBar: {fileID: 2538928182217260887}
   _lifeText: {fileID: 4172118936008335913}
   _barPlayer: {fileID: 2189192476204308567}
@@ -4197,8 +4203,6 @@ MonoBehaviour:
   _backgroundImage: {fileID: 1012781146}
   _backgroundCanvasGroup: {fileID: 608557439}
   _characterNameText: {fileID: 1471213036}
-  _bgFadeOutDuration: 1
-  _bgFadeInDuration: 2
 --- !u!1 &990869166
 GameObject:
   m_ObjectHideFlags: 0
