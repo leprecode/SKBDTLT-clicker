@@ -57,12 +57,16 @@ namespace Assets.Scripts.EnemyLogic
         {
             if (ActualHp <= 0)
             {
-                _onDamagePlayer.StopFeedbacks();
-                _onDamagePlayer.SetCanPlay(false);
-                _onDamagePlayer.RestoreInitialValues();
+                AllowToAttack = false;
+
+                if (transform != null)
+                {
+                    _onDamagePlayer.StopFeedbacks();
+                    _onDamagePlayer.SetCanPlay(false);
+                    _onDamagePlayer.RestoreInitialValues();
+                }
 
                 OnDie?.Invoke();
-                AllowToAttack = false;
             }
         }
     }

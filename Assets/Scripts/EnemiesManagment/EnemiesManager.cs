@@ -43,7 +43,7 @@ namespace Assets.Scripts.EnemiesManagment
 
             _actualEnemy = _pool.GetEnemy();
 
-            if (_actualEnemy is null)
+            if (_actualEnemy == null)
             {
                 OnEnemyEnded?.Invoke();
                 _view.OnEndGame();
