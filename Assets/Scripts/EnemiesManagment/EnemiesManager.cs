@@ -30,7 +30,7 @@ namespace Assets.Scripts.EnemiesManagment
         private void GetFirstEnemy()
         {
             _actualEnemy = _pool.GetEnemy();
-
+            _actualEnemy.Initialize();
             Subscribe();
             _view.ShowNewEnemyOnScene(_actualEnemy, true);
         }
@@ -50,6 +50,7 @@ namespace Assets.Scripts.EnemiesManagment
             }
             else
             {
+                _actualEnemy.Initialize();
                 Subscribe();
                 _view.ShowNewEnemyOnScene(_actualEnemy);
             }

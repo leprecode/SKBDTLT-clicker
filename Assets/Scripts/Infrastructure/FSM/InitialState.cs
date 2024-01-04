@@ -4,6 +4,7 @@ using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
+using MoreMountains.Feedbacks;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Infrastructure
             StoreCellUI[] cellUIs,
             WeaponsCost weaponsCost,
             StoreView storeView,
+            MMF_Player onDamagePlayer,
             out WeaponPresenter weaponPresenter,
             out BankPresenter bankPresenter,
             out WeaponModel weaponModel,
@@ -33,7 +35,7 @@ namespace Assets.Scripts.Infrastructure
             StorePresenter StorePresenter = 
                 new StorePresenter(cellUIs, weaponPresenter, weaponsCost,bankPresenter, storeView);
 
-            PrepareEnemies(Enemies, EnemiesManagerView, out enemiesPool, out enemiesManager);
+            PrepareEnemies(Enemies, onDamagePlayer, EnemiesManagerView, out enemiesPool, out enemiesManager);
             PreparePlayer(weaponPresenter, bankPresenter, out player);
             RegisterService(player, enemiesManager);
         }
@@ -53,11 +55,11 @@ namespace Assets.Scripts.Infrastructure
             player = new Player(weaponPresenter, bank);
         }
 
-        private void PrepareEnemies(Dictionary<Enemy, int> Enemies, EnemiesManagerView EnemiesManagerView,
+        private void PrepareEnemies(Dictionary<Enemy, int> Enemies, MMF_Player onDamagePlayer, EnemiesManagerView EnemiesManagerView,
             out EnemiesPool enemiesPool, out EnemiesManager enemiesManager)
         {
             enemiesPool = new EnemiesPool();
-            enemiesPool.Initialize(Enemies);
+            enemiesPool.Initialize(Enemies, onDamagePlayer);
             enemiesManager = new EnemiesManager(enemiesPool, EnemiesManagerView);
         }
 

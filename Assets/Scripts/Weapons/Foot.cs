@@ -1,8 +1,6 @@
 ﻿using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.WeaponsLogic;
 using DG.Tweening;
-using System;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons

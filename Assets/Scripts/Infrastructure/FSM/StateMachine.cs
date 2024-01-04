@@ -4,6 +4,7 @@ using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
+using MoreMountains.Feedbacks;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace Assets.Scripts.Infrastructure
             StoreCellUI[] cellUIs,
             WeaponsCost weaponsCost,
             StoreView storeView,
+            MMF_Player onDamagePlayer,
             out WeaponPresenter weaponPresenter,
             out BankPresenter bankPresenter,
             out WeaponModel weaponModel,
@@ -43,7 +45,8 @@ namespace Assets.Scripts.Infrastructure
                 EnemiesManagerView, 
                 cellUIs,
                 weaponsCost,
-                storeView, 
+                storeView,
+                onDamagePlayer,
                 out weaponPresenter,
                 out bankPresenter, 
                 out weaponModel, 

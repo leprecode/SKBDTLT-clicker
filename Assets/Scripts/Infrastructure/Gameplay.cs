@@ -4,6 +4,7 @@ using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
+using MoreMountains.Feedbacks;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +32,8 @@ namespace Assets.Scripts.Infrastructure
 		[SerializeField] private StoreView _storeView;
 		[SerializeField] private GameObject _endGamePopup;
 
+		[SerializeField] private MMF_Player _onDamagePlayer;
+
         private WeaponModel _weaponModel;
         private WeaponPresenter _weaponPresenter;
 
@@ -47,7 +50,8 @@ namespace Assets.Scripts.Infrastructure
 				_cellUIs,
 				_weaponsCost,
 				_storeView,
-				out _weaponPresenter,
+                _onDamagePlayer,
+                out _weaponPresenter,
                 out _bankPresenter, 
 				out _weaponModel, 
 				out _enemiesPool, 
