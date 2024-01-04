@@ -22,6 +22,7 @@ namespace Assets.Scripts.EnemyLogic
         
         private MMF_Player _onDamagePlayer;
         private MMF_FloatingText _onDamageFloatingText;
+        private MMF_ParticlesInstantiation _onDamageParticles;
 
         public void Construct(MMF_Player onDamagePlayer)
         {
@@ -33,12 +34,13 @@ namespace Assets.Scripts.EnemyLogic
         {
             _onDamagePlayer.GetFeedbackOfType<MMF_Scale>().AnimateScaleTarget = transform;
             _onDamageFloatingText = _onDamagePlayer.GetFeedbackOfType<MMF_FloatingText>();
+            _onDamageParticles = _onDamagePlayer.GetFeedbackOfType<MMF_ParticlesInstantiation>();
             _onDamagePlayer.GetFeedbackOfType<MMF_Flicker>().BoundRenderer = GetComponent<SpriteRenderer>();
             _onDamagePlayer.Initialization();
             _onDamagePlayer.SetCanPlay(true);
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, Vector3 hitPoint)
         {
             var prevLife = ActualHp;
             ActualHp -= damage;
@@ -48,6 +50,7 @@ namespace Assets.Scripts.EnemyLogic
             OnDamageTake?.Invoke(ActualHp, MaxHp);
 
             _onDamageFloatingText.Value = damage.ToString();
+            _onDamageParticles.TargetWorldPosition = hitPoint;
             _onDamagePlayer.PlayFeedbacks();
 
             CheckHP();

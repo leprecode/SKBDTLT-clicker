@@ -50,7 +50,7 @@ namespace Assets.Scripts.Weapons
 
         private void OnEndAttack(Enemy enemy)
         {
-            enemy.TakeDamage(Damage);
+            enemy.TakeDamage(Damage, transform.position);
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);
         }
 
