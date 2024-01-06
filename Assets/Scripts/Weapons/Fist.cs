@@ -4,6 +4,7 @@ using DG.Tweening;
 using Assets.Scripts.EnemyLogic;
 using static UnityEngine.GraphicsBuffer;
 using Assets.Scripts.WeaponsLogic;
+using MoreMountains.Feedbacks;
 
 namespace Assets.Scripts.Weapons
 {
@@ -14,10 +15,15 @@ namespace Assets.Scripts.Weapons
 
         [SerializeField] private SpriteRenderer _spriteRenderer;
         private WeaponModel _pool;
+        private MMF_Player _onDamagePlayer;
+        private MMF_ParticlesInstantiation _mMF_ParticlesInstantiation;
 
-        public override void Construct(WeaponModel pool)
+
+        public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer)
         {
             _pool = pool;
+            _onDamagePlayer = onDamagePlayer;
+            _mMF_ParticlesInstantiation = _onDamagePlayer.GetFeedbackOfType<MMF_ParticlesInstantiation>();
         }
 
         public override void Attack(Vector3 position, Enemy enemy)
@@ -44,6 +50,8 @@ namespace Assets.Scripts.Weapons
         private void OnEndAttack(Enemy enemy)
         {
             enemy.TakeDamage(Damage, transform.position);
+            _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
+            _onDamagePlayer.PlayFeedbacks();
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);
         }
 

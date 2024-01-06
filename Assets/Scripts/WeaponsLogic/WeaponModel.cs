@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Weapons;
+using MoreMountains.Feedbacks;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace Assets.Scripts.WeaponsLogic
 
 
         public WeaponModel(Dictionary<Weapon, int> weaponsPrefab, WeaponName startWeapon,
-            Transform[] attackPoints)
+            Transform[] attackPoints, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs)
         {
             ActualWeapon = startWeapon;
 
@@ -30,7 +31,7 @@ namespace Assets.Scripts.WeaponsLogic
             };
             _allUnbuyedWeapons.Remove(ActualWeapon);
 
-            InitializeWeaponsPool(weaponsPrefab);
+            InitializeWeaponsPool(weaponsPrefab, weaponsVFXPrefabs);
             FillAttackPoints(attackPoints);
         }
 
@@ -103,7 +104,7 @@ namespace Assets.Scripts.WeaponsLogic
             return null;
         }
 
-        private void InitializeWeaponsPool(Dictionary<Weapon, int> weaponsPrefab)
+        private void InitializeWeaponsPool(Dictionary<Weapon, int> weaponsPrefab, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs)
         {
             _weaponsPool = new List<Queue<Weapon>>();
             int queueIndex = 0;
@@ -115,7 +116,7 @@ namespace Assets.Scripts.WeaponsLogic
                 for (int i = 0; i < weapon.Value; i++)
                 {
                     var newWeapon = UnityEngine.Object.Instantiate(weapon.Key);
-                    newWeapon.Construct(this);
+                    newWeapon.Construct(this, weaponsVFXPrefabs[newWeapon.WeaponName]);
                     newWeapon.gameObject.SetActive(false);
                     _weaponsPool[queueIndex].Enqueue(newWeapon);
                 }

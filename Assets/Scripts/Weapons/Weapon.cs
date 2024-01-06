@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Store;
 using Assets.Scripts.WeaponsLogic;
+using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons
@@ -16,7 +18,7 @@ namespace Assets.Scripts.Weapons
 
         public abstract void Attack(Vector3 position, Enemy enemy);
 
-        public abstract void Construct(WeaponModel pool);
+        public abstract void Construct(WeaponModel pool, MMF_Player onDamagePlayer);
 
         public abstract void ResetWeapon();
     }

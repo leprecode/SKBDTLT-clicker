@@ -22,6 +22,7 @@ namespace Assets.Scripts.Infrastructure
             WeaponsCost weaponsCost,
             StoreView storeView,
             MMF_Player onDamagePlayer,
+            Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs,
             out WeaponPresenter weaponPresenter,
             out BankPresenter bankPresenter,
             out WeaponModel weaponModel,
@@ -29,7 +30,7 @@ namespace Assets.Scripts.Infrastructure
             out EnemiesManager enemiesManager,
             out Player player)
         {
-            PrepareWeapons(WeaponsPrefabs, AttackPoints, out weaponModel, out weaponPresenter);
+            PrepareWeapons(WeaponsPrefabs, AttackPoints, weaponsVFXPrefabs, out weaponModel, out weaponPresenter);
             PrepareBankSystem(BankView, out bankPresenter);
 
             StorePresenter StorePresenter = 
@@ -63,10 +64,10 @@ namespace Assets.Scripts.Infrastructure
             enemiesManager = new EnemiesManager(enemiesPool, EnemiesManagerView);
         }
 
-        private void PrepareWeapons(Dictionary<Weapon, int> WeaponsPrefabs, Transform[] AttackPoints,
+        private void PrepareWeapons(Dictionary<Weapon, int> WeaponsPrefabs, Transform[] AttackPoints, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs,
             out WeaponModel weaponModel, out WeaponPresenter weaponPresenter)
         {
-            weaponModel = new WeaponModel(WeaponsPrefabs, WeaponName.Fist, AttackPoints);
+            weaponModel = new WeaponModel(WeaponsPrefabs, WeaponName.Fist, AttackPoints, weaponsVFXPrefabs);
             weaponPresenter = new WeaponPresenter(weaponModel);
         }
 

@@ -15,7 +15,7 @@ namespace Assets.Scripts.Infrastructure
 	{
 		[SerializeField] private Transform[] _attackPoints;
 		[SerializeField] private Dictionary<Weapon, int> _weaponsPrefabs = new Dictionary<Weapon, int>();
-		[SerializeField] private Dictionary<WeaponName, GameObject> _weaponsVFXPrefabs = new Dictionary<WeaponName, GameObject>();
+		[SerializeField] private Dictionary<WeaponName, MMF_Player> _weaponsVFXPrefabs = new Dictionary<WeaponName, MMF_Player>();
 		[SerializeField] private Dictionary<Enemy, int> _enemies = new Dictionary<Enemy, int>();
 		[SerializeField] private EnemiesPool _enemiesPool;
 		[SerializeField] private BankView _bankView;
@@ -51,6 +51,7 @@ namespace Assets.Scripts.Infrastructure
 				_weaponsCost,
 				_storeView,
                 _onDamagePlayer,
+                _weaponsVFXPrefabs,
                 out _weaponPresenter,
                 out _bankPresenter, 
 				out _weaponModel, 
