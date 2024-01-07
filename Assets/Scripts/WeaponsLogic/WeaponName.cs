@@ -5,14 +5,13 @@
         Fist,
         Foot,
         Chainik,
-        Kastet,
         Bita,
-        Knife,
-        Tube,
-        Molotok,
         Pistol,
+        Grenade,
         Shotgun,
         Auto,
+        LaserGun,
         Bazooka,
+
     }
 }

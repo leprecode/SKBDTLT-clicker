@@ -37,7 +37,12 @@ namespace Assets.Scripts.Weapons
             float dist = Vector3.Distance(transform.position, position);
             float time = dist / Speed;
 
-            transform.DOMove(position, time).OnComplete(() => OnEndAttack(enemy)); ;
+            transform.DOMove(GetRandomPosition(position), time).OnComplete(() => OnEndAttack(enemy)); ;
+        }
+
+        private Vector3 GetRandomPosition(Vector3 startPos)
+        {
+            return new Vector3(startPos.x + UnityEngine.Random.Range(-1, 2), startPos.y + UnityEngine.Random.Range(-1, 2), 0);
         }
 
         private void RotateToTarget(Enemy enemy)

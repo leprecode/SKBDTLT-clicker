@@ -2,12 +2,11 @@
 using Assets.Scripts.WeaponsLogic;
 using DG.Tweening;
 using MoreMountains.Feedbacks;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons
 {
-    public class Foot : Weapon
+    public class Chainik : Weapon
     {
         private readonly Color32 RESET_COLOR = new Color32(255, 255, 255, 255);
 
@@ -16,10 +15,16 @@ namespace Assets.Scripts.Weapons
         private MMF_Player _onDamagePlayer;
         private MMF_ParticlesInstantiation _mMF_ParticlesInstantiation;
 
-        private readonly Vector3 _rotationOnNotFlippedYAttack = new Vector3(0, 0, -60);
-        private readonly Vector3 _rotationOnFlippedYAttack = new Vector3(0, 0, -120);
-        private float _rotationYAmplitude = 80;
-        private float _foorRotationDuration = 0.15f;
+
+        private float _rotationZPerSecond = 360;
+        private float _timeToFullCycle = 0.5f;
+
+        private Tween rotationTween;
+
+        private void OnDisable()
+        {
+            rotationTween?.Kill();
+        }
 
         public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer)
         {
@@ -30,63 +35,47 @@ namespace Assets.Scripts.Weapons
 
         public override void Attack(Vector3 position, Enemy enemy)
         {
-           
-            var isFlippedY = IsNeedFlipY(position);
+            var isFlippedX = IsNeedFlipX(position);
 
-            RotateToTarget(enemy, isFlippedY);
-            MoveToTarget(position, enemy, isFlippedY);
+            FlyToTarget(position, enemy, isFlippedX);
         }
 
-        private bool IsNeedFlipY(Vector3 target)
+        private bool IsNeedFlipX(Vector3 target)
         {
             if (transform.position.x < target.x)
             {
-                _spriteRenderer.flipY = false;
+                _spriteRenderer.flipX = true;
                 return false;
             }
             else
             {
-                _spriteRenderer.flipY = true;
+                _spriteRenderer.flipX = false;
                 return true;
             }
         }
 
-        private void MoveToTarget(Vector3 position, Enemy enemy, bool isFlippedY)
+        private void FlyToTarget(Vector3 position, Enemy enemy, bool isFlippedX)
         {
+            transform.rotation = Quaternion.identity;
+
             Vector3 endRotation;
 
-            if (isFlippedY)
+            if (isFlippedX)
             {
-                endRotation = new Vector3(0, 0, transform.eulerAngles.z - _rotationYAmplitude);
+                endRotation = new Vector3(0, 0, _rotationZPerSecond);
             }
             else
             {
-                endRotation = new Vector3(0, 0, transform.eulerAngles.z + _rotationYAmplitude);
+                endRotation = new Vector3(0, 0, -_rotationZPerSecond);
             }
 
-            Sequence movementSeq = DOTween.Sequence();
-            movementSeq.Append(transform.DOMove(GetRandomPosition(position), Speed));
-            movementSeq.Insert(Speed*0.5f, transform.DORotate(endRotation, _foorRotationDuration, RotateMode.FastBeyond360));
-            movementSeq.OnComplete(() => OnEndAttack(enemy));
+            rotationTween = transform.DORotate(endRotation, _timeToFullCycle, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+            transform.DOMove(GetRandomPosition(position), Speed).SetSpeedBased().OnComplete(() => OnEndAttack(enemy));
         }
-
         private Vector3 GetRandomPosition(Vector3 startPos)
         {
             return new Vector3(startPos.x + Random.Range(-1, 2), startPos.y + Random.Range(-1, 2), 0);
         }
-
-        private void RotateToTarget(Enemy enemy, bool isFlippedY)
-        {
-            if (isFlippedY)
-            {
-                transform.rotation = Quaternion.Euler(_rotationOnFlippedYAttack);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(_rotationOnNotFlippedYAttack);
-            }
-        }
-
         private void OnEndAttack(Enemy enemy)
         {
             enemy.TakeDamage(Damage, transform.position);
