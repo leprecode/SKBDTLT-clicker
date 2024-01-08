@@ -12,6 +12,5 @@
         Auto,
         LaserGun,
         Bazooka,
-
     }
 }

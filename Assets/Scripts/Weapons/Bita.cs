@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Weapons
 {
-    public class Chainik : Weapon
+    public class Bita : Weapon
     {
         private readonly Color32 RESET_COLOR = new Color32(255, 255, 255, 255);
 
@@ -70,17 +70,29 @@ namespace Assets.Scripts.Weapons
             }
 
             rotationTween = transform.DORotate(endRotation, _timeToFullCycle, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
-            transform.DOMove(GetRandomPosition(position), Speed).SetSpeedBased().OnComplete(() => OnEndAttack(enemy));
+            
+            Sequence movement = DOTween.Sequence();
+            movement.Append(transform.DOMove(GetRandomPosition(position), Speed));
+            movement.InsertCallback(Speed * 0.3f, () => Attack(enemy));
+            movement.InsertCallback(Speed * 0.6f, () => Attack(enemy));
+            movement.InsertCallback(Speed * 0.9f, () => Attack(enemy));
+            movement.OnComplete(() => OnEndAttack(enemy));
         }
+
         private Vector3 GetRandomPosition(Vector3 startPos)
         {
             return new Vector3(startPos.x + Random.Range(-1, 2), startPos.y + Random.Range(-1, 2), 0);
         }
-        private void OnEndAttack(Enemy enemy)
+
+        private void Attack(Enemy enemy)
         {
             enemy.TakeDamage(Damage, transform.position);
             _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
             _onDamagePlayer.PlayFeedbacks();
+        }
+
+        private void OnEndAttack(Enemy enemy)
+        {
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);
         }
 
