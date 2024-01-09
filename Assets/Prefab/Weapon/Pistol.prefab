@@ -50,6 +50,7 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: f5d9fa54155260944a1d180d990300e4, type: 2}
   _spriteRenderer: {fileID: 5894647189436975028}
   _onPistolFire: {fileID: 6421400961937403100}
+  _muzzleFlash: {fileID: 5256088367690174754}
 --- !u!114 &6421400961937403100
 MonoBehaviour:
   m_ObjectHideFlags: 0

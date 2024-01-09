@@ -11,7 +11,8 @@ namespace Assets.Scripts.Weapons
     {
         private readonly Color32 RESET_COLOR = new Color32(255, 255, 255, 255);
         [SerializeField] private SpriteRenderer _spriteRenderer;
-        [SerializeField] MMF_Player _onPistolFire;
+        [SerializeField] private MMF_Player _onPistolFire;
+        [SerializeField] private Transform _muzzleFlash;
         private MMF_Player _onBulletHit;
         private MMF_ParticlesInstantiation _particlesInstantiationOnBulletHit;
         private WeaponModel _pool;
@@ -28,7 +29,8 @@ namespace Assets.Scripts.Weapons
             _spriteRenderer.color = RESET_COLOR;
             transform.eulerAngles = Vector3.zero;
             transform.position = Vector3.zero;
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z); 
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
+            _muzzleFlash.localScale = new Vector3(_muzzleFlash.localScale.x, Mathf.Abs(_muzzleFlash.localScale.y), _muzzleFlash.localScale.z);
         }
 
         public override void Attack(Vector3 position, Enemy enemy)
@@ -40,8 +42,9 @@ namespace Assets.Scripts.Weapons
 
             for (int i = 0; i < ShotsCount; i++) 
             {
-                timeToEndAttack += SecondsToOneShot * i;
-                StartCoroutine(Shoot(timeToEndAttack, GetRandomPosition (position), enemy));
+                var timeToNextShot = SecondsToOneShot * i;
+                timeToEndAttack += timeToNextShot;
+                StartCoroutine(Shoot(timeToNextShot, GetRandomPosition (position), enemy));
             }
 
             StartCoroutine(OnEndAttack(timeToEndAttack));
@@ -62,13 +65,13 @@ namespace Assets.Scripts.Weapons
         {
             if (transform.position.x < enemy.transform.position.x)
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
+                _muzzleFlash.localScale = new Vector3(_muzzleFlash.localScale.x, Mathf.Abs(_muzzleFlash.localScale.y), _muzzleFlash.localScale.z);
             }
             else
             {
-                transform.eulerAngles = new Vector3(0, 180, 0);
                 transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y) * -1, transform.localScale.z);
+                _muzzleFlash.localScale = new Vector3(_muzzleFlash.localScale.x, Mathf.Abs(_muzzleFlash.localScale.y) * -1, _muzzleFlash.localScale.z);
             }
 
 
@@ -84,7 +87,7 @@ namespace Assets.Scripts.Weapons
         }
         private IEnumerator OnEndAttack(float timeOffset)
         {
-            yield return new WaitForSeconds(timeOffset);
+            yield return new WaitForSeconds(timeOffset-FadeDuration);
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);
         }
 
