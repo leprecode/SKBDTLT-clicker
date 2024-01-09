@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282333a6b370c1044b6540a85c0eda64, type: 3}
+  m_Script: {fileID: 11500000, guid: 675e6049d0fe03e4e9c7dc978ecaf623, type: 3}
   m_Name: Foot
   m_EditorClassIdentifier: 
   serializationData:
@@ -24,15 +24,18 @@ MonoBehaviour:
     - Name: <WeaponName>k__BackingField
       Entry: 3
       Data: 1
-    - Name: <Damage>k__BackingField
-      Entry: 3
-      Data: 3
-    - Name: <HitSound>k__BackingField
-      Entry: 6
-      Data: 
-    - Name: <Speed>k__BackingField
-      Entry: 4
-      Data: 0.7
     - Name: <FadeDuration>k__BackingField
       Entry: 4
       Data: 0.5
+    - Name: <Damage>k__BackingField
+      Entry: 3
+      Data: 3
+    - Name: <Speed>k__BackingField
+      Entry: 4
+      Data: 5
+    - Name: MeleeWeaponData+<Damage>k__BackingField
+      Entry: 3
+      Data: 3
+    - Name: MeleeWeaponData+<Speed>k__BackingField
+      Entry: 4
+      Data: 1

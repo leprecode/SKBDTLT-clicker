@@ -30,7 +30,7 @@ namespace Assets.Scripts.Weapons
 
         public override void Attack(Vector3 position, Enemy enemy)
         {
-           
+
             var isFlippedY = IsNeedFlipY(position);
 
             RotateToTarget(enemy, isFlippedY);
@@ -66,7 +66,7 @@ namespace Assets.Scripts.Weapons
 
             Sequence movementSeq = DOTween.Sequence();
             movementSeq.Append(transform.DOMove(GetRandomPosition(position), Speed));
-            movementSeq.Insert(Speed*0.5f, transform.DORotate(endRotation, _foorRotationDuration, RotateMode.FastBeyond360));
+            movementSeq.Insert(Speed * 0.5f, transform.DORotate(endRotation, _foorRotationDuration, RotateMode.FastBeyond360));
             movementSeq.OnComplete(() => OnEndAttack(enemy));
         }
 
@@ -89,9 +89,13 @@ namespace Assets.Scripts.Weapons
 
         private void OnEndAttack(Enemy enemy)
         {
-            enemy.TakeDamage(Damage, transform.position);
-            _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
-            _onDamagePlayer.PlayFeedbacks();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(Damage, transform.position);
+                _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
+                _onDamagePlayer.PlayFeedbacks();
+            }
+
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);
         }
 

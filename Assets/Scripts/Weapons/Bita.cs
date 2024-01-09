@@ -70,7 +70,7 @@ namespace Assets.Scripts.Weapons
             }
 
             rotationTween = transform.DORotate(endRotation, _timeToFullCycle, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
-            
+
             Sequence movement = DOTween.Sequence();
             movement.Append(transform.DOMove(GetRandomPosition(position), Speed));
             movement.InsertCallback(Speed * 0.3f, () => Attack(enemy));
@@ -86,9 +86,12 @@ namespace Assets.Scripts.Weapons
 
         private void Attack(Enemy enemy)
         {
-            enemy.TakeDamage(Damage, transform.position);
-            _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
-            _onDamagePlayer.PlayFeedbacks();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(Damage, transform.position);
+                _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
+                _onDamagePlayer.PlayFeedbacks();
+            }
         }
 
         private void OnEndAttack(Enemy enemy)

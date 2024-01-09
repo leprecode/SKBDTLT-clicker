@@ -28,16 +28,16 @@ namespace Assets.Scripts.Weapons
 
         public override void Attack(Vector3 position, Enemy enemy)
         {
+
             RotateToTarget(enemy);
+
             MoveToTarget(position, enemy);
+
         }
 
         private void MoveToTarget(Vector3 position, Enemy enemy)
         {
-            float dist = Vector3.Distance(transform.position, position);
-            float time = dist / Speed;
-
-            transform.DOMove(GetRandomPosition(position), time).OnComplete(() => OnEndAttack(enemy)); ;
+            transform.DOMove(GetRandomPosition(position), Speed).OnComplete(() => OnEndAttack(enemy)); ;
         }
 
         private Vector3 GetRandomPosition(Vector3 startPos)
@@ -54,9 +54,13 @@ namespace Assets.Scripts.Weapons
 
         private void OnEndAttack(Enemy enemy)
         {
-            enemy.TakeDamage(Damage, transform.position);
-            _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
-            _onDamagePlayer.PlayFeedbacks();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(Damage, transform.position);
+                _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
+                _onDamagePlayer.PlayFeedbacks();
+            }
+
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);
         }
 
