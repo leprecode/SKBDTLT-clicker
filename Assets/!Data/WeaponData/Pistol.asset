@@ -27,15 +27,15 @@ MonoBehaviour:
     - Name: <FadeDuration>k__BackingField
       Entry: 4
       Data: 0.5
-    - Name: <DamagePerBullet>k__BackingField
+    - Name: <Damage>k__BackingField
       Entry: 3
-      Data: 12
+      Data: 5
+    - Name: <Speed>k__BackingField
+      Entry: 4
+      Data: 0
     - Name: <ShotsCount>k__BackingField
-      Entry: 4
-      Data: 3
-    - Name: <SpreadAngle>k__BackingField
-      Entry: 4
-      Data: 15
+      Entry: 3
+      Data: 4
     - Name: <FireRateInSecond>k__BackingField
       Entry: 4
-      Data: 1
+      Data: 3

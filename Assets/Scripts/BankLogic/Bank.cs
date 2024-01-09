@@ -10,7 +10,7 @@ namespace Assets.Scripts.BankLogic
 
         public Bank(int Money)
         {
-            Money = Money;
+            money = Money;
         }
     }
 }

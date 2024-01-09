@@ -15,6 +15,31 @@ namespace Assets.Scripts.Weapons
         public float Speed { get => _weaponData.Speed; }
         public float FadeDuration { get => _weaponData.FadeDuration; }
 
+        public float SecondsToOneShot
+        {
+            get
+            {
+                if (_weaponData is FireWeaponData data)
+                {
+                    return 1f / data.FireRateInSecond;
+                }
+                else
+                    return 0;
+            }
+        }
+        public int ShotsCount
+        {
+            get
+            {
+                if (_weaponData is FireWeaponData data)
+                {
+                    return data.ShotsCount;
+                }
+                else
+                    return 0;
+            }
+        }
+
         public abstract void Attack(Vector3 position, Enemy enemy);
 
         public abstract void Construct(WeaponModel pool, MMF_Player onDamagePlayer);
