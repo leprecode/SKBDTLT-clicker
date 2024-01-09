@@ -13,66 +13,78 @@ namespace Assets.Scripts.Weapons
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] MMF_Player _onPistolFire;
         private MMF_Player _onBulletHit;
+        private MMF_ParticlesInstantiation _particlesInstantiationOnBulletHit;
         private WeaponModel _pool;
 
-        public override void Construct(WeaponModel pool, MMF_Player onPistolFire)
+        public override void Construct(WeaponModel pool, MMF_Player onBulletHit)
         {
             _pool = pool;
-            _onBulletHit = onPistolFire;
+            _onBulletHit = onBulletHit;
+            _particlesInstantiationOnBulletHit = onBulletHit.GetFeedbackOfType<MMF_ParticlesInstantiation>();
         }
 
         public override void ResetWeapon()
         {
             _spriteRenderer.color = RESET_COLOR;
+            transform.eulerAngles = Vector3.zero;
+            transform.position = Vector3.zero;
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z); 
         }
 
         public override void Attack(Vector3 position, Enemy enemy)
         {
-            var isFlippedX = IsNeedRotate(position);
-            RotateToTarget(enemy);
             transform.position = GetRandomPosition(transform.position);
+            RotateToTarget(enemy);
 
-            for (int i = ShotsCount; i > 0; i--) 
+            float timeToEndAttack = 0;
+
+            for (int i = 0; i < ShotsCount; i++) 
             {
-                StartCoroutine(Shoot(SecondsToOneShot*i));
+                timeToEndAttack += SecondsToOneShot * i;
+                StartCoroutine(Shoot(timeToEndAttack, GetRandomPosition (position), enemy));
             }
+
+            StartCoroutine(OnEndAttack(timeToEndAttack));
         }
 
-        private IEnumerator Shoot(float seconds)
+        private IEnumerator Shoot(float seconds, Vector3 pos, Enemy enemy)
         {
             yield return new WaitForSeconds(seconds);
             _onPistolFire.PlayFeedbacks();
+
+            _particlesInstantiationOnBulletHit.TargetWorldPosition = pos;
+            _onBulletHit.PlayFeedbacks();
+
+            enemy?.TakeDamage(Damage, pos);
         }
 
         private void RotateToTarget(Enemy enemy)
         {
+            if (transform.position.x < enemy.transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y) * -1, transform.localScale.z);
+            }
+
+
             Vector3 direction = enemy.transform.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        private bool IsNeedRotate(Vector3 target)
-        {
-            if (transform.position.x < target.x)
-            {
-                transform.eulerAngles = new Vector3(0,0,0);
-                transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
-                return false;
-            }
-            else
-            {
-                transform.eulerAngles = new Vector3(0,180,0);
-                transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y) * -1, transform.localScale.z);
-                return true;
-            }
-        }
+
 
         private Vector3 GetRandomPosition(Vector3 startPos)
         {
             return new Vector3(startPos.x + Random.Range(-0.5f, 1), startPos.y + Random.Range(-0.5f, 1), 0);
         }
-        private void OnEndAttack(Enemy enemy)
+        private IEnumerator OnEndAttack(float timeOffset)
         {
-            //_onDamagePlayer.PlayFeedbacks();
+            yield return new WaitForSeconds(timeOffset);
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);
         }
 

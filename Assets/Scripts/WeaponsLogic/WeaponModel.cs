@@ -2,6 +2,8 @@
 using MoreMountains.Feedbacks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.WeaponsLogic
@@ -11,6 +13,9 @@ namespace Assets.Scripts.WeaponsLogic
     {
         [SerializeField] public WeaponName ActualWeapon { get; set; }
 
+        private const int COUNT_TO_EXPAND = 5;
+        private readonly Dictionary<Weapon, int> _weaponsPrefabs;
+        private readonly Dictionary<WeaponName, MMF_Player> _weaponsVFXPrefabs;
         [SerializeField] private Vector3[] _attackPoints;
         [SerializeField] private List<WeaponName> _boughtWeapons;
         [SerializeField] private List<Queue<Weapon>> _weaponsPool;
@@ -21,17 +26,19 @@ namespace Assets.Scripts.WeaponsLogic
         public WeaponModel(Dictionary<Weapon, int> weaponsPrefab, WeaponName startWeapon,
             Transform[] attackPoints, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs)
         {
+            _weaponsPrefabs = weaponsPrefab;
+            _weaponsVFXPrefabs = weaponsVFXPrefabs;
             ActualWeapon = startWeapon;
 
-            InitializeAllUnbuyedWeapon(weaponsPrefab);
-            
+            InitializeAllUnbuyedWeapon();
+
             _boughtWeapons = new List<WeaponName>
             {
                 ActualWeapon
             };
             _allUnbuyedWeapons.Remove(ActualWeapon);
 
-            InitializeWeaponsPool(weaponsPrefab, weaponsVFXPrefabs);
+            InitializeWeaponsPool();
             FillAttackPoints(attackPoints);
         }
 
@@ -58,22 +65,47 @@ namespace Assets.Scripts.WeaponsLogic
         {
             var queueIndex = GetIndexOfQueue(ActualWeapon);
 
-            //TODO: Add expandable
+            if (_weaponsPool[(int)queueIndex].Count == 0)
+                ExpandQueue((int)queueIndex);
 
-            if (queueIndex != null)
-                return _weaponsPool[(int)queueIndex].Dequeue();
-            else
-                return null;
+            return _weaponsPool[(int)queueIndex].Dequeue();
         }
+
+        private void ExpandQueue(int indexOfQueue)
+        {
+            Weapon toCreate = null;
+
+            foreach (var item in _weaponsPrefabs)
+            {
+                if (item.Key.WeaponName == ActualWeapon)
+                {
+                    toCreate = item.Key;
+                }
+            }
+
+            if (toCreate == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < COUNT_TO_EXPAND; i++)
+            {
+                var newWeapon = UnityEngine.Object.Instantiate(toCreate);
+                newWeapon.Construct(this, _weaponsVFXPrefabs[newWeapon.WeaponName]);
+                newWeapon.gameObject.SetActive(false);
+                _weaponsPool[indexOfQueue].Enqueue(newWeapon);
+            }
+        }
+
         public Vector3 GetRandomAttackPoint()
         {
             return _attackPoints[UnityEngine.Random.Range(0, _attackPoints.Length)];
         }
-        private void InitializeAllUnbuyedWeapon(Dictionary<Weapon, int> weaponsPrefab)
+        private void InitializeAllUnbuyedWeapon()
         {
             _allUnbuyedWeapons = new List<WeaponName>();
 
-            foreach (var item in weaponsPrefab)
+            foreach (var item in _weaponsPrefabs)
             {
                 _allUnbuyedWeapons.Add(item.Key.WeaponName);
 
@@ -81,6 +113,7 @@ namespace Assets.Scripts.WeaponsLogic
             }
 
         }
+
         private void FillAttackPoints(Transform[] attackPoints)
         {
             _attackPoints = new Vector3[attackPoints.Length];
@@ -93,30 +126,39 @@ namespace Assets.Scripts.WeaponsLogic
 
         private int? GetIndexOfQueue(WeaponName weaponName)
         {
+            int? indexOfEmptyQueue = null;
+
             for (int i = 0; i < _weaponsPool.Count; i++)
             {
-                if (_weaponsPool[i].Peek().WeaponName == weaponName)
+                if (_weaponsPool[i].TryPeek(out Weapon weapon))
                 {
-                    return i;
+                    if (weapon.WeaponName == weaponName)
+                    {
+                        return i;
+                    }
+                }
+                else
+                {
+                    indexOfEmptyQueue = i;
                 }
             }
 
-            return null;
+            return indexOfEmptyQueue;
         }
 
-        private void InitializeWeaponsPool(Dictionary<Weapon, int> weaponsPrefab, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs)
+        private void InitializeWeaponsPool()
         {
             _weaponsPool = new List<Queue<Weapon>>();
             int queueIndex = 0;
 
-            foreach (var weapon in weaponsPrefab)
+            foreach (var weapon in _weaponsPrefabs)
             {
                 _weaponsPool.Add(new Queue<Weapon>());
 
                 for (int i = 0; i < weapon.Value; i++)
                 {
                     var newWeapon = UnityEngine.Object.Instantiate(weapon.Key);
-                    newWeapon.Construct(this, weaponsVFXPrefabs[newWeapon.WeaponName]);
+                    newWeapon.Construct(this, _weaponsVFXPrefabs[newWeapon.WeaponName]);
                     newWeapon.gameObject.SetActive(false);
                     _weaponsPool[queueIndex].Enqueue(newWeapon);
                 }
