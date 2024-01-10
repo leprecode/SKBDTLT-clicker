@@ -66,7 +66,11 @@ namespace Assets.Scripts.WeaponsLogic
             var queueIndex = GetIndexOfQueue(ActualWeapon);
 
             if (_weaponsPool[(int)queueIndex].Count == 0)
-                ExpandQueue((int)queueIndex);
+            {
+                //ExpandQueue((int)queueIndex);
+
+                return null;
+            }
 
             return _weaponsPool[(int)queueIndex].Dequeue();
         }

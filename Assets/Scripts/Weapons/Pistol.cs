@@ -38,16 +38,16 @@ namespace Assets.Scripts.Weapons
             transform.position = GetRandomPosition(transform.position);
             RotateToTarget(enemy);
 
-            float timeToEndAttack = 0;
+            float lastAttackTime = 0;
 
             for (int i = 0; i < ShotsCount; i++) 
             {
                 var timeToNextShot = SecondsToOneShot * i;
-                timeToEndAttack += timeToNextShot;
+                lastAttackTime = timeToNextShot;
                 StartCoroutine(Shoot(timeToNextShot, GetRandomPosition (position), enemy));
             }
 
-            StartCoroutine(OnEndAttack(timeToEndAttack));
+            StartCoroutine(OnEndAttack(lastAttackTime));
         }
 
         private IEnumerator Shoot(float seconds, Vector3 pos, Enemy enemy)
@@ -87,7 +87,7 @@ namespace Assets.Scripts.Weapons
         }
         private IEnumerator OnEndAttack(float timeOffset)
         {
-            yield return new WaitForSeconds(timeOffset-FadeDuration);
+            yield return new WaitForSeconds(timeOffset);
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);
         }
 

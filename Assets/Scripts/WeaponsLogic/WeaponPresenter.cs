@@ -23,6 +23,10 @@ namespace Assets.Scripts.WeaponsLogic
         public void AttackByActualWeapon(Vector3 position, Enemy enemy)
         {
             var weapon = _model.GetActualWeaponObjectFromPool();
+
+            if (weapon is null)
+                return;
+
             weapon.gameObject.SetActive(true);
             weapon.transform.position = _model.GetRandomAttackPoint();
             weapon.Attack(position, enemy);
