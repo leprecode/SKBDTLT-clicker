@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bc7f27fc67a7b418395c6693c6a9cd, type: 3}
+  m_Name: FlamethrowerData
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <WeaponName>k__BackingField
+      Entry: 3
+      Data: 10
+    - Name: <FadeDuration>k__BackingField
+      Entry: 4
+      Data: 0.5
+    - Name: <Damage>k__BackingField
+      Entry: 3
+      Data: 18
+    - Name: <Speed>k__BackingField
+      Entry: 4
+      Data: 0
+    - Name: <AttackDuration>k__BackingField
+      Entry: 4
+      Data: 5
+    - Name: <SecondsBetweenDamage>k__BackingField
+      Entry: 4
+      Data: 0.3
+    - Name: <RotationAnglePerSecond>k__BackingField
+      Entry: 3
+      Data: 30

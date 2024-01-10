@@ -12,5 +12,6 @@
         Auto,
         LaserGun,
         Bazooka,
+        Flamethrower,
     }
 }

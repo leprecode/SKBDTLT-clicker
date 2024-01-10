@@ -67,8 +67,6 @@ namespace Assets.Scripts.WeaponsLogic
 
             if (_weaponsPool[(int)queueIndex].Count == 0)
             {
-                //ExpandQueue((int)queueIndex);
-
                 return null;
             }
 
