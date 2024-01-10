@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5accc2a418e69d04cb2153715f824c3b, type: 3}
-  m_Name: Shotgun
+  m_Script: {fileID: 11500000, guid: 675e6049d0fe03e4e9c7dc978ecaf623, type: 3}
+  m_Name: Grenade
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,19 +23,13 @@ MonoBehaviour:
     SerializationNodes:
     - Name: <WeaponName>k__BackingField
       Entry: 3
-      Data: 6
+      Data: 5
     - Name: <FadeDuration>k__BackingField
       Entry: 4
-      Data: 0.5
+      Data: 0.3
     - Name: <Damage>k__BackingField
       Entry: 3
-      Data: 5
+      Data: 6
     - Name: <Speed>k__BackingField
       Entry: 4
-      Data: 0
-    - Name: <ShotsCount>k__BackingField
-      Entry: 3
-      Data: 6
-    - Name: <FireRateInSecond>k__BackingField
-      Entry: 4
-      Data: 0
+      Data: 0.5
