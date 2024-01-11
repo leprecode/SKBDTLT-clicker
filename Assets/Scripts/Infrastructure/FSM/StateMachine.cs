@@ -17,7 +17,8 @@ namespace Assets.Scripts.Infrastructure
         private Dictionary<GameState, IState> _states;
         [SerializeField] private IState _currentState;
 
-        public StateMachine(Dictionary<Weapon, int> WeaponsPrefabs,
+        public StateMachine(float minDamageRandom,
+            float maxDamageRandom, Dictionary<Weapon, int> WeaponsPrefabs,
             Transform[] AttackPoints,
             BankView BankView,
             Dictionary<Enemy, int> Enemies,
@@ -39,7 +40,9 @@ namespace Assets.Scripts.Infrastructure
             _states = new Dictionary<GameState, IState>
             {
                 [GameState.Initial] =
-                new InitialState(WeaponsPrefabs, 
+                new InitialState(minDamageRandom, 
+                maxDamageRandom,
+                WeaponsPrefabs, 
                 AttackPoints, 
                 BankView, 
                 Enemies, 

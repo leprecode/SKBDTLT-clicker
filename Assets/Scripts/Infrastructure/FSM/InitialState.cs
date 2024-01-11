@@ -13,6 +13,8 @@ namespace Assets.Scripts.Infrastructure
     public class InitialState : IState
     {
         public InitialState(
+            float minDamageRandom,
+            float maxDamageRandom,
             Dictionary<Weapon, int> WeaponsPrefabs,
             Transform[] AttackPoints,
             BankView BankView,
@@ -38,7 +40,7 @@ namespace Assets.Scripts.Infrastructure
 
             PrepareEnemies(Enemies, onDamagePlayer, EnemiesManagerView, out enemiesPool, out enemiesManager);
             PreparePlayer(weaponPresenter, bankPresenter, out player);
-            RegisterService(player, enemiesManager);
+            RegisterService(player, enemiesManager, minDamageRandom, maxDamageRandom);
         }
 
         public void Enter()
@@ -77,9 +79,12 @@ namespace Assets.Scripts.Infrastructure
             bankPresenter = new BankPresenter(bank, BankView);
         }
 
-        private void RegisterService(Player player, EnemiesManager enemiesManager)
+        private void RegisterService(Player player, EnemiesManager enemiesManager,float minDamageRandom,
+            float maxDamageRandom)
         {
+            DamageRandomizer damageRandomizer = new DamageRandomizer(minDamageRandom, maxDamageRandom);
             ServiceLocator.RegisterService(player);
+            ServiceLocator.RegisterService(damageRandomizer);
             ServiceLocator.RegisterService(enemiesManager);
         }
     }

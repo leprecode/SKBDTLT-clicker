@@ -42,14 +42,16 @@ namespace Assets.Scripts.EnemyLogic
 
         public void TakeDamage(int damage, Vector3 hitPoint)
         {
+            var actualDamage = ServiceLocator.GetService<DamageRandomizer>().GetRandomDamage(damage);
+
             var prevLife = ActualHp;
-            ActualHp -= damage;
+            ActualHp -= actualDamage;
             var earnedMoneys = Mathf.Abs(prevLife - Mathf.Max(ActualHp,0));
             ServiceLocator.GetService<Player>().AddMoney(earnedMoneys);
             
             OnDamageTake?.Invoke(ActualHp, MaxHp);
 
-            _onDamageFloatingText.Value = damage.ToString();
+            _onDamageFloatingText.Value = actualDamage.ToString();
             _onDamageParticles.TargetWorldPosition = hitPoint;
             _onDamagePlayer.PlayFeedbacks();
 

@@ -14,6 +14,8 @@ namespace Assets.Scripts.Infrastructure
     public class Gameplay : SerializedMonoBehaviour
 	{
 		[SerializeField] private Transform[] _attackPoints;
+		[SerializeField] private float _minDamageRandom;
+		[SerializeField] private float _maxDamageRandom;
 		[SerializeField] private Dictionary<Weapon, int> _weaponsPrefabs = new Dictionary<Weapon, int>();
 		[SerializeField] private Dictionary<WeaponName, MMF_Player> _weaponsVFXPrefabs = new Dictionary<WeaponName, MMF_Player>();
 		[SerializeField] private Dictionary<Enemy, int> _enemies = new Dictionary<Enemy, int>();
@@ -42,7 +44,9 @@ namespace Assets.Scripts.Infrastructure
 
         private void Awake()
 		{
-			_stateMachine = new StateMachine(_weaponsPrefabs, 
+			_stateMachine = new StateMachine(_minDamageRandom, 
+				_maxDamageRandom,
+				_weaponsPrefabs, 
 				_attackPoints, 
 				_bankView, 
 				_enemies, 
