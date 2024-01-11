@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bf47537a5692574bb5e63c1d188c2e8, type: 3}
-  m_Name: E1_Data
+  m_Name: Prisoner
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,6 +21,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  <MaxHp>k__BackingField: 5000000
-  <Name>k__BackingField: "\u041E\u0431\u043E\u0440\u0432\u044B\u0448"
-  <Background>k__BackingField: {fileID: 21300000, guid: d0130c1478a00504a8cc6e617d1be515, type: 3}
+  <MaxHp>k__BackingField: 50
+  <Name>k__BackingField: "\u0421\u0438\u0434\u0435\u0432\u0448\u0438\u0439"
+  <Background>k__BackingField: {fileID: 21300000, guid: 56b6a3330fc9ecc47943ddccad7f5b88, type: 3}

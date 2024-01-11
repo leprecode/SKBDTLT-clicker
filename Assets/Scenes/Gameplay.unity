@@ -6282,6 +6282,8 @@ MonoBehaviour:
   - {fileID: 701986665}
   - {fileID: 978789766}
   - {fileID: 1248586264}
+  _minDamageRandom: 0.8
+  _maxDamageRandom: 1.2
   _enemiesPool: {}
   _bankView: {fileID: 621467472}
   _enemiesManagerView: {fileID: 980443394}
@@ -6552,7 +6554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -0.00001680851, y: 30}
   m_Pivot: {x: 0.5000001, y: 0.00000015646219}
 --- !u!114 &867657219
@@ -8023,7 +8025,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141147103}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8032,12 +8034,12 @@ RectTransform:
   - {fileID: 787371630}
   - {fileID: 869914792}
   - {fileID: 867657218}
-  m_Father: {fileID: 7392003933376090230}
+  m_Father: {fileID: 2721100828103284635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -662.5}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1141147105
 MonoBehaviour:
@@ -16218,14 +16220,15 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3225656943944562934}
+  - {fileID: 1141147104}
   - {fileID: 7392003933376090230}
   m_Father: {fileID: 1226547916228918436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0.92}
-  m_AnchoredPosition: {x: 43, y: -91.46002}
-  m_SizeDelta: {x: 363.7995, y: -153.25201}
-  m_Pivot: {x: 0.000000110827386, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 35, y: -95}
+  m_SizeDelta: {x: 350, y: 840.74805}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &2803101451462723434
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17009,7 +17012,6 @@ RectTransform:
   - {fileID: 1414178713}
   - {fileID: 1459231997}
   - {fileID: 850943299}
-  - {fileID: 1141147104}
   m_Father: {fileID: 2721100828103284635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -17521,7 +17523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2721100828103284635}
   m_Layer: 5
-  m_Name: Store
+  m_Name: StoreWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

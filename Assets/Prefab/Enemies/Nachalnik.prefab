@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2669737259085920844}
   - component: {fileID: 6821498367648203402}
   m_Layer: 0
-  m_Name: E4
+  m_Name: Nachalnik
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -1357880371
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 80f417e3f6006c448bd0578a6273479e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 732ffe9e6c681904893a1a223d268942, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbc88102b4cecb4087c1494d3efa33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyData: {fileID: 11400000, guid: 0a12a17eef56fbf4a981204473d7857b, type: 2}
+  _enemyData: {fileID: 11400000, guid: ed4793bd302cccb479bdfea92fe6340e, type: 2}
   <SpriteRenderer>k__BackingField: {fileID: 2416523057066739048}
 --- !u!114 &699704345255431311
 MonoBehaviour:
@@ -147,8 +147,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03191963, y: 0}
-  m_Size: {x: 4.6152534, y: 10.240001}
+  m_Offset: {x: 0.055065453, y: 0}
+  m_Size: {x: 4.4412856, y: 10.240001}
   m_Direction: 0
 --- !u!70 &6821498367648203402
 CapsuleCollider2D:
@@ -182,6 +182,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010151628, y: -1.9874513}
-  m_Size: {x: 10.048382, y: 6.1176577}
+  m_Offset: {x: 0.06451237, y: -3.5314367}
+  m_Size: {x: 9.852735, y: 3.029727}
   m_Direction: 1

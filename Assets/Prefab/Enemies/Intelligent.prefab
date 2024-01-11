@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2669737259085920844}
   - component: {fileID: 6821498367648203402}
   m_Layer: 0
-  m_Name: E5
+  m_Name: Intelligent
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -1357880371
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f67c3b88a9cb274880b42c552ec1d22, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba101f9fe90decd49b5f080414165a9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbc88102b4cecb4087c1494d3efa33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyData: {fileID: 11400000, guid: 1605302693ea9cb449990ed095dc3695, type: 2}
+  _enemyData: {fileID: 11400000, guid: b771fd41f1096a041933098bc00da4c9, type: 2}
   <SpriteRenderer>k__BackingField: {fileID: 2416523057066739048}
 --- !u!114 &699704345255431311
 MonoBehaviour:
@@ -147,8 +147,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.24938107, y: 0}
-  m_Size: {x: 5.0501766, y: 10.240001}
+  m_Offset: {x: -0.11629224, y: 0}
+  m_Size: {x: 4.1465144, y: 10.240001}
   m_Direction: 0
 --- !u!70 &6821498367648203402
 CapsuleCollider2D:
@@ -182,6 +182,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.053643517, y: -3.118253}
-  m_Size: {x: 7.6998367, y: 3.8560658}
+  m_Offset: {x: 0.0101542, y: -2.9061732}
+  m_Size: {x: 8.173388, y: 3.605136}
   m_Direction: 1
