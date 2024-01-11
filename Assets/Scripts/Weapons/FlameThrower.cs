@@ -56,9 +56,19 @@ namespace Assets.Scripts.Weapons
         private IEnumerator SetDamage(float time,Enemy enemy, Vector3 pos)
         {
             yield return new WaitForSeconds(time);
-            _onAttack.PlayFeedbacks();
 
-            enemy?.TakeDamage(Damage, GetRandomPosition(pos));
+            if (enemy != null)
+            {
+                _onAttack.PlayFeedbacks();
+
+                enemy?.TakeDamage(Damage, GetRandomPosition(pos));
+            }
+            else
+            {
+                StopAllCoroutines();
+                StartCoroutine(OnEndAttack(0));
+            }
+
         }
 
         private void RotateToTarget(Enemy enemy)

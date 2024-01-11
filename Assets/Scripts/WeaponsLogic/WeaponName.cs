@@ -10,8 +10,6 @@
         Grenade,
         Shotgun,
         Auto,
-        LaserGun,
-        Bazooka,
         Flamethrower,
     }
 }

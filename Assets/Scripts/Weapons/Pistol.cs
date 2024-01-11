@@ -53,12 +53,21 @@ namespace Assets.Scripts.Weapons
         private IEnumerator Shoot(float seconds, Vector3 pos, Enemy enemy)
         {
             yield return new WaitForSeconds(seconds);
-            _onPistolFire.PlayFeedbacks();
 
-            _particlesInstantiationOnBulletHit.TargetWorldPosition = pos;
-            _onBulletHit.PlayFeedbacks();
+            if (enemy != null)
+            {
+                _onPistolFire.PlayFeedbacks();
 
-            enemy?.TakeDamage(Damage, pos);
+                _particlesInstantiationOnBulletHit.TargetWorldPosition = pos;
+                _onBulletHit.PlayFeedbacks();
+
+                enemy?.TakeDamage(Damage, pos);
+            }
+            else
+            {
+                StopAllCoroutines();
+                StartCoroutine(OnEndAttack(0));
+            }
         }
 
         private void RotateToTarget(Enemy enemy)
