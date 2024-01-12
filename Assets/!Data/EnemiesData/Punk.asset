@@ -21,6 +21,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  <MaxHp>k__BackingField: 10000
+  <MaxHp>k__BackingField: 70000
   <Name>k__BackingField: "\u041F\u0430\u043D\u043A"
   <Background>k__BackingField: {fileID: 21300000, guid: a4bf6f9c98628f64bb6e3f2e3986d306, type: 3}
