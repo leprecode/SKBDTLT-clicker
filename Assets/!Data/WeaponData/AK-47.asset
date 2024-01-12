@@ -29,13 +29,13 @@ MonoBehaviour:
       Data: 0.5
     - Name: <Damage>k__BackingField
       Entry: 3
-      Data: 5
+      Data: 91
     - Name: <Speed>k__BackingField
       Entry: 4
       Data: 0
     - Name: <ShotsCount>k__BackingField
       Entry: 3
-      Data: 8
+      Data: 12
     - Name: <FireRateInSecond>k__BackingField
       Entry: 4
       Data: 8

@@ -23,13 +23,13 @@ MonoBehaviour:
     SerializationNodes:
     - Name: <WeaponName>k__BackingField
       Entry: 3
-      Data: 10
+      Data: 8
     - Name: <FadeDuration>k__BackingField
       Entry: 4
       Data: 0.5
     - Name: <Damage>k__BackingField
       Entry: 3
-      Data: 18
+      Data: 650
     - Name: <Speed>k__BackingField
       Entry: 4
       Data: 0

@@ -5936,9 +5936,14 @@ MonoBehaviour:
     - {fileID: 1952891245}
     - {fileID: 176986583}
     - {fileID: 7934217423699434553, guid: e196c952836f18641b55402d12eabba5, type: 3}
+    - {fileID: 7934217423699434553, guid: d5f9a2c3a59a6594883ac370f7657a70, type: 3}
+    - {fileID: 7934217423699434553, guid: a41f48f851ff3624d9a666a272c106ac, type: 3}
     - {fileID: 7934217423699434553, guid: 7abd9cc9473d2904781e16aac1170cf7, type: 3}
     - {fileID: 7934217423699434553, guid: dce338f0f8a9b1f4799dfcd54f561906, type: 3}
-    - {fileID: 7934217423699434553, guid: d5f9a2c3a59a6594883ac370f7657a70, type: 3}
+    - {fileID: 3486085480066004815, guid: 08d2f9e8e3ce4cc418f4e9dc988e123d, type: 3}
+    - {fileID: 8949531397473786364, guid: e3b58e22c4d8f884cad53ad1045f9f7c, type: 3}
+    - {fileID: 7934217423699434553, guid: c9777a32c4b772f4087956b2dcf8b6da, type: 3}
+    - {fileID: 7934217423699434553, guid: 29b6c5f30d5a12146bd31e6919491df5, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -6158,7 +6163,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 10
+      Data: 8
     - Name: $v
       Entry: 10
       Data: 10
@@ -6220,7 +6225,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 9
     - Name: 
       Entry: 7
       Data: 
@@ -6270,6 +6275,66 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 16
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 17
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 18
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 19
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 20
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -6282,8 +6347,8 @@ MonoBehaviour:
   - {fileID: 701986665}
   - {fileID: 978789766}
   - {fileID: 1248586264}
-  _minDamageRandom: 0.8
-  _maxDamageRandom: 1.2
+  _minDamageRandom: 0.9
+  _maxDamageRandom: 1.1
   _enemiesPool: {}
   _bankView: {fileID: 621467472}
   _enemiesManagerView: {fileID: 980443394}
@@ -8109,7 +8174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca3ae1ff5d174640bfc97b89bc3059b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 10
+  <Name>k__BackingField: 8
   _priceText: {fileID: 1446989691}
   _animator: {fileID: 1141147107}
 --- !u!95 &1141147107
@@ -14613,6 +14678,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081567428}
   m_CullTransparentMesh: 1
+--- !u!1 &2134022059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134022061}
+  - component: {fileID: 2134022060}
+  m_Layer: 0
+  m_Name: =====TODELETE=====
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2134022060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134022059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a9cdf95ea7efe439a2f97e2da5148b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _allEnemiesInTheGame:
+  - {fileID: 11400000, guid: abe6c5653f9bff7469ad896670a5612a, type: 2}
+  - {fileID: 11400000, guid: 10929bbcaf821024d8bebf873aca792b, type: 2}
+  - {fileID: 11400000, guid: 886ed9128dc2cbd4cb90751197481329, type: 2}
+  - {fileID: 11400000, guid: 0a12a17eef56fbf4a981204473d7857b, type: 2}
+  - {fileID: 11400000, guid: f64671320f9660749ae1d1af8f89a340, type: 2}
+  weaponsCost: {fileID: 11400000, guid: 2e40678f9a3f3b24cba818e7609ac638, type: 2}
+  _allWeaponsData:
+  - {fileID: 11400000, guid: 4c03d96fb735c3745832948d9b2c89ef, type: 2}
+  - {fileID: 11400000, guid: 9137110968e6f064f97b25680db0bfe0, type: 2}
+  - {fileID: 11400000, guid: a63c124e042e2f644b00533a0f4ac929, type: 2}
+  - {fileID: 11400000, guid: 45d8d4ccd7ef9fe4bb6b18b43940fe4a, type: 2}
+  - {fileID: 11400000, guid: f5d9fa54155260944a1d180d990300e4, type: 2}
+  - {fileID: 11400000, guid: 1bd432d3776e5c04a82e708c869fb9cd, type: 2}
+  - {fileID: 11400000, guid: 9ed5c61b1dd3dbf428fb2cc8e9f0d7c6, type: 2}
+  - {fileID: 11400000, guid: 40dd7283bcd8f464bb2de136952c644b, type: 2}
+  - {fileID: 11400000, guid: 1898424459a52cf4ab0c1e1670c2b042, type: 2}
+  ClicksPerSecond: 6
+  totalData:
+    totalClicks: 2437
+    totalDamage: 1565000
+    totalMoneysEarned: 1565000
+    currentMoneys: 669900
+    totalSecondsToPassTheGame: 406
+    totalMinutesToPassTheGame: 6.766667
+  dataToPassEnemies:
+  - enemyName: "\u041E\u0431\u043E\u0440\u0432\u044B\u0448"
+    _hp: 5000
+    clicksToDestroy: 917
+    secondsToDestroy: 152
+    minuteToDestroy: 2.5333333
+    _weaponsWillOpenOnThisEnemy: 0000000001000000
+  - enemyName: "\u041F\u0430\u043D\u043A"
+    _hp: 10000
+    clicksToDestroy: 233
+    secondsToDestroy: 38
+    minuteToDestroy: 0.6333333
+    _weaponsWillOpenOnThisEnemy: 02000000
+  - enemyName: "\u0427\u0443\u0448\u043F\u0430\u043D"
+    _hp: 50000
+    clicksToDestroy: 298
+    secondsToDestroy: 49
+    minuteToDestroy: 0.81666666
+    _weaponsWillOpenOnThisEnemy: 0300000004000000
+  - enemyName: "\u041A\u043E\u043C\u0441\u043E\u043C\u043E\u043B\u0435\u0446"
+    _hp: 500000
+    clicksToDestroy: 620
+    secondsToDestroy: 103
+    minuteToDestroy: 1.7166667
+    _weaponsWillOpenOnThisEnemy: 0700000006000000
+  - enemyName: "\u0421\u0438\u0434\u0435\u0432\u0448\u0438\u0439"
+    _hp: 1000000
+    clicksToDestroy: 369
+    secondsToDestroy: 61
+    minuteToDestroy: 1.0166667
+    _weaponsWillOpenOnThisEnemy: 05000000
+  lastCurrentWeapon: {fileID: 11400000, guid: 40dd7283bcd8f464bb2de136952c644b, type: 2}
+--- !u!4 &2134022061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134022059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -709.0931, y: 440.52054, z: -2.5831778}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143582890
 GameObject:
   m_ObjectHideFlags: 0
@@ -17627,3 +17793,4 @@ SceneRoots:
   - {fileID: 1222485747}
   - {fileID: 1226547916228918436}
   - {fileID: 456034910}
+  - {fileID: 2134022061}
