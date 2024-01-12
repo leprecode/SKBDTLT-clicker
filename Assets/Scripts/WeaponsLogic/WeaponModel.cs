@@ -160,7 +160,7 @@ namespace Assets.Scripts.WeaponsLogic
                 for (int i = 0; i < weapon.Value; i++)
                 {
                     var newWeapon = UnityEngine.Object.Instantiate(weapon.Key);
-                    newWeapon.Construct(this, _weaponsVFXPrefabs[newWeapon.WeaponName]);
+                    newWeapon.Construct(this, _weaponsVFXPrefabs.ContainsKey(newWeapon.WeaponName) ? _weaponsVFXPrefabs[newWeapon.WeaponName] : null);
                     newWeapon.gameObject.SetActive(false);
                     _weaponsPool[queueIndex].Enqueue(newWeapon);
                 }
