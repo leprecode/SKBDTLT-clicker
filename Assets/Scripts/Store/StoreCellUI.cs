@@ -1,7 +1,8 @@
 ﻿using Assets.Scripts.WeaponsLogic;
+using DG.Tweening;
 using System;
+using System.Globalization;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Store
@@ -17,9 +18,11 @@ namespace Assets.Scripts.Store
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private Animator _animator;
         
+        private float _timeToUpdatePrice = 0.3f;
+        
         public void SetPrice(int price)
         {
-            _priceText.SetText(price.ToString());    
+            _priceText.DOCounter(0, price, _timeToUpdatePrice, true, CultureInfo.CurrentCulture);
         }    
 
         public void OnCellClick()

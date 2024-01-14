@@ -3,6 +3,7 @@ using DG.Tweening;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using Sirenix.OdinInspector;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,11 +70,11 @@ namespace Assets.Scripts.EnemiesManagment
         {
             var lifeClamped = Mathf.Max(life, 0);
 
-            _lifeUpdateTween = _lifeText.DOCounter(_lastLife, lifeClamped, _lifeTextUpdatingDuration);
+            _lifeUpdateTween = _lifeText.DOCounter(_lastLife, lifeClamped, _lifeTextUpdatingDuration, true, CultureInfo.CurrentCulture);
 
             _barPlayer.PlayFeedbacks();
             _progressBar.UpdateBar(life, 0, maxLife);
-
+            
             _lastLife = lifeClamped;
         }
 
@@ -128,8 +129,8 @@ namespace Assets.Scripts.EnemiesManagment
 
         private void InitialLifeText(int life, int maxLife)
         {
-            _lifeText.DOCounter(0, life, _lifeTextInitialDuration);
-            _maxLifeText.DOCounter(0, maxLife, _lifeTextInitialDuration);
+            _lifeText.DOCounter(0, life, _lifeTextInitialDuration,true, CultureInfo.CurrentCulture);
+            _maxLifeText.DOCounter(0, maxLife, _lifeTextInitialDuration, true, CultureInfo.CurrentCulture);
 
             _lastLife = life;
         }
