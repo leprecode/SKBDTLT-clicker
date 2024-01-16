@@ -17,7 +17,7 @@ namespace Assets.Scripts.Weapons
         private Tween _rotationTween;
         private WeaponModel _pool;
 
-        public override void Construct(WeaponModel pool, MMF_Player onBulletHit)
+        public override void Construct(WeaponModel pool, MMF_Player onBulletHit, MMF_Player soundSystem)
         {
             _pool = pool;
         }

@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 8300000, guid: f35c236fc97db4309b80d8b34da60785, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -23,6 +24,9 @@ MonoBehaviour:
     SerializationNodes:
     - Name: <WeaponName>k__BackingField
       Entry: 3
+      Data: 0
+    - Name: <WeaponClip>k__BackingField
+      Entry: 10
       Data: 0
     - Name: <FadeDuration>k__BackingField
       Entry: 4

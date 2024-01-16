@@ -16,6 +16,7 @@ namespace Assets.Scripts.WeaponsLogic
         private const int COUNT_TO_EXPAND = 5;
         private readonly Dictionary<Weapon, int> _weaponsPrefabs;
         private readonly Dictionary<WeaponName, MMF_Player> _weaponsVFXPrefabs;
+        private readonly MMF_Player _audioSFXPlayer;
         [SerializeField] private Vector3[] _attackPoints;
         [SerializeField] private List<WeaponName> _boughtWeapons;
         [SerializeField] private List<Queue<Weapon>> _weaponsPool;
@@ -24,10 +25,11 @@ namespace Assets.Scripts.WeaponsLogic
 
 
         public WeaponModel(Dictionary<Weapon, int> weaponsPrefab, WeaponName startWeapon,
-            Transform[] attackPoints, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs)
+            Transform[] attackPoints, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs, MMF_Player audioSFXPlayer)
         {
             _weaponsPrefabs = weaponsPrefab;
             _weaponsVFXPrefabs = weaponsVFXPrefabs;
+            _audioSFXPlayer = audioSFXPlayer;
             ActualWeapon = startWeapon;
 
             InitializeAllUnbuyedWeapon();
@@ -93,7 +95,7 @@ namespace Assets.Scripts.WeaponsLogic
             for (int i = 0; i < COUNT_TO_EXPAND; i++)
             {
                 var newWeapon = UnityEngine.Object.Instantiate(toCreate);
-                newWeapon.Construct(this, _weaponsVFXPrefabs[newWeapon.WeaponName]);
+                newWeapon.Construct(this, _weaponsVFXPrefabs[newWeapon.WeaponName], _audioSFXPlayer);
                 newWeapon.gameObject.SetActive(false);
                 _weaponsPool[indexOfQueue].Enqueue(newWeapon);
             }
@@ -160,7 +162,7 @@ namespace Assets.Scripts.WeaponsLogic
                 for (int i = 0; i < weapon.Value; i++)
                 {
                     var newWeapon = UnityEngine.Object.Instantiate(weapon.Key);
-                    newWeapon.Construct(this, _weaponsVFXPrefabs.ContainsKey(newWeapon.WeaponName) ? _weaponsVFXPrefabs[newWeapon.WeaponName] : null);
+                    newWeapon.Construct(this, _weaponsVFXPrefabs.ContainsKey(newWeapon.WeaponName) ? _weaponsVFXPrefabs[newWeapon.WeaponName] : null, _audioSFXPlayer);
                     newWeapon.gameObject.SetActive(false);
                     _weaponsPool[queueIndex].Enqueue(newWeapon);
                 }

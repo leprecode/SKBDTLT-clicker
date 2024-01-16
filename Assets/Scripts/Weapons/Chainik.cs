@@ -26,7 +26,7 @@ namespace Assets.Scripts.Weapons
             rotationTween?.Kill();
         }
 
-        public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer)
+        public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer, MMF_Player soundSystem)
         {
             _pool = pool;
             _onDamagePlayer = onDamagePlayer;

@@ -17,7 +17,7 @@ namespace Assets.Scripts.Weapons
         private MMF_ParticlesInstantiation _particlesInstantiationOnBulletHit;
         private WeaponModel _pool;
 
-        public override void Construct(WeaponModel pool, MMF_Player onBulletHit)
+        public override void Construct(WeaponModel pool, MMF_Player onBulletHit, MMF_Player soundSystem)
         {
             _pool = pool;
             _onBulletHit = onBulletHit;

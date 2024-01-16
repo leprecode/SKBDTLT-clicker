@@ -9,7 +9,7 @@ namespace Assets.Scripts.Weapons
     public abstract class Weapon : MonoBehaviour
     {
         [SerializeField] private WeaponData _weaponData;
-        
+
         public WeaponName WeaponName { get => _weaponData.WeaponName; }
         public int Damage { get => _weaponData.Damage; }
         public float Speed { get => _weaponData.Speed; }
@@ -66,6 +66,7 @@ namespace Assets.Scripts.Weapons
             }
         }
 
+        public AudioClip WeaponClip { get => _weaponData.WeaponClip; }
 
         public int ShotsCount
         {
@@ -82,7 +83,7 @@ namespace Assets.Scripts.Weapons
 
         public abstract void Attack(Vector3 position, Enemy enemy);
 
-        public abstract void Construct(WeaponModel pool, MMF_Player onDamagePlayer);
+        public abstract void Construct(WeaponModel pool, MMF_Player onDamagePlayer, MMF_Player soundSystem);
 
         public abstract void ResetWeapon();
     }

@@ -21,7 +21,7 @@ namespace Assets.Scripts.Weapons
         private float _rotationYAmplitude = 80;
         private float _foorRotationDuration = 0.15f;
 
-        public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer)
+        public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer, MMF_Player soundSystem)
         {
             _pool = pool;
             _onDamagePlayer = onDamagePlayer;

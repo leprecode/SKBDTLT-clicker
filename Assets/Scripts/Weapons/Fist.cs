@@ -2,7 +2,6 @@
 using UnityEngine;
 using DG.Tweening;
 using Assets.Scripts.EnemyLogic;
-using static UnityEngine.GraphicsBuffer;
 using Assets.Scripts.WeaponsLogic;
 using MoreMountains.Feedbacks;
 
@@ -17,22 +16,23 @@ namespace Assets.Scripts.Weapons
         private WeaponModel _pool;
         private MMF_Player _onDamagePlayer;
         private MMF_ParticlesInstantiation _mMF_ParticlesInstantiation;
+        private MMF_Player _soundSystem;
+        private MMF_MMSoundManagerSound _soundFeedback;
 
-
-        public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer)
+        public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer, MMF_Player soundSystem)
         {
             _pool = pool;
             _onDamagePlayer = onDamagePlayer;
             _mMF_ParticlesInstantiation = _onDamagePlayer.GetFeedbackOfType<MMF_ParticlesInstantiation>();
+            _soundSystem = soundSystem;
+            _soundFeedback = _soundSystem.GetFeedbackOfType<MMF_MMSoundManagerSound>();
         }
 
         public override void Attack(Vector3 position, Enemy enemy)
         {
-
             RotateToTarget(enemy);
 
             MoveToTarget(position, enemy);
-
         }
 
         private void MoveToTarget(Vector3 position, Enemy enemy)
@@ -59,6 +59,9 @@ namespace Assets.Scripts.Weapons
                 enemy.TakeDamage(Damage, transform.position);
                 _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
                 _onDamagePlayer.PlayFeedbacks();
+                
+                _soundFeedback.Sfx = WeaponClip;
+                _soundSystem.PlayFeedbacks();
             }
 
             _spriteRenderer.DOFade(0f, FadeDuration).OnComplete(BackToPool);

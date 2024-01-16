@@ -35,10 +35,10 @@ namespace Assets.Scripts.Infrastructure
 		[SerializeField] private GameObject _endGamePopup;
 
 		[SerializeField] private MMF_Player _onDamagePlayer;
+        [SerializeField] private MMF_Player _soundSystem;
 
         private WeaponModel _weaponModel;
         private WeaponPresenter _weaponPresenter;
-
 
 
 
@@ -55,6 +55,7 @@ namespace Assets.Scripts.Infrastructure
 				_weaponsCost,
 				_storeView,
                 _onDamagePlayer,
+                _soundSystem,
                 _weaponsVFXPrefabs,
                 out _weaponPresenter,
                 out _bankPresenter, 

@@ -10,7 +10,7 @@ public class Lightning : Weapon
 {
     private WeaponModel _pool;
     
-    public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer)
+    public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer, MMF_Player soundSystem)
     {
         _pool = pool;
     }
