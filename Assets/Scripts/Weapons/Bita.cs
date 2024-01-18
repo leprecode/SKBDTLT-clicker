@@ -15,11 +15,13 @@ namespace Assets.Scripts.Weapons
         private MMF_Player _onDamagePlayer;
         private MMF_ParticlesInstantiation _mMF_ParticlesInstantiation;
 
-
         private float _rotationZPerSecond = 360;
         private float _timeToFullCycle = 0.5f;
 
         private Tween rotationTween;
+
+        private MMF_Player _soundSystem;
+        private MMF_MMSoundManagerSound _soundFeedback;
 
         private void OnDisable()
         {
@@ -31,6 +33,8 @@ namespace Assets.Scripts.Weapons
             _pool = pool;
             _onDamagePlayer = onDamagePlayer;
             _mMF_ParticlesInstantiation = _onDamagePlayer.GetFeedbackOfType<MMF_ParticlesInstantiation>();
+            _soundSystem = soundSystem;
+            _soundFeedback = _soundSystem.GetFeedbackOfType<MMF_MMSoundManagerSound>();
         }
 
         public override void Attack(Vector3 position, Enemy enemy)
@@ -88,6 +92,8 @@ namespace Assets.Scripts.Weapons
         {
             if (enemy != null)
             {
+                _soundFeedback.Sfx = WeaponClip;
+                _soundSystem.PlayFeedbacks();
                 enemy.TakeDamage(Damage, transform.position);
                 _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
                 _onDamagePlayer.PlayFeedbacks();

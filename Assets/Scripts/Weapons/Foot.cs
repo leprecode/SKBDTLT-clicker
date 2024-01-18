@@ -21,16 +21,21 @@ namespace Assets.Scripts.Weapons
         private float _rotationYAmplitude = 80;
         private float _foorRotationDuration = 0.15f;
 
+        private MMF_Player _soundSystem;
+        private MMF_MMSoundManagerSound _soundFeedback;
+
         public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer, MMF_Player soundSystem)
         {
             _pool = pool;
             _onDamagePlayer = onDamagePlayer;
             _mMF_ParticlesInstantiation = _onDamagePlayer.GetFeedbackOfType<MMF_ParticlesInstantiation>();
+
+            _soundSystem = soundSystem;
+            _soundFeedback = _soundSystem.GetFeedbackOfType<MMF_MMSoundManagerSound>();
         }
 
         public override void Attack(Vector3 position, Enemy enemy)
         {
-
             var isFlippedY = IsNeedFlipY(position);
 
             RotateToTarget(enemy, isFlippedY);
@@ -91,6 +96,9 @@ namespace Assets.Scripts.Weapons
         {
             if (enemy != null)
             {
+                _soundFeedback.Sfx = WeaponClip;
+                _soundSystem.PlayFeedbacks();
+
                 enemy.TakeDamage(Damage, transform.position);
                 _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
                 _onDamagePlayer.PlayFeedbacks();

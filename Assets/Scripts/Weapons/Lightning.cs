@@ -9,10 +9,16 @@ using UnityEngine;
 public class Lightning : Weapon
 {
     private WeaponModel _pool;
-    
+
+    private MMF_Player _soundSystem;
+    private MMF_MMSoundManagerSound _soundFeedback;
+
     public override void Construct(WeaponModel pool, MMF_Player onDamagePlayer, MMF_Player soundSystem)
     {
         _pool = pool;
+
+        _soundSystem = soundSystem;
+        _soundFeedback = _soundSystem.GetFeedbackOfType<MMF_MMSoundManagerSound>();
     }
 
     public override void Attack(Vector3 position, Enemy enemy)
@@ -32,6 +38,9 @@ public class Lightning : Weapon
     {
         if (enemy != null)
         {
+            _soundFeedback.Sfx = WeaponClip;
+            _soundSystem.PlayFeedbacks();
+
             enemy.TakeDamage(Damage, transform.position);
         }
     }

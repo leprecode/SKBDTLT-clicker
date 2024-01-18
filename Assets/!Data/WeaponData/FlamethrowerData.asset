@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 8300000, guid: 9db858e368c5b6140842ea4d3ebe8012, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -24,18 +25,21 @@ MonoBehaviour:
     - Name: <WeaponName>k__BackingField
       Entry: 3
       Data: 8
+    - Name: <WeaponClip>k__BackingField
+      Entry: 10
+      Data: 0
     - Name: <FadeDuration>k__BackingField
       Entry: 4
       Data: 0.5
     - Name: <Damage>k__BackingField
       Entry: 3
-      Data: 1560
+      Data: 1860
     - Name: <Speed>k__BackingField
       Entry: 4
       Data: 0
     - Name: <AttackDuration>k__BackingField
       Entry: 4
-      Data: 5
+      Data: 3
     - Name: <SecondsBetweenDamage>k__BackingField
       Entry: 4
       Data: 0.3

@@ -7,6 +7,5 @@ namespace Assets.Scripts.WeaponsData
     {
         [field: SerializeField] public int ShotsCount { get; }
         [field: SerializeField] public float FireRateInSecond { get; }
-        [field: SerializeField] public AudioClip OnHitClip { get; }
     }
 }

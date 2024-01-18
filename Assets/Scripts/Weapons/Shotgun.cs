@@ -17,11 +17,18 @@ namespace Assets.Scripts.Weapons
         private MMF_ParticlesInstantiation _particlesInstantiationOnBulletHit;
         private WeaponModel _pool;
 
+        private MMF_Player _soundSystem;
+        private MMF_MMSoundManagerSound _soundFeedback;
+
+
         public override void Construct(WeaponModel pool, MMF_Player onBulletHit, MMF_Player soundSystem)
         {
             _pool = pool;
             _onBulletHit = onBulletHit;
             _particlesInstantiationOnBulletHit = onBulletHit.GetFeedbackOfType<MMF_ParticlesInstantiation>();
+
+            _soundSystem = soundSystem;
+            _soundFeedback = _soundSystem.GetFeedbackOfType<MMF_MMSoundManagerSound>();
         }
 
         public override void ResetWeapon()
@@ -47,6 +54,9 @@ namespace Assets.Scripts.Weapons
 
         private void Shoot(Vector3 pos, Enemy enemy)
         {
+            _soundFeedback.Sfx = WeaponClip;
+            _soundSystem.PlayFeedbacks();
+
             _onFire.PlayFeedbacks();
 
             _particlesInstantiationOnBulletHit.TargetWorldPosition = pos;
