@@ -8,7 +8,7 @@ namespace Assets.Scripts.Weapons
 {
     public class Bita : Weapon
     {
-        private readonly Color32 RESET_COLOR = new Color32(255, 255, 255, 255);
+        private readonly Color32 RESET_COLOR = new(255, 255, 255, 255);
 
         [SerializeField] private SpriteRenderer _spriteRenderer;
         private WeaponModel _pool;

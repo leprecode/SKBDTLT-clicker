@@ -19,7 +19,7 @@ namespace Assets.Scripts.Infrastructure
 		[SerializeField] private float _maxDamageRandom;
 		[SerializeField] private Dictionary<Weapon, int> _weaponsPrefabs = new Dictionary<Weapon, int>();
 		[SerializeField] private Dictionary<WeaponName, MMF_Player> _weaponsVFXPrefabs = new Dictionary<WeaponName, MMF_Player>();
-		[SerializeField] private Dictionary<Enemy, int> _enemies = new Dictionary<Enemy, int>();
+		[SerializeField] private List<Enemy> _enemies = new List<Enemy>();
 		[SerializeField] private EnemiesPool _enemiesPool;
 		[SerializeField] private BankView _bankView;
 		[SerializeField] private BankPresenter _bankPresenter;

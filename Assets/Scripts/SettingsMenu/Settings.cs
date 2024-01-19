@@ -1,9 +1,11 @@
 ﻿using Assets.Scripts.Infrastructure;
+using DG.Tweening;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.SettingsMenu
 {
@@ -47,6 +49,13 @@ namespace Assets.Scripts.SettingsMenu
                 _masterGroup.audioMixer.SetFloat("MasterVolume", 0);
             else
                 _masterGroup.audioMixer.SetFloat("MasterVolume", -80);
+        }
+
+        public void ResetGame()
+        {
+            Time.timeScale = 1.0f;
+            DOTween.KillAll();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

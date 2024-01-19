@@ -14,17 +14,14 @@ namespace Assets.Scripts.EnemiesManagment
         [OdinSerialize]
         public SerializableQueue<Enemy> _pool = new SerializableQueue<Enemy>();
 
-        public void Initialize(Dictionary<Enemy, int> enemies, MMF_Player onDamagePlayer)
+        public void Initialize(List<Enemy> enemies, MMF_Player onDamagePlayer)
         {
             foreach (var enemy in enemies)
             {
-                for (int i = 0; i < enemy.Value; i++)
-                {
-                    var newEnemy = MonoBehaviour.Instantiate(enemy.Key, Vector3.zero, Quaternion.identity);
-                    newEnemy.Construct(onDamagePlayer);
-                    newEnemy.gameObject.SetActive(false);
-                    _pool.Enqueue(newEnemy);
-                }
+                var newEnemy = MonoBehaviour.Instantiate(enemy, Vector3.zero, Quaternion.identity);
+                newEnemy.Construct(onDamagePlayer);
+                newEnemy.gameObject.SetActive(false);
+                _pool.Enqueue(newEnemy);
             }
         }
 

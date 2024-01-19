@@ -21,7 +21,7 @@ namespace Assets.Scripts.Infrastructure
             float maxDamageRandom, Dictionary<Weapon, int> WeaponsPrefabs,
             Transform[] AttackPoints,
             BankView BankView,
-            Dictionary<Enemy, int> Enemies,
+            List<Enemy> Enemies,
             EnemiesManagerView EnemiesManagerView,
             StoreCellUI[] cellUIs,
             WeaponsCost weaponsCost,
@@ -73,8 +73,7 @@ namespace Assets.Scripts.Infrastructure
         {
             if (_states.TryGetValue(state, out IState newState))
             {
-                if (_currentState != null)
-                    _currentState.Exit();
+                _currentState?.Exit();
 
                 _currentState = newState;
                 _currentState.Enter();

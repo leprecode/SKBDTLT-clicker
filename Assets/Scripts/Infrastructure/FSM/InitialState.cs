@@ -18,7 +18,7 @@ namespace Assets.Scripts.Infrastructure
             Dictionary<Weapon, int> WeaponsPrefabs,
             Transform[] AttackPoints,
             BankView BankView,
-            Dictionary<Enemy, int> Enemies,
+            List<Enemy> Enemies,
             EnemiesManagerView EnemiesManagerView,
             StoreCellUI[] cellUIs,
             WeaponsCost weaponsCost,
@@ -61,7 +61,7 @@ namespace Assets.Scripts.Infrastructure
             player = new Player(weaponPresenter, bank);
         }
 
-        private void PrepareEnemies(Dictionary<Enemy, int> Enemies, MMF_Player onDamagePlayer, EnemiesManagerView EnemiesManagerView,
+        private void PrepareEnemies(List<Enemy> Enemies, MMF_Player onDamagePlayer, EnemiesManagerView EnemiesManagerView,
             out EnemiesPool enemiesPool, out EnemiesManager enemiesManager)
         {
             enemiesPool = new EnemiesPool();
@@ -79,13 +79,13 @@ namespace Assets.Scripts.Infrastructure
         private void PrepareBankSystem(BankView BankView, out BankPresenter bankPresenter)
         {
             Bank bank = new Bank(0);
-            bankPresenter = new BankPresenter(bank, BankView);
+            bankPresenter = new(bank, BankView);
         }
 
         private void RegisterService(Player player, EnemiesManager enemiesManager,float minDamageRandom,
             float maxDamageRandom)
         {
-            DamageRandomizer damageRandomizer = new DamageRandomizer(minDamageRandom, maxDamageRandom);
+            DamageRandomizer damageRandomizer = new(minDamageRandom, maxDamageRandom);
             ServiceLocator.RegisterService(player);
             ServiceLocator.RegisterService(damageRandomizer);
             ServiceLocator.RegisterService(enemiesManager);

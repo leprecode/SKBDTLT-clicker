@@ -17,7 +17,6 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 8300000, guid: 31835a5eb705f4a30865b07048197974, type: 3}
-    - {fileID: 8300000, guid: 321feb9f51af885488e5ed433aecd467, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -34,7 +33,7 @@ MonoBehaviour:
       Data: 0.5
     - Name: <Damage>k__BackingField
       Entry: 3
-      Data: 345
+      Data: 431
     - Name: <Speed>k__BackingField
       Entry: 4
       Data: 0
@@ -44,6 +43,3 @@ MonoBehaviour:
     - Name: <FireRateInSecond>k__BackingField
       Entry: 4
       Data: 0
-    - Name: <OnHitClip>k__BackingField
-      Entry: 10
-      Data: 1
