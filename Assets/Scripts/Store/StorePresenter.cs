@@ -88,6 +88,7 @@ namespace Assets.Scripts.Store
                 {
                     _weaponPresenter.EquipNewWeapon(name);
                     _storeView.UpdateActualCellUI(cell);
+                    _storeView.PlayBoughtSound();
                 }
                 else
                 {

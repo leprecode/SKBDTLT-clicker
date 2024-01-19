@@ -191,14 +191,14 @@ namespace MoreMountains.Tools
 			if (!audioClip) { return null; }
             
 			// audio source setup ---------------------------------------------------------------------------------
-            
+             
 			// we reuse an audiosource if one is passed in parameters
 			AudioSource audioSource = recycleAudioSource;   
             
 			if (!audioSource)
 			{
 				// we pick an idle audio source from the pool if possible
-				audioSource = _pool.GetAvailableAudioSource(PoolCanExpand, this.transform);
+				audioSource = _pool.GetAvailableAudioSource(PoolCanExpand, this.transform); 
 				if ((audioSource) && (!loop))
 				{
 					recycleAudioSource = audioSource;
@@ -206,17 +206,16 @@ namespace MoreMountains.Tools
 					StartCoroutine(_pool.AutoDisableAudioSource(audioClip.length / Mathf.Abs(pitch), audioSource, audioClip, doNotAutoRecycleIfNotDonePlaying, playbackTime, playbackDuration));
 				}
 			}
-
-			// we create an audio source if needed
+			// we create an audio source if needed 
 			if (!audioSource)
 			{
-				_tempAudioSourceGameObject = new GameObject("MMAudio_"+audioClip.name);
+                _tempAudioSourceGameObject = new GameObject("MMAudio_" + audioClip.name);
 				SceneManager.MoveGameObjectToScene(_tempAudioSourceGameObject, this.gameObject.scene);
 				audioSource = _tempAudioSourceGameObject.AddComponent<AudioSource>();
 			}
-            
+
 			// audio source settings ---------------------------------------------------------------------------------
-            
+
 			audioSource.transform.position = location;
 			audioSource.clip = audioClip;
 			audioSource.pitch = pitch;

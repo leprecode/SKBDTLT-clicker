@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.WeaponsLogic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 namespace Assets.Scripts.Store
 {
@@ -9,6 +10,7 @@ namespace Assets.Scripts.Store
         public StoreCellUI LastAvctiveCell { get; set; }
         [SerializeField] private CanvasGroup _popUp;
         [SerializeField] private float _fadeDuration = 1.0f;
+        [SerializeField] private AudioSource _audioSource;
         private StoreCellUI[] _cells;
         private Tween _popUpTween;
 
@@ -40,5 +42,9 @@ namespace Assets.Scripts.Store
             LastAvctiveCell.SetActiveState();
         }
 
+        internal void PlayBoughtSound()
+        {
+            _audioSource.Play();
+        }
     }
 }

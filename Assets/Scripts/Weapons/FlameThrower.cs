@@ -42,6 +42,9 @@ namespace Assets.Scripts.Weapons
             transform.position = GetRandomPosition(transform.position);
             RotateToTarget(enemy);
 
+            _soundFeedback.Sfx = WeaponClip;
+            _soundSystem.PlayFeedbacks();
+
             _rotationTween = 
                 transform
                 .DORotate(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + RotationAnglePerSecond), 1f, RotateMode.Fast)
@@ -65,8 +68,6 @@ namespace Assets.Scripts.Weapons
 
             if (enemy != null)
             {
-                _soundFeedback.Sfx = WeaponClip;
-                _soundSystem.PlayFeedbacks();
                 _onAttack.PlayFeedbacks();
 
                 enemy?.TakeDamage(Damage, GetRandomPosition(pos));

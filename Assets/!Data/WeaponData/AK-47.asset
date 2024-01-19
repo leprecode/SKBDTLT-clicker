@@ -39,7 +39,7 @@ MonoBehaviour:
       Data: 0
     - Name: <ShotsCount>k__BackingField
       Entry: 3
-      Data: 10
+      Data: 8
     - Name: <FireRateInSecond>k__BackingField
       Entry: 4
       Data: 8

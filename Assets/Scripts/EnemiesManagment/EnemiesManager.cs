@@ -10,12 +10,9 @@ namespace Assets.Scripts.EnemiesManagment
     public class EnemiesManager
     {
         public event Action OnEnemyEnded;
-
-
         private readonly EnemiesPool _pool;
         private readonly EnemiesManagerView _view;
         private Enemy _actualEnemy;
-
 
         public EnemiesManager(EnemiesPool pool, EnemiesManagerView view)
         {
@@ -25,7 +22,15 @@ namespace Assets.Scripts.EnemiesManagment
             GetFirstEnemy();
         }
 
-        [field: SerializeField] public Enemy ActualEnemy { get => _actualEnemy; private set => _actualEnemy = value; }
+        public void DisableActualEnemyInteractivity()
+        {
+            _actualEnemy.DisableColliders();
+        }
+
+        public void EnableActualEnemyInteractivity()
+        {
+            _actualEnemy.EnableColliders();
+        }
 
         private void GetFirstEnemy()
         {

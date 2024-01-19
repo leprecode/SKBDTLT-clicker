@@ -43,6 +43,8 @@ namespace Assets.Scripts.Weapons
         {
             transform.position = GetRandomPosition(transform.position);
             RotateToTarget(enemy);
+            _soundFeedback.Sfx = WeaponClip;
+            _soundSystem.PlayFeedbacks();
 
             for (int i = 0; i < ShotsCount; i++)
             {
@@ -54,9 +56,6 @@ namespace Assets.Scripts.Weapons
 
         private void Shoot(Vector3 pos, Enemy enemy)
         {
-            _soundFeedback.Sfx = WeaponClip;
-            _soundSystem.PlayFeedbacks();
-
             _onFire.PlayFeedbacks();
 
             _particlesInstantiationOnBulletHit.TargetWorldPosition = pos;

@@ -24,10 +24,14 @@ namespace Assets.Scripts.EnemyLogic
         private MMF_FloatingText _onDamageFloatingText;
         private MMF_ParticlesInstantiation _onDamageParticles;
 
+        private Collider2D[] _colliders;
+
         public void Construct(MMF_Player onDamagePlayer)
         {
             _onDamagePlayer = onDamagePlayer;
             ActualHp = MaxHp;
+
+            _colliders = GetComponents<Collider2D>();
         }
 
         public void Initialize()
@@ -38,6 +42,21 @@ namespace Assets.Scripts.EnemyLogic
             _onDamagePlayer.GetFeedbackOfType<MMF_Flicker>().BoundRenderer = GetComponent<SpriteRenderer>();
             _onDamagePlayer.Initialization();
             _onDamagePlayer.SetCanPlay(true);
+        }
+
+        public void DisableColliders()
+        {
+            foreach (var item in _colliders)
+            {
+                item.enabled = false;
+            }
+        }
+        public void EnableColliders()
+        {
+            foreach (var item in _colliders)
+            {
+                item.enabled = true;
+            }
         }
 
         public void TakeDamage(int damage, Vector3 hitPoint)

@@ -42,6 +42,8 @@ namespace Assets.Scripts.Infrastructure
             PrepareEnemies(Enemies, onDamagePlayer, EnemiesManagerView, out enemiesPool, out enemiesManager);
             PreparePlayer(weaponPresenter, bankPresenter, out player);
             RegisterService(player, enemiesManager, minDamageRandom, maxDamageRandom);
+
+
         }
 
         public void Enter()

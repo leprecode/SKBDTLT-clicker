@@ -62,11 +62,11 @@ namespace Assets.Scripts.Infrastructure
                 out player),
 
                 [GameState.Gameplay] = new GameplayState(),
-                [GameState.Pause] = new PauseState(),
+                [GameState.Pause] = new PauseState(enemiesManager),
                 [GameState.AD] = new AdState()
             };
 
-            SetState(GameState.Initial);
+            SetState(GameState.Gameplay);
         }
 
         public void SetState(GameState state)
@@ -82,14 +82,6 @@ namespace Assets.Scripts.Infrastructure
             else
             {
                 Debug.LogError($"Состояние с именем {state} не найдено");
-            }
-        }
-
-        public void Update()
-        {
-            if (_currentState != null && _currentState is IUpdatableState updatable)
-            {
-                updatable.Update();
             }
         }
     }

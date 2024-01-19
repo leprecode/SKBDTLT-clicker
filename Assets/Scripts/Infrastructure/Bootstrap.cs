@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.EnemiesManagment;
 using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.SettingsMenu;
 using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
@@ -11,7 +12,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure
 {
-    public class Gameplay : SerializedMonoBehaviour
+    public class Bootstrap : SerializedMonoBehaviour
 	{
 		[SerializeField] private Transform[] _attackPoints;
 		[SerializeField] private float _minDamageRandom;
@@ -37,10 +38,10 @@ namespace Assets.Scripts.Infrastructure
 		[SerializeField] private MMF_Player _onDamagePlayer;
         [SerializeField] private MMF_Player _soundSystem;
 
+		[SerializeField] private Settings _settings;
+
         private WeaponModel _weaponModel;
         private WeaponPresenter _weaponPresenter;
-
-
 
         private void Awake()
 		{
@@ -65,6 +66,7 @@ namespace Assets.Scripts.Infrastructure
 				out _player);
 
 
+			_settings.Construct(_stateMachine);
 			Subscribe();
 		}
 
