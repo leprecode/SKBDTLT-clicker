@@ -20,9 +20,9 @@ namespace Assets.Scripts.EnemiesManagment
         [SerializeField] private float _bgFadeInDuration;
 
         [FoldoutGroup("TweensSettings/EnemyShowing")]
-        [SerializeField] private float  _blackColorFadeOutDuration;
-         
-        
+        [SerializeField] private float _blackColorFadeOutDuration;
+
+
         [FoldoutGroup("TweensSettings/EnemyShowing")]
         [SerializeField] private float _nameShoweingDuration;
 
@@ -34,7 +34,7 @@ namespace Assets.Scripts.EnemiesManagment
 
         [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
         [SerializeField] private float _movementYAmplitude;
-        
+
         [FoldoutGroup("TweensSettings/EnemyShowing/Movement")]
         [SerializeField] private float _showingMovementYDuration;
 
@@ -74,7 +74,7 @@ namespace Assets.Scripts.EnemiesManagment
 
             _barPlayer.PlayFeedbacks();
             _progressBar.UpdateBar(life, 0, maxLife);
-            
+
             _lastLife = lifeClamped;
         }
 
@@ -129,7 +129,7 @@ namespace Assets.Scripts.EnemiesManagment
 
         private void InitialLifeText(int life, int maxLife)
         {
-            _lifeText.DOCounter(0, life, _lifeTextInitialDuration,true, CultureInfo.CurrentCulture);
+            _lifeText.DOCounter(0, life, _lifeTextInitialDuration, true, CultureInfo.CurrentCulture);
             _maxLifeText.DOCounter(0, maxLife, _lifeTextInitialDuration, true, CultureInfo.CurrentCulture);
 
             _lastLife = life;

@@ -6,15 +6,11 @@ namespace Assets.Scripts.Infrastructure
     {
         public void Enter()
         {
-            Debug.Log("Вход в Состояние1");
         }
 
         public void Exit()
         {
-            Debug.Log("Выход из Состояния1");
         }
-
-
     }
 
 }

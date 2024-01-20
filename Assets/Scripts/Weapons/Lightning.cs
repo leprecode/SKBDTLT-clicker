@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
-using DG.Tweening;
 using MoreMountains.Feedbacks;
 using System.Collections;
 using UnityEngine;

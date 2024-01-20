@@ -1,7 +1,5 @@
-﻿using Assets.Scripts.Weapons;
-using Assets.Scripts.WeaponsLogic;
+﻿using Assets.Scripts.WeaponsLogic;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

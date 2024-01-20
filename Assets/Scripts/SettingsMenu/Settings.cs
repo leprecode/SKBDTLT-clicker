@@ -1,8 +1,6 @@
 ﻿using Assets.Scripts.Infrastructure;
 using DG.Tweening;
 using MoreMountains.Feedbacks;
-using MoreMountains.Tools;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -39,7 +37,7 @@ namespace Assets.Scripts.SettingsMenu
         }
 
         public void OnTextToggle(bool value)
-        { 
+        {
             _floatingText.Active = value;
         }
 

@@ -2,7 +2,6 @@
 using Assets.Scripts.WeaponsLogic;
 using DG.Tweening;
 using MoreMountains.Feedbacks;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons

@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.WeaponsLogic;
-using UnityEngine;
 using DG.Tweening;
-using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Store
 {
@@ -32,7 +31,7 @@ namespace Assets.Scripts.Store
         {
             _popUpTween?.Kill();
             _popUp.alpha = 1;
-             _popUpTween = _popUp.DOFade(0, _fadeDuration).SetEase(Ease.Linear);
+            _popUpTween = _popUp.DOFade(0, _fadeDuration).SetEase(Ease.Linear);
         }
 
         public void UpdateActualCellUI(StoreCellUI cell)

@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Infrastructure;
 using MoreMountains.Feedbacks;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.EnemyLogic
@@ -10,7 +9,7 @@ namespace Assets.Scripts.EnemyLogic
     {
         public Action OnDie;
         public Action<int, int> OnDamageTake;
-        public int MaxHp => _enemyData.MaxHp; 
+        public int MaxHp => _enemyData.MaxHp;
         public string Name => _enemyData.Name;
         public Sprite Background => _enemyData.Background;
         public int ActualHp { get; private set; }
@@ -19,7 +18,7 @@ namespace Assets.Scripts.EnemyLogic
 
         [SerializeField] private EnemyData _enemyData;
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
-        
+
         private MMF_Player _onDamagePlayer;
         private MMF_FloatingText _onDamageFloatingText;
         private MMF_ParticlesInstantiation _onDamageParticles;
@@ -65,9 +64,9 @@ namespace Assets.Scripts.EnemyLogic
 
             var prevLife = ActualHp;
             ActualHp -= actualDamage;
-            var earnedMoneys = Mathf.Abs(prevLife - Mathf.Max(ActualHp,0));
+            var earnedMoneys = Mathf.Abs(prevLife - Mathf.Max(ActualHp, 0));
             ServiceLocator.GetService<Player>().AddMoney(earnedMoneys);
-            
+
             OnDamageTake?.Invoke(ActualHp, MaxHp);
 
             _onDamageFloatingText.Value = actualDamage.ToString();
@@ -94,4 +93,4 @@ namespace Assets.Scripts.EnemyLogic
             }
         }
     }
-} 
+}

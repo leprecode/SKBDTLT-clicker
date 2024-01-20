@@ -2,8 +2,6 @@
 using MoreMountains.Feedbacks;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.WeaponsLogic
@@ -105,6 +103,7 @@ namespace Assets.Scripts.WeaponsLogic
         {
             return _attackPoints[UnityEngine.Random.Range(0, _attackPoints.Length)];
         }
+
         private void InitializeAllUnbuyedWeapon()
         {
             _allUnbuyedWeapons = new List<WeaponName>();
@@ -112,10 +111,7 @@ namespace Assets.Scripts.WeaponsLogic
             foreach (var item in _weaponsPrefabs)
             {
                 _allUnbuyedWeapons.Add(item.Key.WeaponName);
-
-                Debug.Log("Added To Unbuyed" + item.Key.WeaponName);
             }
-
         }
 
         private void FillAttackPoints(Transform[] attackPoints)

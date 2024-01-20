@@ -1,8 +1,6 @@
 ﻿using Assets.Scripts.EnemyLogic;
-using Assets.Scripts.Infrastructure;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.EnemiesManagment
 {

@@ -12,27 +12,26 @@ namespace Assets.Scripts.Store
         private readonly int ACTIVE_HASH_ID = Animator.StringToHash("Active");
         private readonly int ALLOW_TO_BUY_HASH_ID = Animator.StringToHash("AllowToBuy");
 
-        public event Action<StoreCellUI,WeaponName> OnClicked;
+        public event Action<StoreCellUI, WeaponName> OnClicked;
         [field: SerializeField] public WeaponName Name { get; private set; }
 
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private Animator _animator;
-        
+
         private float _timeToUpdatePrice = 0.3f;
-        
+
         public void SetPrice(int price)
         {
             _priceText.DOCounter(0, price, _timeToUpdatePrice, true, CultureInfo.CurrentCulture);
-        }    
+        }
 
         public void OnCellClick()
         {
-            Debug.Log(name + " CKICKED");
             OnClicked?.Invoke(this, Name);
         }
 
         public void SetInactiveState()
-        { 
+        {
             _animator.SetBool(ACTIVE_HASH_ID, false);
         }
 

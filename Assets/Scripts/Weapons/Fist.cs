@@ -1,9 +1,9 @@
-﻿using System;
-using UnityEngine;
-using DG.Tweening;
-using Assets.Scripts.EnemyLogic;
+﻿using Assets.Scripts.EnemyLogic;
 using Assets.Scripts.WeaponsLogic;
+using DG.Tweening;
 using MoreMountains.Feedbacks;
+using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Weapons
 {
@@ -59,7 +59,7 @@ namespace Assets.Scripts.Weapons
                 enemy.TakeDamage(Damage, transform.position);
                 _mMF_ParticlesInstantiation.TargetWorldPosition = transform.position;
                 _onDamagePlayer.PlayFeedbacks();
-                
+
                 _soundFeedback.Sfx = WeaponClip;
                 _soundSystem.PlayFeedbacks();
             }

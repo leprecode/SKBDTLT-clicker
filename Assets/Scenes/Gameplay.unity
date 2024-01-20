@@ -6366,7 +6366,7 @@ MonoBehaviour:
   - {fileID: 850943301}
   - {fileID: 1141147106}
   - {fileID: 2021615556}
-  _weaponsCost: {fileID: 11400000, guid: 2e40678f9a3f3b24cba818e7609ac638, type: 2}
+  _weaponsCost: {fileID: 11400000, guid: c7d3cb92e86357c489c6b2c0232f0c0f, type: 2}
   _storeView: {fileID: 5286950966609473116}
   _endGamePopup: {fileID: 1835944115}
   _onDamagePlayer: {fileID: 787558536}
@@ -10352,7 +10352,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1386071524}
-  - component: {fileID: 1386071525}
   m_Layer: 0
   m_Name: AttackPoints
   m_TagString: Untagged
@@ -10381,18 +10380,6 @@ Transform:
   - {fileID: 1248586264}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1386071525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386071523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c1b52ec64f3dea468537fdf231ae9c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1388699519
 GameObject:
   m_ObjectHideFlags: 0
@@ -16074,108 +16061,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081567428}
   m_CullTransparentMesh: 1
---- !u!1 &2134022059
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2134022061}
-  - component: {fileID: 2134022060}
-  m_Layer: 0
-  m_Name: =====TODELETE=====
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2134022060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134022059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a9cdf95ea7efe439a2f97e2da5148b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _allEnemiesInTheGame:
-  - {fileID: 11400000, guid: abe6c5653f9bff7469ad896670a5612a, type: 2}
-  - {fileID: 11400000, guid: 10929bbcaf821024d8bebf873aca792b, type: 2}
-  - {fileID: 11400000, guid: 886ed9128dc2cbd4cb90751197481329, type: 2}
-  - {fileID: 11400000, guid: 0a12a17eef56fbf4a981204473d7857b, type: 2}
-  - {fileID: 11400000, guid: f64671320f9660749ae1d1af8f89a340, type: 2}
-  weaponsCost: {fileID: 11400000, guid: 2e40678f9a3f3b24cba818e7609ac638, type: 2}
-  _allWeaponsData:
-  - {fileID: 11400000, guid: 4c03d96fb735c3745832948d9b2c89ef, type: 2}
-  - {fileID: 11400000, guid: 9137110968e6f064f97b25680db0bfe0, type: 2}
-  - {fileID: 11400000, guid: a63c124e042e2f644b00533a0f4ac929, type: 2}
-  - {fileID: 11400000, guid: 45d8d4ccd7ef9fe4bb6b18b43940fe4a, type: 2}
-  - {fileID: 11400000, guid: f5d9fa54155260944a1d180d990300e4, type: 2}
-  - {fileID: 11400000, guid: 1bd432d3776e5c04a82e708c869fb9cd, type: 2}
-  - {fileID: 11400000, guid: 9ed5c61b1dd3dbf428fb2cc8e9f0d7c6, type: 2}
-  - {fileID: 11400000, guid: 40dd7283bcd8f464bb2de136952c644b, type: 2}
-  - {fileID: 11400000, guid: 708502d23e17f8a4fa3a3a3c73b2ad31, type: 2}
-  - {fileID: 11400000, guid: 1898424459a52cf4ab0c1e1670c2b042, type: 2}
-  ClicksPerSecond: 5
-  totalData:
-    totalClicks: 5338
-    totalDamage: 6825000
-    totalMoneysEarned: 6825000
-    currentMoneys: 1694750
-    totalSecondsToPassTheGame: 1067
-    totalMinutesToPassTheGame: 17.783333
-  dataToPassEnemies:
-  - enemyName: "\u041E\u0431\u043E\u0440\u0432\u044B\u0448"
-    _hp: 5000
-    clicksToDestroy: 538
-    secondsToDestroy: 107
-    minuteToDestroy: 1.7833333
-    _weaponsWillOpenOnThisEnemy: 0000000001000000
-  - enemyName: "\u041F\u0430\u043D\u043A"
-    _hp: 70000
-    clicksToDestroy: 875
-    secondsToDestroy: 175
-    minuteToDestroy: 2.9166667
-    _weaponsWillOpenOnThisEnemy: 0200000003000000
-  - enemyName: "\u0427\u0443\u0448\u043F\u0430\u043D"
-    _hp: 450000
-    clicksToDestroy: 1169
-    secondsToDestroy: 233
-    minuteToDestroy: 3.8833334
-    _weaponsWillOpenOnThisEnemy: 0400000007000000
-  - enemyName: "\u041A\u043E\u043C\u0441\u043E\u043C\u043E\u043B\u0435\u0446"
-    _hp: 1300000
-    clicksToDestroy: 958
-    secondsToDestroy: 191
-    minuteToDestroy: 3.1833334
-    _weaponsWillOpenOnThisEnemy: 0600000005000000
-  - enemyName: "\u0421\u0438\u0434\u0435\u0432\u0448\u0438\u0439"
-    _hp: 5000000
-    clicksToDestroy: 1798
-    secondsToDestroy: 359
-    minuteToDestroy: 5.983333
-    _weaponsWillOpenOnThisEnemy: 0900000008000000
-  lastCurrentWeapon: {fileID: 11400000, guid: 1898424459a52cf4ab0c1e1670c2b042, type: 2}
---- !u!4 &2134022061
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134022059}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -709.0931, y: 440.52054, z: -2.5831778}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143582890
 GameObject:
   m_ObjectHideFlags: 0
@@ -18507,8 +18392,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0414\u043E\u0445\u043E\u0434\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 191c85d053c814242b6d9fab0a91b9f9, type: 2}
-  m_sharedMaterial: {fileID: 6383068405828875511, guid: 191c85d053c814242b6d9fab0a91b9f9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3944eaaf70beffa4097d8c293604125e, type: 2}
+  m_sharedMaterial: {fileID: 7159369417392969216, guid: 3944eaaf70beffa4097d8c293604125e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19757,4 +19642,3 @@ SceneRoots:
   - {fileID: 1226547916228918436}
   - {fileID: 456034910}
   - {fileID: 983484569}
-  - {fileID: 2134022061}

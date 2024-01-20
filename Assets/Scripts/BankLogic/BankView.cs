@@ -10,7 +10,7 @@ namespace Assets.Scripts.BankLogic
 
         public void UpdateUIOnAddingMoney(int money)
         {
-            _moneyScore.SetText(money.ToString());    
+            _moneyScore.SetText(money.ToString());
         }
 
         public void UpdateUIOnSpendMoney(int money)

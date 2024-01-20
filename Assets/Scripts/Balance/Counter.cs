@@ -1,10 +1,7 @@
 ﻿using Assets.Scripts.EnemyLogic;
-using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsData;
 using Assets.Scripts.WeaponsLogic;
 using Sirenix.OdinInspector;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +18,7 @@ namespace Assets.Scripts.Balance
         [SerializeField] private TotalData totalData;
         [SerializeField] private List<DataToPassEnemy> dataToPassEnemies;
 
-        [SerializeField] WeaponData lastCurrentWeapon;
+        [SerializeField] private WeaponData lastCurrentWeapon;
 
         [Button]
         private void Count()
@@ -37,8 +34,8 @@ namespace Assets.Scripts.Balance
             {
                 dataToPassEnemies.Add(new DataToPassEnemy(_allEnemiesInTheGame[i].Name, _allEnemiesInTheGame[i].MaxHp));
 
-                if (i==0)
-                { 
+                if (i == 0)
+                {
                     dataToPassEnemies[i].AddNewWeapon(lastCurrentWeapon.WeaponName);
                 }
 
@@ -84,11 +81,10 @@ namespace Assets.Scripts.Balance
             {
                 if (currentWeapon.WeaponName == _allWeaponsData[i].WeaponName)
                 {
-                    return Mathf.Clamp(i+1, 0, _allWeaponsData.Count);
+                    return Mathf.Clamp(i + 1, 0, _allWeaponsData.Count);
                 }
             }
 
-            Debug.LogError("Cant find weapon");
             return 100;
         }
 
@@ -106,7 +102,7 @@ namespace Assets.Scripts.Balance
             totalData.totalMinutesToPassTheGame = (totalData.totalClicks / ClicksPerSecond) / 60f;
         }
 
-        private int MakeDamageAndEarnMoney(DataToPassEnemy dataToPassEnemy,WeaponData currentWeapon, int currentEnemyHp)
+        private int MakeDamageAndEarnMoney(DataToPassEnemy dataToPassEnemy, WeaponData currentWeapon, int currentEnemyHp)
         {
             var damage = MakeDamageByWeaponPerOneClick(currentWeapon);
 
@@ -115,7 +111,7 @@ namespace Assets.Scripts.Balance
 
             var realDamage = Mathf.Abs(prevLife - Mathf.Max(currentEnemyHp, 0));
 
-            totalData.totalDamage +=realDamage;
+            totalData.totalDamage += realDamage;
             totalData.currentMoneys += realDamage;
             totalData.totalMoneysEarned += realDamage;
 
@@ -148,9 +144,8 @@ namespace Assets.Scripts.Balance
                     return Mathf.RoundToInt((weapon2.AttackDuration / weapon2.SecondsBetweenDamage) * weapon2.Damage);
 
                 default:
-                    Debug.LogError("WrongWeaponType");
                     return currentWeapon.Damage;
             }
         }
     }
-} 
+}

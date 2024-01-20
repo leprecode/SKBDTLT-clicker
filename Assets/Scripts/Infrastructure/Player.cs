@@ -23,7 +23,7 @@ namespace Assets.Scripts.Infrastructure
             _bank.AddMoney(moneys);
         }
 
-        public void Attack(Vector3 position, Enemy enemy )
+        public void Attack(Vector3 position, Enemy enemy)
         {
             _weaponPresenter.AttackByActualWeapon(position, enemy);
         }

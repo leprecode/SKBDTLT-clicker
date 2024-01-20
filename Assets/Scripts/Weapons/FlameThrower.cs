@@ -45,7 +45,7 @@ namespace Assets.Scripts.Weapons
             _soundFeedback.Sfx = WeaponClip;
             _soundSystem.PlayFeedbacks();
 
-            _rotationTween = 
+            _rotationTween =
                 transform
                 .DORotate(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + RotationAnglePerSecond), 1f, RotateMode.Fast)
                 .SetLoops(-1, LoopType.Yoyo)
@@ -53,16 +53,16 @@ namespace Assets.Scripts.Weapons
 
             _onAttack.PlayFeedbacks();
 
-            for (float i = 0; i < AttackDuration; i+= SecondsBetweenDamage)
+            for (float i = 0; i < AttackDuration; i += SecondsBetweenDamage)
             {
-                StartCoroutine(SetDamage(i,enemy, position));
+                StartCoroutine(SetDamage(i, enemy, position));
             }
-            
+
 
             StartCoroutine(OnEndAttack(AttackDuration));
         }
 
-        private IEnumerator SetDamage(float time,Enemy enemy, Vector3 pos)
+        private IEnumerator SetDamage(float time, Enemy enemy, Vector3 pos)
         {
             yield return new WaitForSeconds(time);
 

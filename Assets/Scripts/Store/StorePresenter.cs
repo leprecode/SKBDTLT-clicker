@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.WeaponsLogic;
-using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Store
@@ -14,7 +13,7 @@ namespace Assets.Scripts.Store
         private readonly StoreCellUI[] _cells;
         private readonly WeaponPresenter _weaponPresenter;
 
-        public StorePresenter(StoreCellUI[] cells, WeaponPresenter presenter, 
+        public StorePresenter(StoreCellUI[] cells, WeaponPresenter presenter,
             WeaponsCost weaponsCost, BankPresenter bankPresenter, StoreView storeView)
         {
             _cells = cells;
@@ -53,8 +52,6 @@ namespace Assets.Scripts.Store
 
         private void OnMoneyEarning(int totalMoney)
         {
-            Debug.Log("OnMoneyEarning");
-
             var allUnbuyedWeapons = _weaponPresenter.GetAllUnbyedWeapons();
 
             for (int i = 0; i < allUnbuyedWeapons.Count; i++)
@@ -66,7 +63,6 @@ namespace Assets.Scripts.Store
                         if (_cells[j].Name == allUnbuyedWeapons[i])
                         {
                             _cells[j].SetAllowToBuy();
-                            Debug.Log("SetAllowToBuy");
                             return;
                         }
                     }
@@ -75,7 +71,7 @@ namespace Assets.Scripts.Store
         }
 
 
-        private void OnCellClick(StoreCellUI cell,WeaponName name)
+        private void OnCellClick(StoreCellUI cell, WeaponName name)
         {
             if (_storeView.LastAvctiveCell.Name == name)
                 return;

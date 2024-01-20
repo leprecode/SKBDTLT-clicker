@@ -36,8 +36,8 @@ namespace Assets.Scripts.Infrastructure
             PrepareWeapons(WeaponsPrefabs, AttackPoints, weaponsVFXPrefabs, audioSFXPlayer, out weaponModel, out weaponPresenter);
             PrepareBankSystem(BankView, out bankPresenter);
 
-            StorePresenter StorePresenter = 
-                new StorePresenter(cellUIs, weaponPresenter, weaponsCost,bankPresenter, storeView);
+            StorePresenter StorePresenter =
+                new StorePresenter(cellUIs, weaponPresenter, weaponsCost, bankPresenter, storeView);
 
             PrepareEnemies(Enemies, onDamagePlayer, EnemiesManagerView, out enemiesPool, out enemiesManager);
             PreparePlayer(weaponPresenter, bankPresenter, out player);
@@ -48,12 +48,10 @@ namespace Assets.Scripts.Infrastructure
 
         public void Enter()
         {
-            Debug.Log("Вход в InitialState");
         }
 
         public void Exit()
         {
-            Debug.Log("Выход из InitialState");
         }
 
         private void PreparePlayer(WeaponPresenter weaponPresenter, BankPresenter bank, out Player player)
@@ -82,7 +80,7 @@ namespace Assets.Scripts.Infrastructure
             bankPresenter = new(bank, BankView);
         }
 
-        private void RegisterService(Player player, EnemiesManager enemiesManager,float minDamageRandom,
+        private void RegisterService(Player player, EnemiesManager enemiesManager, float minDamageRandom,
             float maxDamageRandom)
         {
             DamageRandomizer damageRandomizer = new(minDamageRandom, maxDamageRandom);

@@ -14,14 +14,12 @@ namespace Assets.Scripts.Infrastructure
 
         public void Enter()
         {
-            Debug.Log("Вход в PauseState");
             Time.timeScale = 0;
             _enemiesManager.DisableActualEnemyInteractivity();
         }
 
         public void Exit()
         {
-            Debug.Log("Выход из PauseState");
             Time.timeScale = 1;
             _enemiesManager.EnableActualEnemyInteractivity();
         }

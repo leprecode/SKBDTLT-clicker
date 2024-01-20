@@ -44,11 +44,11 @@ namespace Assets.Scripts.Weapons
 
             float lastAttackTime = 0;
 
-            for (int i = 0; i < ShotsCount; i++) 
+            for (int i = 0; i < ShotsCount; i++)
             {
                 var timeToNextShot = SecondsToOneShot * i;
                 lastAttackTime = timeToNextShot;
-                StartCoroutine(Shoot(timeToNextShot, GetRandomPosition (position), enemy));
+                StartCoroutine(Shoot(timeToNextShot, GetRandomPosition(position), enemy));
             }
 
             StartCoroutine(OnEndAttack(lastAttackTime));

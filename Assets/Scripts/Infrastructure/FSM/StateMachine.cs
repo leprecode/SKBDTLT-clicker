@@ -41,13 +41,13 @@ namespace Assets.Scripts.Infrastructure
             _states = new Dictionary<GameState, IState>
             {
                 [GameState.Initial] =
-                new InitialState(minDamageRandom, 
+                new InitialState(minDamageRandom,
                 maxDamageRandom,
-                WeaponsPrefabs, 
-                AttackPoints, 
-                BankView, 
-                Enemies, 
-                EnemiesManagerView, 
+                WeaponsPrefabs,
+                AttackPoints,
+                BankView,
+                Enemies,
+                EnemiesManagerView,
                 cellUIs,
                 weaponsCost,
                 storeView,
@@ -55,10 +55,10 @@ namespace Assets.Scripts.Infrastructure
                 audioSFXPlayer,
                 _weaponsVFXPrefabs,
                 out weaponPresenter,
-                out bankPresenter, 
-                out weaponModel, 
-                out enemiesPool, 
-                out enemiesManager, 
+                out bankPresenter,
+                out weaponModel,
+                out enemiesPool,
+                out enemiesManager,
                 out player),
 
                 [GameState.Gameplay] = new GameplayState(),
@@ -77,10 +77,6 @@ namespace Assets.Scripts.Infrastructure
 
                 _currentState = newState;
                 _currentState.Enter();
-            }
-            else
-            {
-                Debug.LogError($"Состояние с именем {state} не найдено");
             }
         }
     }
