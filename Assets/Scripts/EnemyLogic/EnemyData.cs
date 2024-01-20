@@ -7,7 +7,7 @@ namespace Assets.Scripts.EnemyLogic
     public class EnemyData : SerializedScriptableObject
     {
         [field: SerializeField] public int MaxHp { get; private set; }
-        [field: SerializeField] public string Name { get; private set; }
+        [field: SerializeField] public string Name { get; set; }
         [field: SerializeField] public Sprite Background { get; private set; }
 
     }

@@ -5,6 +5,7 @@ using Assets.Scripts.SettingsMenu;
 using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
+using Assets.Scripts.YandexSDK;
 using MoreMountains.Feedbacks;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -39,12 +40,16 @@ namespace Assets.Scripts.Infrastructure
         [SerializeField] private MMF_Player _soundSystem;
 
         [SerializeField] private Settings _settings;
+        [SerializeField] private Localization _localization;
+
 
         private WeaponModel _weaponModel;
         private WeaponPresenter _weaponPresenter;
 
         private void Awake()
         {
+            _localization.SetLanguage();
+
             _stateMachine = new StateMachine(_minDamageRandom,
                 _maxDamageRandom,
                 _weaponsPrefabs,
