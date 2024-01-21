@@ -6,6 +6,8 @@ using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
 using Assets.Scripts.YandexSDK;
+using Assets.Scripts.YandexSDK.Advertisment;
+using Assets.Scripts.YandexSDK.Localization;
 using MoreMountains.Feedbacks;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -41,6 +43,7 @@ namespace Assets.Scripts.Infrastructure
 
         [SerializeField] private Settings _settings;
         [SerializeField] private Localization _localization;
+        [SerializeField] private ADV _adv;
 
 
         private WeaponModel _weaponModel;
@@ -48,8 +51,6 @@ namespace Assets.Scripts.Infrastructure
 
         private void Awake()
         {
-            _localization.SetLanguage();
-
             _stateMachine = new StateMachine(_minDamageRandom,
                 _maxDamageRandom,
                 _weaponsPrefabs,
@@ -70,7 +71,9 @@ namespace Assets.Scripts.Infrastructure
                 out _enemiesManager,
                 out _player);
 
-
+            _localization.SetLanguage();
+            _adv.Construct(_stateMachine);
+            _adv.StartInterstitialOnAwake();
             _settings.Construct(_stateMachine);
             Subscribe();
         }
