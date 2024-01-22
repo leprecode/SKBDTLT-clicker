@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7550966285262544871}
   - component: {fileID: 2416523057066739048}
   - component: {fileID: 7934217423699434553}
-  - component: {fileID: 699704345255431311}
   - component: {fileID: 2669737259085920844}
   - component: {fileID: 6821498367648203402}
   m_Layer: 0
@@ -102,19 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: abe6c5653f9bff7469ad896670a5612a, type: 2}
   <SpriteRenderer>k__BackingField: {fileID: 2416523057066739048}
---- !u!114 &699704345255431311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2306368998022088869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3787ec62b7afd24d864678207b0c92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemy: {fileID: 7934217423699434553}
 --- !u!70 &2669737259085920844
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

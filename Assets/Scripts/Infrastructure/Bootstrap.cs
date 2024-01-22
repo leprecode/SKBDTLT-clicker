@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.EnemiesManagment;
 using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.Inputs;
 using Assets.Scripts.SettingsMenu;
 using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
@@ -48,6 +49,8 @@ namespace Assets.Scripts.Infrastructure
 
         private WeaponModel _weaponModel;
         private WeaponPresenter _weaponPresenter;
+        private InputService _inputService;
+
 
         private void Awake()
         {
@@ -70,6 +73,10 @@ namespace Assets.Scripts.Infrastructure
                 out _enemiesPool,
                 out _enemiesManager,
                 out _player);
+
+            _inputService = new InputService(_player);
+            _inputService.Initial();
+
 
             _localization.SetLanguage();
             _adv.Construct(_stateMachine);
