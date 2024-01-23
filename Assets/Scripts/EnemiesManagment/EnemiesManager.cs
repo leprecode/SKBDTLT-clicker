@@ -35,6 +35,7 @@ namespace Assets.Scripts.EnemiesManagment
             _actualEnemy = _pool.GetEnemy();
             _actualEnemy.Initialize();
             Subscribe();
+            DisableActualEnemyInteractivity();
             _view.ShowNewEnemyOnScene(_actualEnemy, true);
         }
 

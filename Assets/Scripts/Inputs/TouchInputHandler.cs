@@ -21,17 +21,16 @@ namespace Assets.Scripts.Inputs
             {
                 for (int i = 0; i < Input.touchCount; i++)
                 {
-                    Touch touch = Input.GetTouch(i);
-
-                    if (touch.phase == TouchPhase.Began)
+                    if (Input.GetTouch(i).phase == TouchPhase.Began)
                     {
-                        Ray ray = _cam.ScreenPointToRay(touch.position);
+                        Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+                        var info = Physics2D.Raycast(ray.origin, ray.direction, 10);
 
-                        if (Physics.Raycast(ray, out RaycastHit hit))
+                        if (info.collider != null)
                         {
-                            if (hit.collider.TryGetComponent(out Enemy enemy))
+                            if (info.collider.TryGetComponent(out Enemy enemy))
                             {
-                                HandleTouch(hit.point, enemy);
+                                HandleTouch(info.point, enemy);
                             }
 
                         }

@@ -104,6 +104,7 @@ namespace Assets.Scripts.EnemiesManagment
             showing.InsertCallback(_movementXDuration, () => movementY.Kill());
             showing.Append(enemy.SpriteRenderer.DOColor(Color.white, _blackColorFadeOutDuration)).SetEase(Ease.Linear);
             showing.OnComplete(() => OnCompleteShowing(enemy));
+            showing.OnComplete(enemy.EnableColliders);
         }
 
         public void OnEnemyDie()

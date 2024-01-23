@@ -15,10 +15,10 @@ mergeInto(LibraryManager.library, {
         ysdk.adv.showFullscreenAdv({
             callbacks: {
                 onClose: function (wasShown) {
-                    MyGameInstance.SendMessage('=====YANDEX=====', 'OnFullscreenADVEndOrError');
+                    myGameInstance.SendMessage('=====YANDEX=====', 'OnFullscreenADVEndOrError');
                 },
                 onError: function (error) {
-                    MyGameInstance.SendMessage('=====YANDEX=====', 'OnFullscreenADVEndOrError');
+                    myGameInstance.SendMessage('=====YANDEX=====', 'OnFullscreenADVEndOrError');
                 }
             }
         });
@@ -30,10 +30,10 @@ mergeInto(LibraryManager.library, {
                 ysdk.adv.showFullscreenAdv({
                     callbacks: {
                         onClose: function (wasShown) {
-                            MyGameInstance.SendMessage('=====YANDEX=====', 'OnFullscreenADVEndOrError');
+                            myGameInstance.SendMessage('=====YANDEX=====', 'OnFullscreenADVEndOrError');
                         },
                         onError: function (error) {
-                            MyGameInstance.SendMessage('=====YANDEX=====', 'OnFullscreenADVEndOrError');
+                            myGameInstance.SendMessage('=====YANDEX=====', 'OnFullscreenADVEndOrError');
                         }
                     }
                 });

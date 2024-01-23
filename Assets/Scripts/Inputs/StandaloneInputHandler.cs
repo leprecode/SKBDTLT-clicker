@@ -20,16 +20,14 @@ namespace Assets.Scripts.Inputs
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+                var info = Physics2D.Raycast(ray.origin, ray.direction, 10);
 
-                if (Physics.Raycast(ray, out RaycastHit hit))
+                if (info.collider != null)
                 {
-                    Debug.Log("hited" + hit.collider.gameObject.name);
-                    
-                    if (hit.collider.TryGetComponent(out Enemy enemy))
+                    if (info.collider.TryGetComponent(out Enemy enemy))
                     {
-                        HandleTouch(hit.point, enemy);
+                        HandleTouch(info.point, enemy);
                     }
-
                 }
             }
         }
