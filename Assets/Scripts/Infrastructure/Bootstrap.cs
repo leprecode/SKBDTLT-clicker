@@ -79,10 +79,11 @@ namespace Assets.Scripts.Infrastructure
 
 
             _localization.SetLanguage();
-            _adv.Construct(_stateMachine);
-            _adv.StartInterstitialOnAwake();
             _settings.Construct(_stateMachine);
             Subscribe();
+            _enemiesManager.GetFirstEnemy();
+            _adv.Construct(_stateMachine);
+            _adv.StartInterstitialOnAwake();
         }
 
         private void Subscribe()

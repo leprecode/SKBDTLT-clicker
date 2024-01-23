@@ -32,7 +32,15 @@ namespace Assets.Scripts.YandexSDK.Advertisment
 
         public void StartInterstitialOnAwake()
         {
-            ShowFullScreenADInFirstTime();
+            try
+            {
+                ShowFullScreenADInFirstTime();
+                _fsm.SetState(GameState.Pause);
+            }
+            catch
+            {
+                Debug.LogError("cant show adv on start the game");
+            }
         }
 
         public void OnFullscreenADVEndOrError()
@@ -76,8 +84,6 @@ namespace Assets.Scripts.YandexSDK.Advertisment
 
             _fsm.SetState(GameState.Pause);
         }
-
-
 
         private void ResetWarningPopup()
         {

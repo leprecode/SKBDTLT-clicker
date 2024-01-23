@@ -41,6 +41,7 @@ namespace Assets.Scripts.EnemyLogic
             _onDamagePlayer.GetFeedbackOfType<MMF_Flicker>().BoundRenderer = GetComponent<SpriteRenderer>();
             _onDamagePlayer.Initialization();
             _onDamagePlayer.SetCanPlay(true);
+            DisableColliders(); //TODO: nahui zachem vtoroi raz call
         }
 
         public void DisableColliders()

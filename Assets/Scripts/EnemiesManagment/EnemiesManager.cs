@@ -16,8 +16,6 @@ namespace Assets.Scripts.EnemiesManagment
         {
             _pool = pool;
             _view = view;
-
-            GetFirstEnemy();
         }
 
         public void DisableActualEnemyInteractivity()
@@ -30,7 +28,7 @@ namespace Assets.Scripts.EnemiesManagment
             _actualEnemy.EnableColliders();
         }
 
-        private void GetFirstEnemy()
+        public void GetFirstEnemy()
         {
             _actualEnemy = _pool.GetEnemy();
             _actualEnemy.Initialize();

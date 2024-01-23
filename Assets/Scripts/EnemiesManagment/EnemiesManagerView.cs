@@ -104,7 +104,6 @@ namespace Assets.Scripts.EnemiesManagment
             showing.InsertCallback(_movementXDuration, () => movementY.Kill());
             showing.Append(enemy.SpriteRenderer.DOColor(Color.white, _blackColorFadeOutDuration)).SetEase(Ease.Linear);
             showing.OnComplete(() => OnCompleteShowing(enemy));
-            showing.OnComplete(enemy.EnableColliders);
         }
 
         public void OnEnemyDie()
@@ -126,6 +125,8 @@ namespace Assets.Scripts.EnemiesManagment
             enemy.transform.DOMoveY(enemy.transform.position.y + _idleMovementYAmplitude, _idleMovementYDuration)
                 .SetEase(Ease.Linear)
                 .SetLoops(-1, LoopType.Yoyo).SetLink(enemy.gameObject);
+
+            enemy.EnableColliders();
         }
 
         private void InitialLifeText(int life, int maxLife)
