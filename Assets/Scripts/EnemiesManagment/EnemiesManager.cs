@@ -18,6 +18,12 @@ namespace Assets.Scripts.EnemiesManagment
             _view = view;
         }
 
+        public void UpdateEnemyNameOnTranslate()
+        {
+            if (_actualEnemy != null)
+                _view.UpdateNameOnTranslating(_actualEnemy.Name);
+        }
+
         public void DisableActualEnemyInteractivity()
         {
             _actualEnemy.DisableColliders();

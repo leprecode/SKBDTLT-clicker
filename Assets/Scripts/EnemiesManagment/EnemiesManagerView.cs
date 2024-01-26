@@ -135,6 +135,7 @@ namespace Assets.Scripts.EnemiesManagment
 
             _lastLife = life;
         }
+        public void UpdateNameOnTranslating(string name) => _characterNameText.SetText(name, _nameShoweingDuration);
 
         private void UpdateNameOnNewEnemy(string name) => _characterNameText.DOText(name, _nameShoweingDuration);
 
@@ -173,6 +174,5 @@ namespace Assets.Scripts.EnemiesManagment
             _lifeText.SetText(life + "/" + maxLife);
             _progressBar.UpdateBar(life, 0, maxLife);
         }
-
     }
 }
