@@ -6,6 +6,8 @@ namespace Assets.Scripts.Inputs
 {
     public class TouchInputHandler : MonoBehaviour
     {
+        private const int MAX_TOUCH_COUNT_TO_HANDLE = 4;
+
         private Player _player;
         private Camera _cam;
 
@@ -19,7 +21,9 @@ namespace Assets.Scripts.Inputs
         {
             if (Input.touchCount > 0)
             {
-                for (int i = 0; i < Input.touchCount; i++)
+                int touchCountToHandle = Mathf.Clamp(Input.touchCount, 0, MAX_TOUCH_COUNT_TO_HANDLE);
+
+                for (int i = 0; i < touchCountToHandle; i++)
                 {
                     if (Input.GetTouch(i).phase == TouchPhase.Began)
                     {
@@ -32,7 +36,6 @@ namespace Assets.Scripts.Inputs
                             {
                                 HandleTouch(info.point, enemy);
                             }
-
                         }
                     }
                 }

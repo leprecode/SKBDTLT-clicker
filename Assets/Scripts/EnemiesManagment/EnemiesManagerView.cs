@@ -59,8 +59,7 @@ namespace Assets.Scripts.EnemiesManagment
         [SerializeField] private MMF_Player _barPlayer;
         [SerializeField] private MMProgressBar _progressBar;
 
-        [SerializeField] private Image _backgroundImage;
-        [SerializeField] private CanvasGroup _backgroundCanvasGroup;
+        [SerializeField] private SpriteRenderer _backgroundImage;
         [SerializeField] private TextMeshProUGUI _characterNameText;
 
         private int _lastLife;
@@ -143,9 +142,9 @@ namespace Assets.Scripts.EnemiesManagment
         {
             Sequence sequence = DOTween.Sequence();
 
-            sequence.Append(_backgroundCanvasGroup.DOFade(0, _bgFadeOutDuration)).SetEase(Ease.Linear);
+            sequence.Append(_backgroundImage.DOFade(0, _bgFadeOutDuration)).SetEase(Ease.Linear);
             sequence.InsertCallback(_bgFadeOutDuration, () => _backgroundImage.sprite = newBackground);
-            sequence.Append(_backgroundCanvasGroup.DOFade(1, _bgFadeInDuration)).SetEase(Ease.Linear);
+            sequence.Append(_backgroundImage.DOFade(1, _bgFadeInDuration)).SetEase(Ease.Linear);
         }
 
         private void PrepareEnemy(Enemy enemy)
@@ -166,8 +165,7 @@ namespace Assets.Scripts.EnemiesManagment
         private void UpdateBackgroundOnFirstEnemy(Sprite newBackground)
         {
             _backgroundImage.sprite = newBackground;
-            _backgroundCanvasGroup.alpha = 0f;
-            _backgroundCanvasGroup.DOFade(1, _bgFadeInDuration).SetEase(Ease.Linear);
+            _backgroundImage.DOFade(1, _bgFadeInDuration).SetEase(Ease.Linear);
         }
 
         private void UpdateBarOnNewEnemy(int life, int maxLife)
