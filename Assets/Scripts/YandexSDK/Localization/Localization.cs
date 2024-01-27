@@ -14,6 +14,11 @@ namespace Assets.Scripts.YandexSDK.Localization
         [SerializeField] private List<TranslatedCharacters> _charactersNamesToTranslate;
         [SerializeField] private EnemiesManager _enemiesManager;
         [SerializeField] private LocalizationView _view;
+
+        public void Construct(EnemiesManager enemiesManager)
+        {
+            _enemiesManager = enemiesManager;
+        }
         public void SetLanguage()
         {
             try
@@ -51,10 +56,6 @@ namespace Assets.Scripts.YandexSDK.Localization
                 _view.InitializeView("en");
                 Debug.LogError("Cant get the players browser language");
             }
-            finally
-            {
-                _enemiesManager.UpdateEnemyNameOnTranslate();
-            }
         }
 
         public void TranslateToRussian()
@@ -83,6 +84,8 @@ namespace Assets.Scripts.YandexSDK.Localization
             {
                 _charactersNamesToTranslate[i].EnemyData.Name = _charactersNamesToTranslate[i].English;
             }
+
+            _enemiesManager.UpdateEnemyNameOnTranslate();
         }
 
         public void TranslateToTurkish()
@@ -96,6 +99,8 @@ namespace Assets.Scripts.YandexSDK.Localization
             {
                 _charactersNamesToTranslate[i].EnemyData.Name = _charactersNamesToTranslate[i].Turkish;
             }
+
+            _enemiesManager.UpdateEnemyNameOnTranslate();
         }
     }
 }

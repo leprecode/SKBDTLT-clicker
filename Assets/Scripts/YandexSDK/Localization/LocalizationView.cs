@@ -61,6 +61,7 @@ namespace Assets.Scripts.YandexSDK.Localization
         private void SetEnglishFlag()
         {
             _flagImage.sprite = _englishFlag;
+            Debug.Log("SetEnglishFlag");
         }
         private void SetTurkishFlag()
         {

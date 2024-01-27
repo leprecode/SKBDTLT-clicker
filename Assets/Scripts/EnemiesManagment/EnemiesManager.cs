@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.EnemiesManagment
 {
-    [Serializable]
     public class EnemiesManager
     {
         public event Action OnEnemyEnded;
@@ -20,8 +19,7 @@ namespace Assets.Scripts.EnemiesManagment
 
         public void UpdateEnemyNameOnTranslate()
         {
-            if (_actualEnemy != null)
-                _view.UpdateNameOnTranslating(_actualEnemy.Name);
+            _view.UpdateNameOnTranslating(_actualEnemy.Name);
         }
 
         public void DisableActualEnemyInteractivity()

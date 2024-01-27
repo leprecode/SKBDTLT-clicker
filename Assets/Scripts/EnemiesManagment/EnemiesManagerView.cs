@@ -135,7 +135,7 @@ namespace Assets.Scripts.EnemiesManagment
 
             _lastLife = life;
         }
-        public void UpdateNameOnTranslating(string name) => _characterNameText.SetText(name, _nameShoweingDuration);
+        public void UpdateNameOnTranslating(string name) => _characterNameText.DOText(name, 0);
 
         private void UpdateNameOnNewEnemy(string name) => _characterNameText.DOText(name, _nameShoweingDuration);
 

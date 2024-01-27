@@ -78,10 +78,12 @@ namespace Assets.Scripts.Infrastructure
             _inputService.Initial();
 
 
-            _localization.SetLanguage();
             _settings.Construct(_stateMachine);
-            Subscribe();
             _enemiesManager.GetFirstEnemy();
+            Subscribe();
+
+            _localization.Construct(_enemiesManager);
+            _localization.SetLanguage();
             _adv.Construct(_stateMachine);
             _adv.StartInterstitialOnAwake();
         }

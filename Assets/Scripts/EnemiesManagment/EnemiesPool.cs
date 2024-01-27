@@ -11,11 +11,12 @@ namespace Assets.Scripts.EnemiesManagment
     [Serializable]
     public class EnemiesPool
     {
-        [OdinSerialize]
-        public SerializableQueue<Enemy> _pool = new SerializableQueue<Enemy>();
+        private Queue<Enemy> _pool;
 
         public void Initialize(List<Enemy> enemies, MMF_Player onDamagePlayer)
         {
+            _pool = new Queue<Enemy>();
+
             foreach (var enemy in enemies)
             {
                 var newEnemy = MonoBehaviour.Instantiate(enemy, Vector3.zero, Quaternion.identity);
@@ -35,11 +36,6 @@ namespace Assets.Scripts.EnemiesManagment
             {
                 return null;
             }
-        }
-
-        public void SetObject(Enemy enemy)
-        {
-            _pool.Enqueue(enemy);
         }
     }
 }
