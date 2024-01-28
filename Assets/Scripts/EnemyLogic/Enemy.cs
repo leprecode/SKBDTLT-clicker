@@ -25,6 +25,11 @@ namespace Assets.Scripts.EnemyLogic
 
         private Collider2D[] _colliders;
 
+        private void Start()
+        {
+            DisableColliders();
+        }
+
         public void Construct(MMF_Player onDamagePlayer)
         {
             _onDamagePlayer = onDamagePlayer;
@@ -41,7 +46,7 @@ namespace Assets.Scripts.EnemyLogic
             _onDamagePlayer.GetFeedbackOfType<MMF_Flicker>().BoundRenderer = GetComponent<SpriteRenderer>();
             _onDamagePlayer.Initialization();
             _onDamagePlayer.SetCanPlay(true);
-            DisableColliders(); //TODO: nahui zachem vtoroi raz call
+            DisableColliders();
         }
 
         public void DisableColliders()

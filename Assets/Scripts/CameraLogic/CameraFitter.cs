@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace Assets.Scripts.CameraLogic
             Resize();
         }
 
+        [Button]
         public void Resize()
         {
             Vector2 bgSize = _background.bounds.size;
