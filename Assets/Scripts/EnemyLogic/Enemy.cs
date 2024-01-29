@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Infrastructure;
+using Assets.Scripts.YandexSDK.Advertisment;
 using MoreMountains.Feedbacks;
 using System;
 using UnityEngine;
@@ -66,7 +67,7 @@ namespace Assets.Scripts.EnemyLogic
 
         public void TakeDamage(int damage, Vector3 hitPoint)
         {
-            var actualDamage = ServiceLocator.GetService<DamageRandomizer>().GetRandomDamage(damage);
+            var actualDamage = ServiceLocator.GetService<DamageRandomizer>().GetRandomDamage(damage) * RewardData.DamageMultiplayer;
 
             var prevLife = ActualHp;
             ActualHp -= actualDamage;

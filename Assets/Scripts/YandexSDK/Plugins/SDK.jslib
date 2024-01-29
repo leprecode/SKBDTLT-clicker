@@ -9,6 +9,7 @@ mergeInto(LibraryManager.library, {
 
     },
 
+
     ShowFullScreenAD: function () {
         ysdk.adv.showFullscreenAdv({
             callbacks: {
@@ -21,6 +22,38 @@ mergeInto(LibraryManager.library, {
             }
         });
     },
+
+    TryInitializeYandexSDK: function () {
+        if (!window.ysdk) {
+            YaGames
+                .init()
+                .then(ysdk => {
+                    console.log('Yandex SDK initialized');
+                    window.ysdk = ysdk;
+                });
+        }
+    },
+
+    ShowRewardedVideo: function () {
+        ysdk.adv.showRewardedVideo({
+            callbacks: {
+                onOpen: () => {
+                  console.log('Video ad open.');
+                },
+                onRewarded: () => {
+                    myGameInstance.SendMessage('=====YANDEX=====', 'TakeRewardOnRewardedVideo');
+                  console.log('Rewarded!');
+                },
+                onClose: () => {
+                  console.log('Video ad closed.');
+                }, 
+                onError: (e) => {
+                  console.log('Error while open video ad:', e);
+                }
+            }
+        });
+    },
+
 
     GetPlatformInfo: function () {
         var ua = navigator.userAgent;

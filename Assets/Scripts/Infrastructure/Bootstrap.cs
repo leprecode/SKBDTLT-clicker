@@ -82,6 +82,7 @@ namespace Assets.Scripts.Infrastructure
             _enemiesManager.GetFirstEnemy();
             Subscribe();
 
+            _adv.InitializeSDK();
             _localization.Construct(_enemiesManager);
             _localization.SetLanguage();
             _adv.Construct(_stateMachine);
