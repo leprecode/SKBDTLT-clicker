@@ -44,7 +44,9 @@ namespace Assets.Scripts.YandexSDK.Advertisment
 
         public void OnOpenRewardVideo()
         {
+            _isRewardTime = false;
             _rewardedVideoIsShowing = true;
+            ResetWarningPopup();
         }
 
         public void OnReward()
