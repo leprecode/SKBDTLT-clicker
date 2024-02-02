@@ -1,16 +1,14 @@
-﻿using System.Runtime.InteropServices;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 using Assets.Scripts.Infrastructure;
-
+using YG;
 
 namespace Assets.Scripts.YandexSDK.Advertisment
 {
     public class ADV : MonoBehaviour
     {
-        //TODO:decompose to ciew. Remove static class RewardedData. Ввести состояния для рекламы, чтобы не было нахлестов. Заменииь
 
         private const float DurationToFadeIn = 0.5f;
         [SerializeField] private CanvasGroup _popUP;
@@ -29,35 +27,27 @@ namespace Assets.Scripts.YandexSDK.Advertisment
 
         private float _timeToNextShowing;
         private int _counterToShow = 5;
+
+        private bool _rewardedVideoIsShowing = false;
         
-        [DllImport("__Internal")]
-        private static extern void ShowFullScreenAD();
-
-        [DllImport("__Internal")]
-        private static extern void ShowRewardedVideo();
-
-        [DllImport("__Internal")]
-        private static extern void ShowFullScreenADInFirstTime();
-
-        [DllImport("__Internal")]
-        private static extern void TryInitializeYandexSDK();
-
         public void Construct(StateMachine fsm)
         {
             _fsm = fsm;
-        }
+        } 
 
-        public void InitializeSDK()
+        public void ShowRewardedVideo()
         {
-            TryInitializeYandexSDK();
+            YandexGame.RewVideoShow(1);
+            _fsm.SetState(GameState.Pause);
+            _audioSourceOnReward.Pause();
         }
 
-        public void OnRewardButtonClick()
+        public void OnOpenRewardVideo()
         {
-            ShowRewardedVideo();
+            _rewardedVideoIsShowing = true;
         }
 
-        public void TakeRewardOnRewardedVideo()
+        public void OnReward()
         {
             _isRewardTime = true;
             _rewardTimer += _rewardDuration;
@@ -65,19 +55,14 @@ namespace Assets.Scripts.YandexSDK.Advertisment
             _rewardedTimerText.SetText(_rewardTimer.ToString());
             RewardData.DamageMultiplayer = _rewardMultiplayer;
             _audioSourceOnReward.Play();
+            _fsm.SetState(GameState.Gameplay);
+            _rewardedVideoIsShowing = false;
         }
 
-        public void StartInterstitialOnAwake()
+        public void OnRewardError()
         {
-            try
-            {
-                ShowFullScreenADInFirstTime();
-                _fsm.SetState(GameState.Pause);
-            }
-            catch
-            {
-                Debug.LogError("cant show adv on start the game");
-            }
+            _fsm.SetState(GameState.Gameplay);
+            _rewardedVideoIsShowing = false;
         }
 
         public void OnFullscreenADVEndOrError()
@@ -99,6 +84,13 @@ namespace Assets.Scripts.YandexSDK.Advertisment
 
             if (_timeToNextShowing < 0) 
             {
+                if (_rewardedVideoIsShowing)
+                {
+                    _timeToNextShowing += 30;
+                    _rewardedVideoIsShowing = false;
+                    return;
+                }
+
                 _timeToNextShowing = _timeBetweenShowing;
                 ShowWarningToADV();
             }
@@ -106,7 +98,7 @@ namespace Assets.Scripts.YandexSDK.Advertisment
             if (_isRewardTime)
             {
                 _rewardTimer -= Time.deltaTime;
-                _rewardedTimerText.SetText(Mathf.Clamp(Mathf.RoundToInt(_rewardTimer),0,_rewardDuration).ToString());
+                _rewardedTimerText.SetText(Mathf.Clamp(Mathf.RoundToInt(_rewardTimer),0,600).ToString());
 
                 if (_rewardTimer < 0)
                 {
@@ -114,6 +106,7 @@ namespace Assets.Scripts.YandexSDK.Advertisment
                     _rewardedPopup.SetActive(false);
                     RewardData.DamageMultiplayer = 1;
                     _audioSourceOnReward.Stop();
+                    _rewardTimer = _rewardDuration;
                 }
             }
         }
@@ -134,8 +127,9 @@ namespace Assets.Scripts.YandexSDK.Advertisment
             }
 
             _fsm.SetState(GameState.Pause);
+            YandexGame.FullscreenShow();
         }
-
+        
         private void ResetWarningPopup()
         {
             _popUP.alpha = 0;

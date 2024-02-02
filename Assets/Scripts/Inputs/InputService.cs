@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Infrastructure;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using Unity.Burst.Intrinsics;
+using YG;
 
 namespace Assets.Scripts.Inputs
 {
@@ -15,10 +13,6 @@ namespace Assets.Scripts.Inputs
             _player = player;
         }
 
-        [DllImport("__Internal")]
-        private static extern string GetPlatformInfo();
-
-
         public void Initial()
         {
             InstallInput();
@@ -26,36 +20,28 @@ namespace Assets.Scripts.Inputs
 
         private void InstallInput()
         {
-            string platformInfo;
-
-            try
+            if (YandexGame.SDKEnabled)
             {
-                platformInfo = GetPlatformInfo();
-            }
-            catch
-            {
-                Debug.Log("CantGet platform info. set pc input");
-                SetStandaloneInput();
-                return;
-            }
-
-            Debug.Log("Platform Info: " + platformInfo);
-
-
-            if (platformInfo == "Windows" || platformInfo == "Mac" || platformInfo == "Linux" || platformInfo == "Unknown Platform")
-            {
-                Debug.Log("Game run on PC");
-                SetStandaloneInput();
-            }
-            else if (platformInfo == "iOS" || platformInfo == "Android" )
-            {
-                Debug.Log("Game run on mobile");
-                SetMobileInput();
+                if (YandexGame.EnvironmentData.isMobile || YandexGame.EnvironmentData.isTablet)
+                {
+                    SetMobileInput();
+                    Debug.Log("! YabdexSdk islaucnhed on input startup; Platform is mobile or tablet.  Set mobile input");
+                }
+                else if (YandexGame.EnvironmentData.isDesktop)
+                {
+                    SetStandaloneInput();
+                    Debug.Log("! YabdexSdk islaucnhed on input startup;  Platform is snadalone; Set standalone input");
+                }
+                else
+                {
+                    SetStandaloneInput();
+                    Debug.Log("! YabdexSdk islaucnhed on input startup; Cant check platform. Set standalone input");
+                }
             }
             else
             {
-                Debug.Log("CantGet platform info. set pc input");
                 SetStandaloneInput();
+                Debug.Log("! YabdexSdk is not laucnhed on input startup; Cant check platform. Set standalone input");
             }
         }
 

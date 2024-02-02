@@ -6,13 +6,14 @@ using Assets.Scripts.SettingsMenu;
 using Assets.Scripts.Store;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.WeaponsLogic;
-using Assets.Scripts.YandexSDK;
 using Assets.Scripts.YandexSDK.Advertisment;
 using Assets.Scripts.YandexSDK.Localization;
 using MoreMountains.Feedbacks;
 using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 namespace Assets.Scripts.Infrastructure
 {
@@ -74,23 +75,34 @@ namespace Assets.Scripts.Infrastructure
                 out _enemiesManager,
                 out _player);
 
-            _inputService = new InputService(_player);
-            _inputService.Initial();
-
-
+            StartCoroutine(WaitUntilYSDKIsInitialize());
+            _adv.Construct(_stateMachine);
             _settings.Construct(_stateMachine);
             _enemiesManager.GetFirstEnemy();
             Subscribe();
+        }
+        
+        IEnumerator WaitUntilYSDKIsInitialize()
+        {
+            while (!YandexGame.SDKEnabled)
+            {
+                Debug.Log("Waiting YSDK");
 
-            _adv.InitializeSDK();
-            _localization.Construct(_enemiesManager);
-            _localization.SetLanguage();
-            _adv.Construct(_stateMachine);
-            _adv.StartInterstitialOnAwake();
+                yield return null;
+            }
+
+            Debug.Log("Waiting YSDK is ended");
+            InitInput();
+        }
+
+        private void InitInput()
+        {
+            _inputService = new InputService(_player);
+            _inputService.Initial();
         }
 
         private void Subscribe()
-        {
+        { 
             _enemiesManager.OnEnemyEnded += EndGame;
         }
 
@@ -103,6 +115,7 @@ namespace Assets.Scripts.Infrastructure
         {
             Unsubscribe();
         }
+
 
         private void EndGame()
         {

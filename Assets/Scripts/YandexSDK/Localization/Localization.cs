@@ -7,9 +7,6 @@ namespace Assets.Scripts.YandexSDK.Localization
 {
     public class Localization : MonoBehaviour
     {
-        [DllImport("__Internal")]
-        private static extern string GetLanguage();
-
         [SerializeField] private List<TranslatedText> _textsToTranslate;
         [SerializeField] private List<TranslatedCharacters> _charactersNamesToTranslate;
         [SerializeField] private EnemiesManager _enemiesManager;
@@ -21,10 +18,8 @@ namespace Assets.Scripts.YandexSDK.Localization
         }
         public void SetLanguage()
         {
-            try
+          /*  try
             {
-                var currentLang = GetLanguage();
-
                 if (currentLang == "ru" || currentLang == "be" || currentLang == "kk" || currentLang == "uk" || currentLang == "uz")
                 {
                     TranslateToRussian();
@@ -55,7 +50,7 @@ namespace Assets.Scripts.YandexSDK.Localization
                 TranslateToEnglish();
                 _view.InitializeView("en");
                 Debug.LogError("Cant get the players browser language");
-            }
+            }*/
         }
 
         public void TranslateToRussian()
