@@ -13,6 +13,7 @@ namespace Assets.Scripts.Infrastructure
     public class InitialState : IState
     {
         public InitialState(
+            int startMoney,
             float minDamageRandom,
             float maxDamageRandom,
             Dictionary<Weapon, int> WeaponsPrefabs,
@@ -34,7 +35,7 @@ namespace Assets.Scripts.Infrastructure
             out Player player)
         {
             PrepareWeapons(WeaponsPrefabs, AttackPoints, weaponsVFXPrefabs, audioSFXPlayer, out weaponModel, out weaponPresenter);
-            PrepareBankSystem(BankView, out bankPresenter);
+            PrepareBankSystem(BankView, startMoney, out bankPresenter);
 
             StorePresenter StorePresenter =
                 new StorePresenter(cellUIs, weaponPresenter, weaponsCost, bankPresenter, storeView);
@@ -74,9 +75,9 @@ namespace Assets.Scripts.Infrastructure
             weaponPresenter = new WeaponPresenter(weaponModel);
         }
 
-        private void PrepareBankSystem(BankView BankView, out BankPresenter bankPresenter)
+        private void PrepareBankSystem(BankView BankView, int startMoney, out BankPresenter bankPresenter)
         {
-            Bank bank = new Bank(0);
+            Bank bank = new Bank(startMoney);
             bankPresenter = new(bank, BankView);
         }
 

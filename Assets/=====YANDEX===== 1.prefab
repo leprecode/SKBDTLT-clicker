@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2761072713818537579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112917810328909518}
+  - component: {fileID: 6479910366984447829}
+  m_Layer: 0
+  m_Name: =====YANDEX===== 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &112917810328909518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761072713818537579}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6479910366984447829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761072713818537579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca5bc1733416c340acc472046ac223f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textsToTranslate:
+  - <Name>k__BackingField: ButtonEarn
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u0414\u043E\u0445\u043E\u0434"
+    <English>k__BackingField: Income
+    <Turkish>k__BackingField: Gelir
+  - <Name>k__BackingField: ButtonEarnTime
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u041D\u0430 30 \u0441\u0435\u043A\u0443\u043D\u0434"
+    <English>k__BackingField: for 30 seconds
+    <Turkish>k__BackingField: 30 saniye boyunca
+  - <Name>k__BackingField: SettingsMenuTitle
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+    <English>k__BackingField: Settings
+    <Turkish>k__BackingField: Ayarlar
+  - <Name>k__BackingField: SettingsRestartButton
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E"
+    <English>k__BackingField: Restart game
+    <Turkish>k__BackingField: "Oyunu yeniden ba\u015Flat"
+  - <Name>k__BackingField: Sound
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u0437\u0432\u0443\u043A"
+    <English>k__BackingField: Enable sound
+    <Turkish>k__BackingField: "Sesi etkinle\u015Ftir "
+  - <Name>k__BackingField: TextDamage
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u0442\u0435\u043A\u0441\u0442
+      \u0443\u0440\u043E\u043D\u0430"
+    <English>k__BackingField: Enable damage text
+    <Turkish>k__BackingField: "Hasar metnini etkinle\u015Ftir"
+  - <Name>k__BackingField: TextDamageAnnotation
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "(\u0412\u043B\u0438\u044F\u0435\u0442 \u043D\u0430
+      \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C)"
+    <English>k__BackingField: '(Affects performance) '
+    <Turkish>k__BackingField: "(Performans\u0131 etkiler) "
+  - <Name>k__BackingField: 'POPUP: restart title'
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u041D\u0430\u0447\u0430\u0442\u044C \u0438\u0433\u0440\u0443
+      \u0437\u0430\u043D\u043E\u0432\u043E?"
+    <English>k__BackingField: 'Restart the game? '
+    <Turkish>k__BackingField: "Oyun yeniden ba\u015Flat\u0131ls\u0131n m\u0131? "
+  - <Name>k__BackingField: YpuSure?
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u0412\u0435\u0441\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441
+      \u0431\u0443\u0434\u0435\u0442 \u0443\u0442\u0435\u0440\u044F\u043D. \u0412\u044B
+      \u0443\u0432\u0435\u0440\u0435\u043D\u044B?"
+    <English>k__BackingField: All progress will be lost. Are you sure?
+    <Turkish>k__BackingField: "T\xFCm ilerlemeler kaybolacak. Emin misin?"
+  - <Name>k__BackingField: 'POPUP: restart YES button'
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u0414\u0430!"
+    <English>k__BackingField: Yes!
+    <Turkish>k__BackingField: Evet!
+  - <Name>k__BackingField: 'POPUP: restart NO button'
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u041D\u0435\u0442!"
+    <English>k__BackingField: No!
+    <Turkish>k__BackingField: "Hay\u0131r!"
+  - <Name>k__BackingField: 'POPUP: notEnoughMoney'
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u041D\u0435\u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E
+      \u0434\u0435\u043D\u0435\u0433"
+    <English>k__BackingField: 'Not enough money '
+    <Turkish>k__BackingField: Yetersiz para
+  - <Name>k__BackingField: 'POPUP: EndGamePopup Title'
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u0435\u043C!"
+    <English>k__BackingField: Congratulations!
+    <Turkish>k__BackingField: 'Tebrikler! '
+  - <Name>k__BackingField: 'POPUP: EndGamePopup Description'
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u0412\u044B \u043F\u043E\u0431\u0438\u043B\u0438
+      \u0432\u0441\u0435\u0445 \u0447\u0443\u0448\u043F\u0430\u043D\u043E\u0432 \u0438
+      \u0432\u0440\u0430\u0433\u043E\u0432! \u0412\u044B \u0441\u0442\u0430\u043B\u0438
+      \u0441\u0430\u043C\u044B\u043C \u0441\u0438\u043B\u044C\u043D\u044B\u043C \u043F\u0430\u0446\u0430\u043D\u043E\u043C
+      \u043D\u0430 \u0440\u0430\u0439\u043E\u043D\u0435!"
+    <English>k__BackingField: You have defeated all the chushpans and enemies! You
+      have become the strongest pacan in the area!
+    <Turkish>k__BackingField: "T\xFCm chushpan'lar\u0131 ve d\xFC\u015Fmanlar\u0131
+      yendin! B\xF6lgedeki en g\xFC\xE7l\xFC pacan oldun!"
+  - <Name>k__BackingField: 'Warning: FULLSCREEN AD'
+    <Text>k__BackingField: {fileID: 0}
+    <Russian>k__BackingField: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430\u0447\u043D\u0435\u0442\u0441\u044F
+      \u0447\u0435\u0440\u0435\u0437:"
+    <English>k__BackingField: 'Advertising will start in:'
+    <Turkish>k__BackingField: "Reklam \u015Fu tarihte ba\u015Flayacak: \u200B"
+  _charactersNamesToTranslate:
+  - <EnemyData>k__BackingField: {fileID: 11400000, guid: 886ed9128dc2cbd4cb90751197481329, type: 2}
+    <Russian>k__BackingField: "\u0427\u0443\u0448\u043F\u0430\u043D"
+    <English>k__BackingField: Chuspan
+    <Turkish>k__BackingField: "\xC7uspan"
+  - <EnemyData>k__BackingField: {fileID: 11400000, guid: abe6c5653f9bff7469ad896670a5612a, type: 2}
+    <Russian>k__BackingField: "\u041E\u0431\u043E\u0440\u0432\u044B\u0448"
+    <English>k__BackingField: Oborvish
+    <Turkish>k__BackingField: "Oborvi\u015F"
+  - <EnemyData>k__BackingField: {fileID: 11400000, guid: 10929bbcaf821024d8bebf873aca792b, type: 2}
+    <Russian>k__BackingField: "\u041F\u0430\u043D\u043A"
+    <English>k__BackingField: Punk
+    <Turkish>k__BackingField: Punk
+  - <EnemyData>k__BackingField: {fileID: 11400000, guid: f64671320f9660749ae1d1af8f89a340, type: 2}
+    <Russian>k__BackingField: "\u0421\u0438\u0434\u0435\u043B\u0435\u0446"
+    <English>k__BackingField: Prisoner
+    <Turkish>k__BackingField: Mahkum
+  - <EnemyData>k__BackingField: {fileID: 11400000, guid: 0a12a17eef56fbf4a981204473d7857b, type: 2}
+    <Russian>k__BackingField: "\u041A\u043E\u043C\u0441\u043E\u043C\u043E\u043B\u0435\u0446"
+    <English>k__BackingField: Pioner
+    <Turkish>k__BackingField: "\xF6nc\xFC"
+  _view: {fileID: 0}

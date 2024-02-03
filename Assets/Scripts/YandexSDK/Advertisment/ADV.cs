@@ -108,7 +108,6 @@ namespace Assets.Scripts.YandexSDK.Advertisment
                     _rewardedPopup.SetActive(false);
                     RewardData.DamageMultiplayer = 1;
                     _audioSourceOnReward.Stop();
-                    _rewardTimer = _rewardDuration;
                 }
             }
         }

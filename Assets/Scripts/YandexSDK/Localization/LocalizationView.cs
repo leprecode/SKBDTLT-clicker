@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.YandexSDK.Localization
@@ -13,7 +8,7 @@ namespace Assets.Scripts.YandexSDK.Localization
         [SerializeField] private Sprite _turkishFlag;
         [SerializeField] private Sprite _englishFlag;
         [SerializeField] private Sprite _russianFlag;
-        [SerializeField] private Localization _localization;
+        [SerializeField] private MyLocalization _localization;
 
         [SerializeField] private Image _flagImage;
 

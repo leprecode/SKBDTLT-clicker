@@ -1,11 +1,11 @@
 ﻿using Assets.Scripts.EnemiesManagment;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
+using YG;
 
 namespace Assets.Scripts.YandexSDK.Localization
 {
-    public class Localization : MonoBehaviour
+    public class MyLocalization : MonoBehaviour
     {
         [SerializeField] private List<TranslatedText> _textsToTranslate;
         [SerializeField] private List<TranslatedCharacters> _charactersNamesToTranslate;
@@ -16,41 +16,36 @@ namespace Assets.Scripts.YandexSDK.Localization
         {
             _enemiesManager = enemiesManager;
         }
-        public void SetLanguage()
+        public void SetLanguageOnStartup()
         {
-          /*  try
+            var currentLang = YandexGame.EnvironmentData.language;
+
+
+            if (currentLang == "ru" || currentLang == "be" || currentLang == "kk" || currentLang == "uk" || currentLang == "uz")
             {
-                if (currentLang == "ru" || currentLang == "be" || currentLang == "kk" || currentLang == "uk" || currentLang == "uz")
-                {
-                    TranslateToRussian();
-                    _view.InitializeView("ru");
-                    Debug.Log("Players browser set to Russian");
-                }
-                else if (currentLang == "en")
-                {
-                    TranslateToEnglish();
-                    _view.InitializeView("en");
-                    Debug.Log("Players browser set to English");
-                }
-                else if (currentLang == "tr")
-                {
-                    TranslateToEnglish();
-                    _view.InitializeView("tr");
-                    Debug.Log("Players browser set to Turkish");
-                }
-                else
-                {
-                    TranslateToEnglish();
-                    _view.InitializeView("en");
-                    Debug.Log("Players browser set to unknowh lang. Translate the game to english");
-                }
+                TranslateToRussian();
+                _view.InitializeView("ru");
+                Debug.Log("Players browser set to Russian");
             }
-            catch
+            else if (currentLang == "en")
             {
                 TranslateToEnglish();
                 _view.InitializeView("en");
-                Debug.LogError("Cant get the players browser language");
-            }*/
+                Debug.Log("Players browser set to English");
+            }
+            else if (currentLang == "tr")
+            {
+                TranslateToEnglish();
+                _view.InitializeView("tr");
+                Debug.Log("Players browser set to Turkish");
+            }
+            else
+            {
+                TranslateToEnglish();
+                _view.InitializeView("en");
+                Debug.Log("Players browser set to unknowh lang. Translate the game to english");
+            }
+
         }
 
         public void TranslateToRussian()

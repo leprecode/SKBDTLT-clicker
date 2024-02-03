@@ -22,6 +22,7 @@ namespace Assets.Scripts.Infrastructure
         [SerializeField] private Transform[] _attackPoints;
         [SerializeField] private float _minDamageRandom;
         [SerializeField] private float _maxDamageRandom;
+        [SerializeField] private int _startMoney;
         [SerializeField] private Dictionary<Weapon, int> _weaponsPrefabs = new Dictionary<Weapon, int>();
         [SerializeField] private Dictionary<WeaponName, MMF_Player> _weaponsVFXPrefabs = new Dictionary<WeaponName, MMF_Player>();
         [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
@@ -44,7 +45,7 @@ namespace Assets.Scripts.Infrastructure
         [SerializeField] private MMF_Player _soundSystem;
 
         [SerializeField] private Settings _settings;
-        [SerializeField] private Localization _localization;
+        [SerializeField] private MyLocalization _localization;
         [SerializeField] private ADV _adv;
 
 
@@ -55,7 +56,8 @@ namespace Assets.Scripts.Infrastructure
 
         private void Awake()
         {
-            _stateMachine = new StateMachine(_minDamageRandom,
+            _stateMachine = new StateMachine(_startMoney,
+                _minDamageRandom,
                 _maxDamageRandom,
                 _weaponsPrefabs,
                 _attackPoints,
@@ -75,13 +77,22 @@ namespace Assets.Scripts.Infrastructure
                 out _enemiesManager,
                 out _player);
 
-            StartCoroutine(WaitUntilYSDKIsInitialize());
             _adv.Construct(_stateMachine);
             _settings.Construct(_stateMachine);
             _enemiesManager.GetFirstEnemy();
+            _localization.Construct(_enemiesManager);
+
+            StartCoroutine(WaitUntilYSDKIsInitialize());
+            
             Subscribe();
         }
-        
+
+        [Button]
+        private void PushMoney()
+        {
+            _bankPresenter.AddMoney(_startMoney);
+        }
+
         IEnumerator WaitUntilYSDKIsInitialize()
         {
             while (!YandexGame.SDKEnabled)
@@ -93,6 +104,7 @@ namespace Assets.Scripts.Infrastructure
 
             Debug.Log("Waiting YSDK is ended");
             InitInput();
+            _localization.SetLanguageOnStartup();
         }
 
         private void InitInput()

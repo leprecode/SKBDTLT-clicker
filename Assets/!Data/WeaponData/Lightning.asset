@@ -30,7 +30,7 @@ MonoBehaviour:
       Data: 0
     - Name: <FadeDuration>k__BackingField
       Entry: 4
-      Data: 0.5
+      Data: 2
     - Name: <Damage>k__BackingField
       Entry: 3
       Data: 2250
