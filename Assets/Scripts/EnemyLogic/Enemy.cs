@@ -65,6 +65,15 @@ namespace Assets.Scripts.EnemyLogic
             }
         }
 
+
+      /*  private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TakeDamage(100000, Vector3.zero);
+            }
+        }*/
+
         public void TakeDamage(int damage, Vector3 hitPoint)
         {
             var actualDamage = ServiceLocator.GetService<DamageRandomizer>().GetRandomDamage(damage) * RewardData.DamageMultiplayer;
