@@ -12,9 +12,11 @@ namespace Assets.Scripts.EnemiesManagment
     public class EnemiesPool
     {
         private Queue<Enemy> _pool;
-
+        private int _allEnemiesAtStart;
         public void Initialize(List<Enemy> enemies, MMF_Player onDamagePlayer)
         {
+            _allEnemiesAtStart = enemies.Count;
+
             _pool = new Queue<Enemy>();
 
             foreach (var enemy in enemies)
@@ -24,6 +26,11 @@ namespace Assets.Scripts.EnemiesManagment
                 newEnemy.gameObject.SetActive(false);
                 _pool.Enqueue(newEnemy);
             }
+        }
+
+        public int GetEnemyNumber()
+        {
+            return _allEnemiesAtStart - _pool.Count - 1;
         }
 
         public Enemy GetEnemy()
@@ -36,6 +43,16 @@ namespace Assets.Scripts.EnemiesManagment
             {
                 return null;
             }
+        }
+
+        public Enemy GetEnemyByNumber(int number)
+        {
+            for (int i = 0; i < number; i++)
+            {
+                _pool.Dequeue();
+            }
+
+            return _pool.Dequeue();
         }
     }
 }

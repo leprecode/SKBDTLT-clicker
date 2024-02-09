@@ -10,6 +10,7 @@ namespace Assets.Scripts.BankLogic
         private readonly Bank _bank;
         private readonly BankView _view;
 
+        public int Money => _bank.money;
 
         public BankPresenter(Bank bank, BankView view)
         {
@@ -22,6 +23,12 @@ namespace Assets.Scripts.BankLogic
             _bank.money += money;
             _view.UpdateUIOnAddingMoney(_bank.money);
             OnMoneyEarned?.Invoke(_bank.money);
+        }
+
+        public void SetMoneyOnLoad(int money)
+        {
+            _bank.money = money;
+            _view.UpdateUIOnAddingMoney(_bank.money);
         }
 
         public bool TryBuy(int cost)

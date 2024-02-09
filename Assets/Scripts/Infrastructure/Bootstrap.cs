@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.BankLogic;
 using Assets.Scripts.EnemiesManagment;
 using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.Infrastructure.Save_LoadSystem;
 using Assets.Scripts.Inputs;
 using Assets.Scripts.SettingsMenu;
 using Assets.Scripts.Store;
@@ -19,6 +20,7 @@ namespace Assets.Scripts.Infrastructure
 {
     public class Bootstrap : SerializedMonoBehaviour
     {
+        [SerializeField] private float _timeToSave;
         [SerializeField] private Transform[] _attackPoints;
         [SerializeField] private float _minDamageRandom;
         [SerializeField] private float _maxDamageRandom;
@@ -47,12 +49,13 @@ namespace Assets.Scripts.Infrastructure
         [SerializeField] private Settings _settings;
         [SerializeField] private MyLocalization _localization;
         [SerializeField] private ADV _adv;
-
+        [SerializeField] List<WeaponName> _orderedByCostWeapons;
 
         private WeaponModel _weaponModel;
         private WeaponPresenter _weaponPresenter;
         private InputService _inputService;
-
+        private SaveLoadManager _saveLoadManager;
+        private StorePresenter _storePresenter;
 
         private void Awake()
         {
@@ -70,6 +73,8 @@ namespace Assets.Scripts.Infrastructure
                 _onDamagePlayer,
                 _soundSystem,
                 _weaponsVFXPrefabs,
+                _orderedByCostWeapons,
+                out _storePresenter,
                 out _weaponPresenter,
                 out _bankPresenter,
                 out _weaponModel,
@@ -79,18 +84,57 @@ namespace Assets.Scripts.Infrastructure
 
             _adv.Construct(_stateMachine);
             _settings.Construct(_stateMachine);
-            _enemiesManager.GetFirstEnemy();
+
+            LaunchGameplayProgress();
+
             _localization.Construct(_enemiesManager);
 
             StartCoroutine(WaitUntilYSDKIsInitialize());
-            
+
             Subscribe();
+
+            InvokeRepeating("SaveProgress", _timeToSave, _timeToSave);
         }
 
-        [Button]
-        private void PushMoney()
+        private void SaveProgress()
         {
-            _bankPresenter.AddMoney(_startMoney);
+            Debug.Log("SaveData");
+            _saveLoadManager.SetMoneys(_bankPresenter.Money);
+            _saveLoadManager.SetBoughtWeaponsCount(_weaponPresenter.WeaponsCount);
+            _saveLoadManager.SetLastEnemyNumber(_enemiesManager.GetEnemyNumber());
+            _saveLoadManager.SetLastEnemyHp(_enemiesManager.GetActualEnemyHP());
+            PlayerPrefs.Save();
+        }
+
+        private void LaunchGameplayProgress()
+        {
+            _saveLoadManager = new SaveLoadManager();
+
+            if (_saveLoadManager.IsFirstLaunch())
+            {
+                FirstLaunch();
+            }
+            else
+            {
+                var lastEnemy = _saveLoadManager.GetLastEnemyNumber();
+                var lastEnemyHp = _saveLoadManager.GetLastEnemyHp();
+                var moneysEarned = _saveLoadManager.GetMoneys();
+                var weaponsBoughtCount = _saveLoadManager.GetBoughtWeaponsCount();
+                //var rewardedTime = _saveLoadManager.GetRewardedTime();
+
+
+                _enemiesManager.GetEnemyByNumber(lastEnemy, lastEnemyHp);
+                _bankPresenter.SetMoneyOnLoad(moneysEarned);
+                _weaponPresenter.EquipWeaponByLoad(weaponsBoughtCount);
+                _storeView.SetInactiveStatesOnLoadProgress(weaponsBoughtCount);
+            }
+        }
+
+        private void FirstLaunch()
+        {
+            _saveLoadManager.SetIsSecondLaunch();
+            _enemiesManager.GetFirstEnemy();
+            _storePresenter.InitialWithoutSaving();
         }
 
         IEnumerator WaitUntilYSDKIsInitialize()

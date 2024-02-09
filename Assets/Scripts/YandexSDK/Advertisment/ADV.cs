@@ -4,6 +4,7 @@ using DG.Tweening;
 using System.Collections;
 using Assets.Scripts.Infrastructure;
 using YG;
+using System;
 
 namespace Assets.Scripts.YandexSDK.Advertisment
 {
@@ -19,6 +20,7 @@ namespace Assets.Scripts.YandexSDK.Advertisment
         [SerializeField] private float _rewardDuration;
         [SerializeField] private int _rewardMultiplayer;
         [SerializeField] private AudioSource _audioSourceOnReward;
+        [SerializeField] private GameObject _popupContinueOnFullscreenClose;
         
         private bool _isRewardTime;
         private float _rewardTimer;
@@ -69,8 +71,17 @@ namespace Assets.Scripts.YandexSDK.Advertisment
 
         public void OnFullscreenADVEndOrError()
         {
-            Debug.Log("OnFullscreenADEndOrError");
-            ResetWarningPopup(); 
+            ResetWarningPopup();
+            EnableContuinuePopup();
+        }
+
+        private void EnableContuinuePopup()
+        {
+            _popupContinueOnFullscreenClose.SetActive(true) ;
+        }
+
+        public void OnFullscreenPopupYesButtonClick()
+        {
             _timeToNextShowing = _timeBetweenShowing;
             _fsm.SetState(GameState.Gameplay);
         }

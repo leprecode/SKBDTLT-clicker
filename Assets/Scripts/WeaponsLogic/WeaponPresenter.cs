@@ -10,6 +10,8 @@ namespace Assets.Scripts.WeaponsLogic
     {
         [SerializeField] private readonly WeaponModel _model;
 
+        public int WeaponsCount => _model.WeaponsCount;
+
         public WeaponPresenter(WeaponModel weaponModel)
         {
             _model = weaponModel;
@@ -45,5 +47,10 @@ namespace Assets.Scripts.WeaponsLogic
             _model.ActualWeapon = name;
             _model.AddNewWeapon(name);
         }
+        public void EquipWeaponByLoad(int weaponsCount)
+        {
+            _model.LoadBoughtWeapons(weaponsCount);
+        }
+
     }
 }

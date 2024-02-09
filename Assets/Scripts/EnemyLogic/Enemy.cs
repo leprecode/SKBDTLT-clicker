@@ -39,8 +39,13 @@ namespace Assets.Scripts.EnemyLogic
             _colliders = GetComponents<Collider2D>();
         }
 
-        public void Initialize()
+        public void Initialize(int savedHP = -1)
         {
+            if (savedHP != -1)
+            {
+                ActualHp = savedHP;
+            }
+
             _onDamagePlayer.GetFeedbackOfType<MMF_Scale>().AnimateScaleTarget = transform;
             _onDamageFloatingText = _onDamagePlayer.GetFeedbackOfType<MMF_FloatingText>();
             _onDamageParticles = _onDamagePlayer.GetFeedbackOfType<MMF_ParticlesInstantiation>();

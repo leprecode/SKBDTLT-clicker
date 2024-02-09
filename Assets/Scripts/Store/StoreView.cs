@@ -7,7 +7,9 @@ namespace Assets.Scripts.Store
     public class StoreView : MonoBehaviour
     {
         public StoreCellUI LastAvctiveCell { get; set; }
+
         [SerializeField] private CanvasGroup _popUp;
+        [SerializeField] private CanvasGroup _store;
         [SerializeField] private float _fadeDuration = 1.0f;
         [SerializeField] private AudioSource _audioSource;
         private StoreCellUI[] _cells;
@@ -32,6 +34,17 @@ namespace Assets.Scripts.Store
             _popUpTween?.Kill();
             _popUp.alpha = 1;
             _popUpTween = _popUp.DOFade(0, _fadeDuration).SetEase(Ease.Linear);
+        }
+
+        public void SetInactiveStatesOnLoadProgress(int weaponsCount)
+        {
+            for (int i = 0; i < weaponsCount; i++)
+            {
+                _cells[i].SetDisableState();
+            }
+
+            LastAvctiveCell = _cells[weaponsCount - 1];
+            LastAvctiveCell.SetActiveState();
         }
 
         public void UpdateActualCellUI(StoreCellUI cell)

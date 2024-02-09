@@ -27,6 +27,8 @@ namespace Assets.Scripts.Infrastructure
             MMF_Player onDamagePlayer,
             MMF_Player audioSFXPlayer,
             Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs,
+            List<WeaponName> orderedByCostWeapons,
+            out StorePresenter storePresenter,
             out WeaponPresenter weaponPresenter,
             out BankPresenter bankPresenter,
             out WeaponModel weaponModel,
@@ -34,10 +36,10 @@ namespace Assets.Scripts.Infrastructure
             out EnemiesManager enemiesManager,
             out Player player)
         {
-            PrepareWeapons(WeaponsPrefabs, AttackPoints, weaponsVFXPrefabs, audioSFXPlayer, out weaponModel, out weaponPresenter);
+            PrepareWeapons(orderedByCostWeapons,WeaponsPrefabs, AttackPoints, weaponsVFXPrefabs, audioSFXPlayer, out weaponModel, out weaponPresenter);
             PrepareBankSystem(BankView, startMoney, out bankPresenter);
 
-            StorePresenter StorePresenter =
+            storePresenter =
                 new StorePresenter(cellUIs, weaponPresenter, weaponsCost, bankPresenter, storeView);
 
             PrepareEnemies(Enemies, onDamagePlayer, EnemiesManagerView, out enemiesPool, out enemiesManager);
@@ -68,10 +70,10 @@ namespace Assets.Scripts.Infrastructure
             enemiesManager = new EnemiesManager(enemiesPool, EnemiesManagerView);
         }
 
-        private void PrepareWeapons(Dictionary<Weapon, int> WeaponsPrefabs, Transform[] AttackPoints, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs,
+        private void PrepareWeapons(List<WeaponName> orderedByCostWeapons,Dictionary<Weapon, int> WeaponsPrefabs, Transform[] AttackPoints, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs,
             MMF_Player audioSFXPlayer, out WeaponModel weaponModel, out WeaponPresenter weaponPresenter)
         {
-            weaponModel = new WeaponModel(WeaponsPrefabs, WeaponName.Fist, AttackPoints, weaponsVFXPrefabs, audioSFXPlayer);
+            weaponModel = new WeaponModel(orderedByCostWeapons,WeaponsPrefabs, WeaponName.Fist, AttackPoints, weaponsVFXPrefabs, audioSFXPlayer);
             weaponPresenter = new WeaponPresenter(weaponModel);
         }
 

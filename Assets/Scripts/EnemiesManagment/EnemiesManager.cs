@@ -11,11 +11,16 @@ namespace Assets.Scripts.EnemiesManagment
         private readonly EnemiesManagerView _view;
         private Enemy _actualEnemy;
 
+
         public EnemiesManager(EnemiesPool pool, EnemiesManagerView view)
         {
             _pool = pool;
             _view = view;
         }
+
+        public int GetEnemyNumber() => _pool.GetEnemyNumber();
+
+        public int GetActualEnemyHP() => _actualEnemy.ActualHp;
 
         public void UpdateEnemyNameOnTranslate()
         {
@@ -36,6 +41,15 @@ namespace Assets.Scripts.EnemiesManagment
         {
             _actualEnemy = _pool.GetEnemy();
             _actualEnemy.Initialize();
+            Subscribe();
+            DisableActualEnemyInteractivity();
+            _view.ShowNewEnemyOnScene(_actualEnemy, true);
+        }
+
+        public void GetEnemyByNumber(int number, int hp)
+        {
+            _actualEnemy = _pool.GetEnemyByNumber(number);
+            _actualEnemy.Initialize(hp);
             Subscribe();
             DisableActualEnemyInteractivity();
             _view.ShowNewEnemyOnScene(_actualEnemy, true);

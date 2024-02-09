@@ -18,7 +18,7 @@ namespace Assets.Scripts.Store
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private Animator _animator;
 
-        private float _timeToUpdatePrice = 0.3f;
+        private float _timeToUpdatePrice = 0f;
 
         public void SetPrice(int price)
         {
@@ -33,6 +33,11 @@ namespace Assets.Scripts.Store
         public void SetInactiveState()
         {
             _animator.SetBool(ACTIVE_HASH_ID, false);
+        }
+
+        public void SetDisableState()
+        {
+            _animator.SetTrigger("IdleBuyed");
         }
 
         public void SetAllowToBuy()

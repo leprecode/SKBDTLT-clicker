@@ -12,6 +12,7 @@ namespace Assets.Scripts.WeaponsLogic
         [SerializeField] public WeaponName ActualWeapon { get; set; }
 
         private const int COUNT_TO_EXPAND = 5;
+        private readonly List<WeaponName> _orderedByCostWeapons;
         private readonly Dictionary<Weapon, int> _weaponsPrefabs;
         private readonly Dictionary<WeaponName, MMF_Player> _weaponsVFXPrefabs;
         private readonly MMF_Player _audioSFXPlayer;
@@ -21,10 +22,12 @@ namespace Assets.Scripts.WeaponsLogic
         [SerializeField] private Dictionary<WeaponName, Queue<GameObject>> _impacts;
         [SerializeField] private List<WeaponName> _allUnbuyedWeapons;
 
+        public int WeaponsCount => _boughtWeapons.Count;
 
-        public WeaponModel(Dictionary<Weapon, int> weaponsPrefab, WeaponName startWeapon,
+        public WeaponModel(List<WeaponName> orderedByCostWeapons,Dictionary<Weapon, int> weaponsPrefab, WeaponName startWeapon,
             Transform[] attackPoints, Dictionary<WeaponName, MMF_Player> weaponsVFXPrefabs, MMF_Player audioSFXPlayer)
         {
+            _orderedByCostWeapons = orderedByCostWeapons;
             _weaponsPrefabs = weaponsPrefab;
             _weaponsVFXPrefabs = weaponsVFXPrefabs;
             _audioSFXPlayer = audioSFXPlayer;
@@ -72,7 +75,24 @@ namespace Assets.Scripts.WeaponsLogic
 
             return _weaponsPool[(int)queueIndex].Dequeue();
         }
+        
+        public Vector3 GetRandomAttackPoint()
+        {
+            return _attackPoints[UnityEngine.Random.Range(0, _attackPoints.Length)];
+        }
 
+        public void LoadBoughtWeapons(int weaponsCount)
+        {
+            for (int i = 0; i < weaponsCount-1; i++)
+            {
+                _boughtWeapons.Add(_orderedByCostWeapons[i]);
+                _allUnbuyedWeapons.Remove(_orderedByCostWeapons[i]);
+            }
+
+            ActualWeapon = _boughtWeapons[_boughtWeapons.Count-1];
+        }
+        
+        
         private void ExpandQueue(int indexOfQueue)
         {
             Weapon toCreate = null;
@@ -97,11 +117,6 @@ namespace Assets.Scripts.WeaponsLogic
                 newWeapon.gameObject.SetActive(false);
                 _weaponsPool[indexOfQueue].Enqueue(newWeapon);
             }
-        }
-
-        public Vector3 GetRandomAttackPoint()
-        {
-            return _attackPoints[UnityEngine.Random.Range(0, _attackPoints.Length)];
         }
 
         private void InitializeAllUnbuyedWeapon()

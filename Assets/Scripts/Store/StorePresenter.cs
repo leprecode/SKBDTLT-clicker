@@ -22,27 +22,9 @@ namespace Assets.Scripts.Store
             _bankPresenter = bankPresenter;
             _storeView = storeView;
 
-            _storeView.LastAvctiveCell = _cells[0];
-
             Subscribe();
             _storeView.Construct(cells);
             _storeView.SetCellsPrices(_weaponsCost);
-
-            ActivateStartWeapon();
-        }
-
-        private void ActivateStartWeapon()
-        {
-            var actualWeapon = _weaponPresenter.GetActualWeapon;
-
-            for (int i = 0; i < _cells.Length; i++)
-            {
-                if (_cells[i].Name == actualWeapon)
-                {
-                    _cells[i].SetActiveState();
-                    break;
-                }
-            }
         }
 
         ~StorePresenter()
@@ -50,7 +32,13 @@ namespace Assets.Scripts.Store
             Unsubscribe();
         }
 
-        private void OnMoneyEarning(int totalMoney)
+        public void InitialWithoutSaving()
+        {
+            _storeView.LastAvctiveCell = _cells[0];
+            ActivateStartWeapon();
+        }
+
+        public void OnMoneyEarning(int totalMoney)
         {
             var allUnbuyedWeapons = _weaponPresenter.GetAllUnbyedWeapons();
 
@@ -69,8 +57,19 @@ namespace Assets.Scripts.Store
                 }
             }
         }
+        private void ActivateStartWeapon()
+        {
+            var actualWeapon = _weaponPresenter.GetActualWeapon;
 
-
+            for (int i = 0; i < _cells.Length; i++)
+            {
+                if (_cells[i].Name == actualWeapon)
+                {
+                    _cells[i].SetActiveState();
+                    break;
+                }
+            }
+        }
         private void OnCellClick(StoreCellUI cell, WeaponName name)
         {
             if (_storeView.LastAvctiveCell.Name == name)
