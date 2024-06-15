@@ -3,6 +3,7 @@ using DG.Tweening;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using Sirenix.OdinInspector;
+using System.Drawing;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -101,8 +102,16 @@ namespace Assets.Scripts.EnemiesManagment
             showing.AppendInterval(_intervalBeforMoveXCharacter);
             showing.Append(enemy.transform.DOMoveX(0, _movementXDuration));
             showing.InsertCallback(_movementXDuration, () => movementY.Kill());
-            showing.Append(enemy.SpriteRenderer.DOColor(Color.white, _blackColorFadeOutDuration)).SetEase(Ease.Linear);
-            showing.OnComplete(() => OnCompleteShowing(enemy));
+            
+            showing.OnComplete(() =>
+            {
+                for (int i = 0; i < enemy.Renderers.Length; i++)
+                {
+                    enemy.Renderers[i].DOColor(UnityEngine.Color.white, _blackColorFadeOutDuration).SetEase(Ease.Linear);
+                }
+
+                OnCompleteShowing(enemy);
+            });
         }
 
         public void OnEnemyDie()
@@ -151,8 +160,12 @@ namespace Assets.Scripts.EnemiesManagment
         private void PrepareEnemy(Enemy enemy)
         {
             enemy.gameObject.SetActive(true);
-            enemy.transform.position = GetStartPosition(enemy.SpriteRenderer);
-            enemy.SpriteRenderer.color = Color.black;
+            enemy.transform.position = GetStartPosition(enemy.Renderers[0]); //TODO: check
+
+            for (int i = 0; i < enemy.Renderers.Length; i++)
+            {
+                enemy.Renderers[i].color = UnityEngine.Color.black;
+            }
         }
 
         private Vector3 GetStartPosition(SpriteRenderer sprite)

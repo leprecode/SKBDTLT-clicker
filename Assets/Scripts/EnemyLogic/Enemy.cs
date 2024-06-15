@@ -18,7 +18,7 @@ namespace Assets.Scripts.EnemyLogic
         public bool AllowToAttack { get; set; } = false;
 
         [SerializeField] private EnemyData _enemyData;
-        [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
+        [field: SerializeField] public SpriteRenderer[] Renderers { get; private set; }
 
         private MMF_Player _onDamagePlayer;
         private MMF_FloatingText _onDamageFloatingText;
@@ -49,7 +49,14 @@ namespace Assets.Scripts.EnemyLogic
             _onDamagePlayer.GetFeedbackOfType<MMF_Scale>().AnimateScaleTarget = transform;
             _onDamageFloatingText = _onDamagePlayer.GetFeedbackOfType<MMF_FloatingText>();
             _onDamageParticles = _onDamagePlayer.GetFeedbackOfType<MMF_ParticlesInstantiation>();
-            _onDamagePlayer.GetFeedbackOfType<MMF_Flicker>().BoundRenderer = GetComponent<SpriteRenderer>();
+
+            var flickers = _onDamagePlayer.GetFeedbacksOfType<MMF_Flicker>();
+            
+            for (int i = 0; i < Renderers.Length; i++)
+            {
+                flickers[i].BoundRenderer = Renderers[i];
+            }
+
             _onDamagePlayer.Initialization();
             _onDamagePlayer.SetCanPlay(true);
             DisableColliders();
@@ -70,14 +77,6 @@ namespace Assets.Scripts.EnemyLogic
             }
         }
 
-
-      /*  private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                TakeDamage(100000, Vector3.zero);
-            }
-        }*/
 
         public void TakeDamage(int damage, Vector3 hitPoint)
         {

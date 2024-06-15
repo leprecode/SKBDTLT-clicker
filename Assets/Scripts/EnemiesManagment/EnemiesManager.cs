@@ -20,7 +20,7 @@ namespace Assets.Scripts.EnemiesManagment
 
         public int GetEnemyNumber() => _pool.GetEnemyNumber();
 
-        public int GetActualEnemyHP() => _actualEnemy.ActualHp;
+        public int GetActualEnemyHP() => _actualEnemy != null ? _actualEnemy.ActualHp : 0;
 
         public void UpdateEnemyNameOnTranslate()
         {

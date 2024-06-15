@@ -112,9 +112,12 @@ namespace MoreMountains.Feedbacks
 			{
 				Debug.LogWarning("[MMFeedbackFlicker] The flicker feedback on "+Owner.name+" doesn't have a bound renderer, it won't work. You need to specify a renderer to flicker in its inspector.");    
 			}
-			
-			_spriteRenderer = BoundRenderer.GetComponent<SpriteRenderer>();
-			_spriteRendererIsNull = _spriteRenderer == null;
+			else
+			{
+                _spriteRenderer = BoundRenderer.GetComponent<SpriteRenderer>();
+            }
+
+            _spriteRendererIsNull = _spriteRenderer == null;
 			StoreSpriteRendererTexture();
 
 			for (int i = 0; i < MaterialIndexes.Length; i++)

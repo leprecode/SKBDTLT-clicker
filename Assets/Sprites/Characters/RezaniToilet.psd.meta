@@ -1,0 +1,1081 @@
+fileFormatVersion: 2
+guid: e9a5d501dbf9a0e4ab1b48a4627a5d2a
+importerOverride:
+  nativeImporterType: 2089858483
+  scriptedImporterType:
+    serializedVersion: 2
+    Hash: b10b55a1aa6a1aa32521bc0cab59632e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Zubi1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1071
+      y: 3444
+      width: 11
+      height: 12
+    spriteID: ddb98a1760e805d40a65d22a2817fbec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1071, y: 3444}
+    spritePosition: {x: 145, y: 817}
+  - name: Zubi2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1053
+      y: 3415
+      width: 15
+      height: 21
+    spriteID: ad46de0ba09c1c641b5eeeac17349576
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1053, y: 3415}
+    spritePosition: {x: 156, y: 815}
+  - name: Zubi3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1053
+      y: 3306
+      width: 25
+      height: 23
+    spriteID: 7878b608dd9b42647bcc479fcced81ea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1053, y: 3306}
+    spritePosition: {x: 171, y: 814}
+  - name: Zubi4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1053
+      y: 3387
+      width: 16
+      height: 20
+    spriteID: 1c2afc0a80067b9409e502d61ab1f719
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1053, y: 3387}
+    spritePosition: {x: 195, y: 813}
+  - name: Zubi5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1053
+      y: 3444
+      width: 10
+      height: 14
+    spriteID: 5fbab51adebf82e4c943f94994d0bb98
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1053, y: 3444}
+    spritePosition: {x: 211, y: 814}
+  - name: Zubi11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1071
+      y: 3483
+      width: 12
+      height: 8
+    spriteID: ae231575a91a72641817b4821b8edfc2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1071, y: 3483}
+    spritePosition: {x: 146, y: 804}
+  - name: Zubi12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1053
+      y: 3362
+      width: 24
+      height: 17
+    spriteID: f5ab10fdb7ce4c2499f487b1b9d3bd8c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1053, y: 3362}
+    spritePosition: {x: 159, y: 795}
+  - name: Zubi13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1053
+      y: 3337
+      width: 26
+      height: 17
+    spriteID: 7e1e3e197c2e9124cbf5f70bb2c590cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1053, y: 3337}
+    spritePosition: {x: 182, y: 795}
+  - name: Zubi14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1071
+      y: 3464
+      width: 12
+      height: 11
+    spriteID: cf31cf45981ad3e4887ad7aaa9a8d8c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1071, y: 3464}
+    spritePosition: {x: 209, y: 801}
+  - name: Kogot
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 609
+      y: 3306
+      width: 436
+      height: 194
+    spriteID: d44fd70c74ba186429a53d7124d79923
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 609, y: 3306}
+    spritePosition: {x: 48, y: 342}
+  - name: Pushka
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3855
+      width: 638
+      height: 175
+    spriteID: 8f20a61b21cd0ae4e8845feaa2677138
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 3855}
+    spritePosition: {x: 1, y: 131}
+  - name: Golova
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 1655
+      width: 258
+      height: 529
+    spriteID: e28d02d3de8cf414cacdf53044c7192e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 1655}
+    spritePosition: {x: 60, y: 550}
+  - name: Krishka
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2757
+      width: 598
+      height: 541
+    spriteID: c477914cd89f4724b855d8e30839ddfc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2757}
+    spritePosition: {x: 470, y: 537}
+  - name: Tolchek
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1092
+      y: 1589
+      width: 513
+      height: 513
+    spriteID: 4eb3c5569c50f7744a546ee17131e924
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1092, y: 1589}
+    spritePosition: {x: 512, y: 7}
+  - name: Golova
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1612
+      y: 4
+      width: 263
+      height: 523
+    spriteID: 4b124b1d0ef2a54479051dc1e653772e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1612, y: 4}
+    spritePosition: {x: 58, y: 550}
+  - name: Krishka
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1092
+      width: 598
+      height: 555
+    spriteID: bcff8c45f1205dd4b9cc286d7a1aeee2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1092}
+    spritePosition: {x: 471, y: 523}
+  - name: Tolchek
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1092
+      y: 1065
+      width: 513
+      height: 516
+    spriteID: f21fc66efb8f83749bd088ffc174c59c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1092, y: 1065}
+    spritePosition: {x: 512, y: 7}
+  - name: Golova
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1613
+      y: 536
+      width: 263
+      height: 517
+    spriteID: 8fd0c128dfdc9944bb75cf69f1aa3ca7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1613, y: 536}
+    spritePosition: {x: 55, y: 550}
+  - name: Krishka
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1655
+      width: 598
+      height: 543
+    spriteID: 9919c4b3dbc79f7428fe7a2e72438379
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1655}
+    spritePosition: {x: 470, y: 536}
+  - name: Tolchek
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1092
+      y: 2110
+      width: 513
+      height: 512
+    spriteID: 865529c899c846f47ae7cfef9c8ba2fc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1092, y: 2110}
+    spritePosition: {x: 512, y: 8}
+  - name: Golova
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1613
+      y: 1589
+      width: 255
+      height: 486
+    spriteID: 3509251bd7819064ab159ba7abed4d8d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1613, y: 1589}
+    spritePosition: {x: 59, y: 549}
+  - name: Krishka
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3306
+      width: 597
+      height: 541
+    spriteID: 893e41778232fba48990ffc290553896
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 3306}
+    spritePosition: {x: 470, y: 537}
+  - name: Tolchek
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1092
+      y: 4
+      width: 512
+      height: 524
+    spriteID: 7ea1d13f42dc7a248af162657d8ea0c2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1092, y: 4}
+    spritePosition: {x: 512, y: 8}
+  - name: Golova
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 2757
+      width: 373
+      height: 530
+    spriteID: ee3f5b19091a2fb47a534b2f03cf4d55
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 2757}
+    spritePosition: {x: 0, y: 550}
+  - name: Krishka
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2206
+      width: 598
+      height: 543
+    spriteID: 9be99e13c15ded14c992c94419d72398
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2206}
+    spritePosition: {x: 469, y: 534}
+  - name: Tolchek
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1092
+      y: 536
+      width: 513
+      height: 521
+    spriteID: 627f22e0cdf4ea644bfdfab25b6fe621
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1092, y: 536}
+    spritePosition: {x: 512, y: 8}
+  - name: Background
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1080
+      height: 1080
+    spriteID: 149acb5699068974bb376fa17b587381
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 1
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  padding: 4
+  spriteSizeExpand: 0
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 1
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Boss
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 0cf0617307a75e84db30ed1142e04cb6
+    layerID: 35
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Zubi
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 3e83cc1e303d82743bdb7dd4ccc3a397
+    layerID: 49
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Zubi1
+    spriteName: Zubi1
+    isGroup: 0
+    parentIndex: 1
+    spriteID: ddb98a1760e805d40a65d22a2817fbec
+    layerID: 51
+    mosaicPosition: {x: 1071, y: 3444}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Zubi2
+    spriteName: Zubi2
+    isGroup: 0
+    parentIndex: 1
+    spriteID: ad46de0ba09c1c641b5eeeac17349576
+    layerID: 53
+    mosaicPosition: {x: 1053, y: 3415}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Zubi3
+    spriteName: Zubi3
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 7878b608dd9b42647bcc479fcced81ea
+    layerID: 55
+    mosaicPosition: {x: 1053, y: 3306}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Zubi4
+    spriteName: Zubi4
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 1c2afc0a80067b9409e502d61ab1f719
+    layerID: 57
+    mosaicPosition: {x: 1053, y: 3387}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Zubi5
+    spriteName: Zubi5
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 5fbab51adebf82e4c943f94994d0bb98
+    layerID: 59
+    mosaicPosition: {x: 1053, y: 3444}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Zubi11
+    spriteName: Zubi11
+    isGroup: 0
+    parentIndex: 1
+    spriteID: ae231575a91a72641817b4821b8edfc2
+    layerID: 61
+    mosaicPosition: {x: 1071, y: 3483}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Zubi12
+    spriteName: Zubi12
+    isGroup: 0
+    parentIndex: 1
+    spriteID: f5ab10fdb7ce4c2499f487b1b9d3bd8c
+    layerID: 63
+    mosaicPosition: {x: 1053, y: 3362}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Zubi13
+    spriteName: Zubi13
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 7e1e3e197c2e9124cbf5f70bb2c590cd
+    layerID: 65
+    mosaicPosition: {x: 1053, y: 3337}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Zubi14
+    spriteName: Zubi14
+    isGroup: 0
+    parentIndex: 1
+    spriteID: cf31cf45981ad3e4887ad7aaa9a8d8c9
+    layerID: 67
+    mosaicPosition: {x: 1071, y: 3464}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Kogot
+    spriteName: Kogot
+    isGroup: 0
+    parentIndex: 0
+    spriteID: d44fd70c74ba186429a53d7124d79923
+    layerID: 46
+    mosaicPosition: {x: 609, y: 3306}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Pushka
+    spriteName: Pushka
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 8f20a61b21cd0ae4e8845feaa2677138
+    layerID: 44
+    mosaicPosition: {x: 4, y: 3855}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Golova
+    spriteName: Golova
+    isGroup: 0
+    parentIndex: 0
+    spriteID: e28d02d3de8cf414cacdf53044c7192e
+    layerID: 42
+    mosaicPosition: {x: 610, y: 1655}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Krishka
+    spriteName: Krishka
+    isGroup: 0
+    parentIndex: 0
+    spriteID: c477914cd89f4724b855d8e30839ddfc
+    layerID: 39
+    mosaicPosition: {x: 4, y: 2757}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Tolchek
+    spriteName: Tolchek
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 4eb3c5569c50f7744a546ee17131e924
+    layerID: 38
+    mosaicPosition: {x: 1092, y: 1589}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: SCP173
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: d8f4b2d2bda79474983d8c138d3ed3ad
+    layerID: 26
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Golova
+    spriteName: Golova
+    isGroup: 0
+    parentIndex: 16
+    spriteID: 4b124b1d0ef2a54479051dc1e653772e
+    layerID: 34
+    mosaicPosition: {x: 1612, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Krishka
+    spriteName: Krishka
+    isGroup: 0
+    parentIndex: 16
+    spriteID: bcff8c45f1205dd4b9cc286d7a1aeee2
+    layerID: 29
+    mosaicPosition: {x: 4, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Tolchek
+    spriteName: Tolchek
+    isGroup: 0
+    parentIndex: 16
+    spriteID: f21fc66efb8f83749bd088ffc174c59c
+    layerID: 28
+    mosaicPosition: {x: 1092, y: 1065}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Base
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: ec18cfb6fde7c344da70b78c6eb59c2a
+    layerID: 6
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Golova
+    spriteName: Golova
+    isGroup: 0
+    parentIndex: 20
+    spriteID: 8fd0c128dfdc9944bb75cf69f1aa3ca7
+    layerID: 25
+    mosaicPosition: {x: 1613, y: 536}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Krishka
+    spriteName: Krishka
+    isGroup: 0
+    parentIndex: 20
+    spriteID: 9919c4b3dbc79f7428fe7a2e72438379
+    layerID: 5
+    mosaicPosition: {x: 4, y: 1655}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Tolchek
+    spriteName: Tolchek
+    isGroup: 0
+    parentIndex: 20
+    spriteID: 865529c899c846f47ae7cfef9c8ba2fc
+    layerID: 3
+    mosaicPosition: {x: 1092, y: 2110}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Noob
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 586fd2bae82ce33498447409a80e30a2
+    layerID: 8
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Golova
+    spriteName: Golova
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 3509251bd7819064ab159ba7abed4d8d
+    layerID: 23
+    mosaicPosition: {x: 1613, y: 1589}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Krishka
+    spriteName: Krishka
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 893e41778232fba48990ffc290553896
+    layerID: 11
+    mosaicPosition: {x: 4, y: 3306}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Tolchek
+    spriteName: Tolchek
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 7ea1d13f42dc7a248af162657d8ea0c2
+    layerID: 10
+    mosaicPosition: {x: 1092, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Shrek
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 62bddd9bb456baf41a4707431878f858
+    layerID: 13
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Golova
+    spriteName: Golova
+    isGroup: 0
+    parentIndex: 28
+    spriteID: ee3f5b19091a2fb47a534b2f03cf4d55
+    layerID: 21
+    mosaicPosition: {x: 610, y: 2757}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Krishka
+    spriteName: Krishka
+    isGroup: 0
+    parentIndex: 28
+    spriteID: 9be99e13c15ded14c992c94419d72398
+    layerID: 17
+    mosaicPosition: {x: 4, y: 2206}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Tolchek
+    spriteName: Tolchek
+    isGroup: 0
+    parentIndex: 28
+    spriteID: 627f22e0cdf4ea644bfdfab25b6fe621
+    layerID: 19
+    mosaicPosition: {x: 1092, y: 536}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Background
+    spriteName: Background
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 149acb5699068974bb376fa17b587381
+    layerID: 1
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 0
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
