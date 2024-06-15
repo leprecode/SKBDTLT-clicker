@@ -33,7 +33,7 @@ MonoBehaviour:
       Data: 0.5
     - Name: <Damage>k__BackingField
       Entry: 3
-      Data: 4
+      Data: 40000000
     - Name: <Speed>k__BackingField
       Entry: 4
       Data: 0.3

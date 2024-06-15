@@ -8358,15 +8358,15 @@ MonoBehaviour:
     <Turkish>k__BackingField: 'Tebrikler! '
   - <Name>k__BackingField: 'POPUP: EndGamePopup Description'
     <Text>k__BackingField: {fileID: 1767448065}
-    <Russian>k__BackingField: "\u0412\u044B \u043F\u043E\u0431\u0438\u043B\u0438
-      \u0432\u0441\u0435\u0445 \u0447\u0443\u0448\u043F\u0430\u043D\u043E\u0432 \u0438
-      \u0432\u0440\u0430\u0433\u043E\u0432! \u0412\u044B \u0441\u0442\u0430\u043B\u0438
-      \u0441\u0430\u043C\u044B\u043C \u0441\u0438\u043B\u044C\u043D\u044B\u043C \u043F\u0430\u0446\u0430\u043D\u043E\u043C
-      \u043D\u0430 \u0440\u0430\u0439\u043E\u043D\u0435!"
-    <English>k__BackingField: You have defeated all the chushpans and enemies! You
-      have become the strongest pacan in the area!
-    <Turkish>k__BackingField: "T\xFCm chushpan'lar\u0131 ve d\xFC\u015Fmanlar\u0131
-      yendin! B\xF6lgedeki en g\xFC\xE7l\xFC pacan oldun!"
+    <Russian>k__BackingField: "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u0435\u043C!
+      \u0412\u044B \u043F\u043E\u0431\u0438\u043B\u0438 \u0432\u0441\u0435 \u0442\u0443\u0430\u043B\u0435\u0442\u044B!
+      \u041F\u0440\u0438 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0435\u043C \u043F\u0440\u043E\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0438
+      \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0431\u0443\u0434\u0435\u0442
+      \u0441\u0431\u0440\u043E\u0448\u0435\u043D"
+    <English>k__BackingField: Congratulations! You beat all the toilets! The progress
+      will be reset on your next playthrough.
+    <Turkish>k__BackingField: "Tebrikler! B\xFCt\xFCn tuvaletleri k\u0131rd\u0131n!
+      Bir sonraki oynay\u0131\u015F\u0131n\u0131zda ilerlemeniz s\u0131f\u0131rlanacakt\u0131r."
   - <Name>k__BackingField: 'Warning: FULLSCREEN AD'
     <Text>k__BackingField: {fileID: 1130188959}
     <Russian>k__BackingField: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430\u0447\u043D\u0435\u0442\u0441\u044F
@@ -8375,25 +8375,26 @@ MonoBehaviour:
     <Turkish>k__BackingField: "Reklam \u015Fu tarihte ba\u015Flayacak: \u200B"
   _charactersNamesToTranslate:
   - <EnemyData>k__BackingField: {fileID: 11400000, guid: 886ed9128dc2cbd4cb90751197481329, type: 2}
-    <Russian>k__BackingField: "\u0427\u0443\u0448\u043F\u0430\u043D"
-    <English>k__BackingField: Chuspan
-    <Turkish>k__BackingField: "\xC7uspan"
+    <Russian>k__BackingField: "\u0428\u0440\u043E\u043A \u0442\u0443\u0430\u043B\u0435\u0442"
+    <English>k__BackingField: Shrock toilet
+    <Turkish>k__BackingField: Schrock tuvalet
   - <EnemyData>k__BackingField: {fileID: 11400000, guid: abe6c5653f9bff7469ad896670a5612a, type: 2}
-    <Russian>k__BackingField: "\u041E\u0431\u043E\u0440\u0432\u044B\u0448"
-    <English>k__BackingField: Oborvish
-    <Turkish>k__BackingField: "Oborvi\u015F"
+    <Russian>k__BackingField: "\u041E\u0431\u044B\u0447\u043D\u044B\u0439 \u0441\u043A\u0438\u0431\u0438\u0434\u0438"
+    <English>k__BackingField: Regular Skibidi
+    <Turkish>k__BackingField: "D\xFCzenli skibidi"
   - <EnemyData>k__BackingField: {fileID: 11400000, guid: 10929bbcaf821024d8bebf873aca792b, type: 2}
-    <Russian>k__BackingField: "\u041F\u0430\u043D\u043A"
-    <English>k__BackingField: Punk
-    <Turkish>k__BackingField: Punk
+    <Russian>k__BackingField: "\u041D\u0443\u0431\u0438\u043A \u0442\u0443\u0430\u043B\u0435\u0442"
+    <English>k__BackingField: Noobik toilet
+    <Turkish>k__BackingField: Nubik tuvalet
   - <EnemyData>k__BackingField: {fileID: 11400000, guid: f64671320f9660749ae1d1af8f89a340, type: 2}
-    <Russian>k__BackingField: "\u0421\u0438\u0434\u0435\u043B\u0435\u0446"
-    <English>k__BackingField: Prisoner
-    <Turkish>k__BackingField: Mahkum
+    <Russian>k__BackingField: "\u0421\u043A\u0438\u0431\u0438\u0434\u0438 \u0432\u0430\u043C\u043F\u0438\u0440
+      \u0442\u0443\u0430\u043B\u0435\u0442"
+    <English>k__BackingField: Skibidi vampire toilet
+    <Turkish>k__BackingField: Skibidi vampir tuvaleti
   - <EnemyData>k__BackingField: {fileID: 11400000, guid: 0a12a17eef56fbf4a981204473d7857b, type: 2}
-    <Russian>k__BackingField: "\u041A\u043E\u043C\u0441\u043E\u043C\u043E\u043B\u0435\u0446"
-    <English>k__BackingField: Pioner
-    <Turkish>k__BackingField: "\xF6nc\xFC"
+    <Russian>k__BackingField: "SCP-173 \u0442\u0443\u0430\u043B\u0435\u0442"
+    <English>k__BackingField: SCP-173 toilet
+    <Turkish>k__BackingField: SCP-173 tuvalet
   _view: {fileID: 927692582}
 --- !u!1 &928055346
 GameObject:
