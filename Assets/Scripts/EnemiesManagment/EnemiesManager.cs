@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.EnemyLogic;
+using Assets.Scripts.Infrastructure.Save_LoadSystem;
 using System;
 using UnityEngine;
 
@@ -67,6 +68,7 @@ namespace Assets.Scripts.EnemiesManagment
             {
                 OnEnemyEnded?.Invoke();
                 _view.OnEndGame();
+                SaveLoadManager.SaveGameIsFifnished();
             }
             else
             {

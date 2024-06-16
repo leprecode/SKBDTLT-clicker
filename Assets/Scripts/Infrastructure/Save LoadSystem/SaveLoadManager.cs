@@ -9,9 +9,11 @@ namespace Assets.Scripts.Infrastructure.Save_LoadSystem
     {
         [SerializeField] private int _rewardedTimeLast;
 
-
         public bool IsFirstLaunch() =>
             PlayerPrefs.GetInt("IsFirstLaunch", 0) == 0;
+
+        public bool IsGameWasFinished() =>
+            PlayerPrefs.GetInt("GameIsFinished", 0) == 1;
 
         public void SetIsSecondLaunch() =>
              PlayerPrefs.SetInt("IsFirstLaunch", 1);
@@ -39,11 +41,17 @@ namespace Assets.Scripts.Infrastructure.Save_LoadSystem
 
         public void SetBoughtWeaponsCount(int weaponCount) =>
              PlayerPrefs.SetInt("Weapon", weaponCount);
-/*
-        public int GetRewardedTime() =>
-             PlayerPrefs.GetInt("RewardedTime", 0);
 
-        public void SetRewardedTime(int weaponCount) =>
-             PlayerPrefs.SetInt("RewardedTime", weaponCount);*/
+        public static void SaveGameIsFifnished() => PlayerPrefs.SetInt("GameIsFinished", 1);
+
+        public void DeleteSavesOnFinishGame()
+        {
+            PlayerPrefs.SetInt("IsFirstLaunch", 0);
+            PlayerPrefs.SetInt("Weapon", 0);
+            PlayerPrefs.SetInt("Money", 0);
+            PlayerPrefs.SetInt("LastEnemyHP", 0);
+            PlayerPrefs.SetInt("LastEnemy", 0);
+            PlayerPrefs.SetInt("GameIsFinished", 0);
+        }
     }
 }

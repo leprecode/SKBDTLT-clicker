@@ -106,12 +106,18 @@ namespace Assets.Scripts.Infrastructure
             PlayerPrefs.Save();
         }
 
+
         private void LaunchGameplayProgress()
         {
             _saveLoadManager = new SaveLoadManager();
 
             if (_saveLoadManager.IsFirstLaunch())
             {
+                FirstLaunch();
+            }
+            else if(_saveLoadManager.IsGameWasFinished())
+            {
+                _saveLoadManager.DeleteSavesOnFinishGame();
                 FirstLaunch();
             }
             else

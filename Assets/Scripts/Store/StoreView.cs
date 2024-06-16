@@ -38,12 +38,12 @@ namespace Assets.Scripts.Store
 
         public void SetInactiveStatesOnLoadProgress(int weaponsCount)
         {
-            for (int i = 0; i < weaponsCount && i < _cells.Length; i++)
+            for (int i = 0; i < weaponsCount; i++)
             {
                 _cells[i].SetDisableState();
             }
 
-            LastAvctiveCell = _cells[Mathf.Min(weaponsCount - 1, _cells.Length-1)];
+            LastAvctiveCell = _cells[weaponsCount-1];
             LastAvctiveCell.SetActiveState();
         }
 

@@ -83,7 +83,9 @@ namespace Assets.Scripts.WeaponsLogic
 
         public void LoadBoughtWeapons(int weaponsCount)
         {
-            for (int i = 0; i < weaponsCount-1; i++)
+            _boughtWeapons = new List<WeaponName>();
+
+            for (int i = 0; i < weaponsCount; i++)
             {
                 _boughtWeapons.Add(_orderedByCostWeapons[i]);
                 _allUnbuyedWeapons.Remove(_orderedByCostWeapons[i]);
